@@ -1,0 +1,24 @@
+
+@import "./components/components.scss";
+@import "./variables/variables.scss";
+
+body {
+    background: $darkbg_color;
+}
+
+@-ms-viewport{
+    width: device-width;
+}
+
+
+
+.logo {
+    width: 3em;
+    height: auto;
+    padding: 0.5em;
+    border-radius: 1.5em; 
+}
+
+.logo-light {
+    background-color: $brand_color;
+}

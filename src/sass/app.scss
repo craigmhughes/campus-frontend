@@ -1,13 +1,18 @@
 
-@import "./components/components.scss";
 @import "./variables/variables.scss";
+@import "./components/components.scss";
 
 body {
     background: $darkbg_color;
+    min-height: 100vh;
 }
 
 @-ms-viewport{
     width: device-width;
+}
+
+.App, #root {
+    min-height: 100vh;
 }
 
 

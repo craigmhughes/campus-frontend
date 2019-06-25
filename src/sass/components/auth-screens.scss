@@ -1,0 +1,49 @@
+
+.LoginScreen {
+
+    color: $lightbg_color;
+    display: grid;
+    grid-auto-rows: 4fr 4fr 2fr;
+    min-height: 100vh;
+
+    & > .header {
+        width: 100%;
+        text-align: center;
+        padding-top: 2em;
+        font-family: $primary_font;
+
+
+        & > .logo-text {
+            
+            padding-bottom: 1.5em;
+            font-weight: 100;
+
+            &::after {
+                content: " ";
+                position: relative;
+                display: flex;
+                left: calc(50% - 30px);
+                top: 20px;
+                width: 60px;
+                border-bottom: 1px solid #fff;
+            }
+        }
+    }
+
+    & > .body {
+        margin-bottom: calc(20% + 1.5em);
+    }
+
+    & > .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 5fr 5fr;
+
+        & > .cc-button {
+            text-align: center;
+            max-height: 1.5em;
+        }
+    }
+}

@@ -1,11 +1,67 @@
-.LoginScreen .header {
-  text-align: center; }
+@import url("https://fonts.googleapis.com/css?family=Bai+Jamjuree&display=swap");
+.LoginScreen {
+  color: #edeff7;
+  display: grid;
+  grid-auto-rows: 4fr 4fr 2fr;
+  min-height: 100vh; }
+  .LoginScreen > .header {
+    width: 100%;
+    text-align: center;
+    padding-top: 2em;
+    font-family: "Bai Jamjuree", sans-serif; }
+    .LoginScreen > .header > .logo-text {
+      padding-bottom: 1.5em;
+      font-weight: 100; }
+      .LoginScreen > .header > .logo-text::after {
+        content: " ";
+        position: relative;
+        display: flex;
+        left: calc(50% - 30px);
+        top: 20px;
+        width: 60px;
+        border-bottom: 1px solid #fff; }
+  .LoginScreen > .body {
+    margin-bottom: calc(20% + 1.5em); }
+  .LoginScreen > .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 5fr 5fr; }
+    .LoginScreen > .footer > .cc-button {
+      text-align: center;
+      max-height: 1.5em; }
+
+.cc-button {
+  padding: 15px 30px;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-size: 0.75em;
+  text-decoration: none;
+  color: #000012;
+  font-weight: 600;
+  border: 0.25em solid #000012;
+  margin: 1em;
+  background: none;
+  cursor: pointer;
+  border-radius: 1.5em 1.5em 1.5em 0em; }
+  .cc-button.right {
+    border-radius: 1.5em 1.5em 0em 1.5em; }
+  .cc-button.primary {
+    background: #edeff7;
+    border-color: #edeff7; }
+  .cc-button.light-secondary {
+    border-color: #edeff7;
+    color: #edeff7; }
 
 body {
-  background: #000012; }
+  background: #000012;
+  min-height: 100vh; }
 
 @-ms-viewport {
   width: device-width; }
+.App, #root {
+  min-height: 100vh; }
+
 .logo {
   width: 3em;
   height: auto;

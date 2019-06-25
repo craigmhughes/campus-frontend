@@ -1,0 +1,29 @@
+
+.cc-button {
+    padding: 15px 30px;
+    font-family: $primary_font;
+    font-size: 0.75em;
+    text-decoration: none;
+    color: $darkbg_color;
+    font-weight: 600;
+    border: 0.25em solid $darkbg_color;
+    margin: 1em;
+    background: none;
+    cursor: pointer;
+
+    border-radius: 1.5em 1.5em 1.5em 0em;
+
+    &.right {
+        border-radius: 1.5em 1.5em 0em 1.5em;
+    }
+
+    &.primary {
+        background: $lightbg_color;
+        border-color: $lightbg_color;
+    }
+
+    &.light-secondary {
+        border-color: $lightbg_color;
+        color: $lightbg_color;
+    }
+}

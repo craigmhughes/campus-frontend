@@ -4,7 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 // Components
-import LoginScreen from './components/LoginScreen';
+import AuthScreen from './components/Auth/AuthScreen';
 
 class App extends React.Component {
 
@@ -19,21 +19,29 @@ class App extends React.Component {
 
   check_signin(){
 
+    // Get subdomain url
     let subdomain = window.location.href.split(window.location.host)[1];
+
+    if(localStorage.getItem("AUTH") !== null){
+      this.setState({
+        signed_in: true
+      });
+    }
 
     if(this.state.signed_in == false && subdomain !== "/signin"){
       window.location.href = "/signin";
     }
   }
 
+  
+
   render(){
 
     return(
       <div className="App">
-        <Router>
-
-          <Route path="/signin" exact component={LoginScreen} />
         
+        <Router>
+          <Route path="/signin" exact component={AuthScreen} />
         </Router>
       </div>
     );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import logo from '../../images/logo.svg';
 import '../../App.css';
 
 class AuthScreen extends React.Component {
@@ -54,8 +55,6 @@ class AuthScreen extends React.Component {
 
     let buttons = direction == 1 ? [0,1] : [1,0];
 
-    console.log(direction);
-
     
     if (direction > 0){
       // Start button switch
@@ -83,8 +82,6 @@ class AuthScreen extends React.Component {
 
 
     } else {
-
-      console.log("here");
 
       if (cc_buttons[buttons[0]].className.includes("shrink")) {
         cc_buttons[buttons[0]].className = cc_buttons[buttons[0]].className.replace("shrink", "");
@@ -117,14 +114,18 @@ class AuthScreen extends React.Component {
       <div className="AuthScreen">
 
           
-          <button id="back-icon" className="" ref={this.back_el} onClick={()=>{this.switch_authscreen(0)}}><i className="material-icons">chevron_left</i><p>back</p></button>
+          <button id="back-icon" className="btn btn-secondary btn-light" ref={this.back_el} onClick={()=>{this.switch_authscreen(0)}}>
+            <i className="material-icons">chevron_left</i><p>back</p>
+          </button>
 
           <div className="header">
-            {/* <img src="./images/logo.svg" className="logo logo-light"/> */}
-            <p className="logo-text">campuschat</p>
+            <div className="logo-container">
+              <img src={logo} className="logo logo-light"/>
+              <p className="logo-text">campus<b>chat</b></p>
+            </div>
           </div>
           <div className="body">
-            <div className="login-form">
+            {/* <div className="login-form">
               <h1>Login</h1>
               <input name="login-mail" placeholder="E-Mail Address" type="email"></input>
               <input name="login-pass" placeholder="Password" type="password"></input>
@@ -134,7 +135,7 @@ class AuthScreen extends React.Component {
               <h1>Signup</h1>
               <input name="register-mail" placeholder="E-Mail Address" type="email"></input>
               <input name="register-pass" placeholder="Password" type="password"></input>
-            </div>
+            </div> */}
           </div>
           <div className="footer" ref={this.footer_el}>
             

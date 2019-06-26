@@ -11,16 +11,15 @@
 
     & > #back-icon {
         position: fixed;
-        background: $brand_color;
-        border: none;
         border-radius: 1em;
-        color: $lightbg_color;
         cursor: pointer;
         display: flex;
         font-family: $primary_font;
         font-weight: 600;
+        font-size: 0.6em;
         
         left: -50%;
+        top: 1em;
         outline: none;
         padding: 0.25em 1.5em 0.25em 0.75em;
 
@@ -35,6 +34,26 @@
         &.show {
             left: 1em;
             transition: all 0.6s ease-out;
+        }
+    }
+
+    & > .header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+
+        & > .logo-container {
+            text-align: center;
+            
+            & > .logo {
+                height: 3.5em;
+                width: 3.5em;
+            }
+    
+            & > p {
+                font-size: 1.15em;
+                margin: 0.4em;
+            }
         }
     }
 

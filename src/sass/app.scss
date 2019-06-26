@@ -2,28 +2,29 @@
 @import "./variables/variables.scss";
 @import "./components/components.scss";
 
-body {
-    background: $darkbg_color;
-    min-height: 100vh;
+.signup-form {
+    display: none;
 }
 
-@-ms-viewport{
-    width: device-width;
+html,body {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after { box-sizing: inherit; }
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    background:red;
 }
 
 .App, #root {
     min-height: 100vh;
-}
-
-
-
-.logo {
-    width: 3em;
-    height: auto;
-    padding: 0.5em;
-    border-radius: 1.5em; 
-}
-
-.logo-light {
-    background-color: $brand_color;
+    margin: 0 auto;
 }

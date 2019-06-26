@@ -1,0 +1,26 @@
+
+.AuthScreen {
+    background: $darkbg_color;
+    color: $lightbg_color;
+    display: grid;
+    grid-template-rows: 4fr 4fr 2fr;
+    min-height: 100vh;
+    padding: 1em;
+
+    & > #back-icon {
+        position: fixed;
+    }
+
+
+    & > .footer {
+        display: flex;
+        align-items: flex-end;
+
+        justify-content: space-around;
+
+        & > .btn {
+            flex-basis: calc(50% - 1em);
+            transition: all 1s ease-in-out;
+        }
+    }
+}

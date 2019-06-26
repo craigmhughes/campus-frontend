@@ -1,0 +1,42 @@
+
+// Init btn styles
+.btn {
+    background: none;
+    border: 0.25em solid $darkbg_color;
+    border-radius: 1.25em 1.25em 0 1.25em;
+    cursor: pointer;
+    
+    font-family: $primary_font;
+    font-size: 0.75em;
+    font-weight: 600;
+    
+    padding: 1em 2em;
+    outline: none;
+}
+
+// All light btns
+.btn-light {
+    border-color: $lightbg_color;
+}
+
+// Specifics
+.btn-primary {
+
+
+    &.btn-light {
+        background: $lightbg_color;
+    }
+}
+
+.btn-secondary {
+
+
+    &.btn-light {
+        color: $lightbg_color;
+    }
+}
+
+// btn-direction -- Default will be pointed right
+.btn-left {
+    border-radius: 1.25em 1.25em 1.25em 0;
+}

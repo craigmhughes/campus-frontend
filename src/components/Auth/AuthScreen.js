@@ -19,8 +19,6 @@ class AuthScreen extends React.Component {
       auth_screen: screen
     }, ()=>{
 
-      let cc_buttons = this.footer_el.current.childNodes;
-
       switch(this.state.auth_screen){
         case 0:
           this.render_menu();
@@ -37,15 +35,37 @@ class AuthScreen extends React.Component {
   }
 
   render_menu(){
-    
+    let cc_buttons = this.footer_el.current.childNodes;
   }
 
   render_signup(){
-
+    this.switchMenuButtons(0);
   }
 
   render_signin(){
+    this.switchMenuButtons(1);
+  }
 
+  switchMenuButtons(direction){
+    let cc_buttons = this.footer_el.current.childNodes;
+
+    let buttons = direction == 0 ? [0,1] : [1,0];
+
+    if (cc_buttons[buttons[0]].className.includes("shrink")) {
+      cc_buttons[buttons[0]].className = cc_buttons[buttons[0]].className.replace(" shrink", " ");
+    }
+
+    if (!cc_buttons[buttons[0]].className.includes("expand")) {
+      cc_buttons[buttons[0]].className += " expand";
+    }
+
+    if(!cc_buttons[buttons[1]].className.includes("shrink")){
+      cc_buttons[buttons[1]].className += " shrink";
+    }
+
+    if(cc_buttons[buttons[1]].className.includes("expand")){
+      cc_buttons[buttons[1]].className = cc_buttons[buttons[1]].className.replace(" expand", " ");
+    }
   }
 
   render(){

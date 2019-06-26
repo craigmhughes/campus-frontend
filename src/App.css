@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Bai+Jamjuree&display=swap");
 .btn {
   background: none;
-  border: 0.25em solid #000012;
+  border: 0.25em solid #01011a;
   border-radius: 1.25em 1.25em 0 1.25em;
   cursor: pointer;
   font-family: "Bai Jamjuree", sans-serif;
@@ -23,12 +23,14 @@
   border-radius: 1.25em 1.25em 1.25em 0; }
 
 .AuthScreen {
-  background: #000012;
+  background: #01011a;
   color: #edeff7;
   display: grid;
-  grid-template-rows: 4fr 4fr 2fr;
+  grid-template-rows: 3fr 5fr 2fr;
   min-height: 100vh;
-  padding: 1em; }
+  padding: 1em;
+  position: fixed;
+  width: 100%; }
   .AuthScreen > #back-icon {
     position: fixed; }
   .AuthScreen > .footer {
@@ -37,7 +39,18 @@
     justify-content: space-around; }
     .AuthScreen > .footer > .btn {
       flex-basis: calc(50% - 1em);
-      transition: all 1s ease-in-out; }
+      transition: all 1s ease-in-out;
+      position: relative;
+      left: 0;
+      opacity: 1; }
+      .AuthScreen > .footer > .btn.shrink {
+        flex-basis: 0%;
+        opacity: 0;
+        font-size: 0;
+        padding: 1rem 0;
+        left: 60%; }
+      .AuthScreen > .footer > .btn.expand {
+        flex-basis: 100%; }
 
 .signup-form {
   display: none; }

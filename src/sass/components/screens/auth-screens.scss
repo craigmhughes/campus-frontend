@@ -3,9 +3,11 @@
     background: $darkbg_color;
     color: $lightbg_color;
     display: grid;
-    grid-template-rows: 4fr 4fr 2fr;
+    grid-template-rows: 3fr 5fr 2fr;
     min-height: 100vh;
     padding: 1em;
+    position: fixed;
+    width: 100%;
 
     & > #back-icon {
         position: fixed;
@@ -21,6 +23,21 @@
         & > .btn {
             flex-basis: calc(50% - 1em);
             transition: all 1s ease-in-out;
+            position: relative;
+            left: 0;
+            opacity: 1;
+
+            &.shrink {
+                flex-basis: 0%;
+                opacity: 0;
+                font-size: 0;
+                padding: 1rem 0;
+                left: 60%;
+            }
+
+            &.expand {
+                flex-basis: 100%;
+            }
         }
     }
 }

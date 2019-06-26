@@ -11,6 +11,31 @@
 
     & > #back-icon {
         position: fixed;
+        background: $brand_color;
+        border: none;
+        border-radius: 1em;
+        color: $lightbg_color;
+        cursor: pointer;
+        display: flex;
+        font-family: $primary_font;
+        font-weight: 600;
+        
+        left: -50%;
+        outline: none;
+        padding: 0.25em 1.5em 0.25em 0.75em;
+
+        transition: all 1s ease-out;
+        
+
+        & > p {
+            margin: 0;
+            align-self: center;
+        }
+
+        &.show {
+            left: 1em;
+            transition: all 0.6s ease-out;
+        }
     }
 
 
@@ -33,6 +58,10 @@
                 font-size: 0;
                 padding: 1rem 0;
                 left: 60%;
+
+                &.btn-left {
+                    left: -60%;
+                }
             }
 
             &.expand {

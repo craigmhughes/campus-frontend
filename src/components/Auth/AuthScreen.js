@@ -11,9 +11,12 @@ class AuthScreen extends React.Component {
     }
 
     this.footer_el = React.createRef();
+    this.back_el = React.createRef();
   }
 
   switch_authscreen(screen){
+
+    console.log(screen);
 
     this.setState({
       auth_screen: screen
@@ -35,44 +38,86 @@ class AuthScreen extends React.Component {
   }
 
   render_menu(){
-    let cc_buttons = this.footer_el.current.childNodes;
-  }
-
-  render_signup(){
     this.switchMenuButtons(0);
   }
 
-  render_signin(){
+  render_signup(){
     this.switchMenuButtons(1);
+  }
+
+  render_signin(){
+    this.switchMenuButtons(2);
   }
 
   switchMenuButtons(direction){
     let cc_buttons = this.footer_el.current.childNodes;
 
-    let buttons = direction == 0 ? [0,1] : [1,0];
+    let buttons = direction == 1 ? [0,1] : [1,0];
 
-    if (cc_buttons[buttons[0]].className.includes("shrink")) {
-      cc_buttons[buttons[0]].className = cc_buttons[buttons[0]].className.replace(" shrink", " ");
-    }
+    console.log(direction);
 
-    if (!cc_buttons[buttons[0]].className.includes("expand")) {
-      cc_buttons[buttons[0]].className += " expand";
-    }
+    
+    if (direction > 0){
+      // Start button switch
+      if (cc_buttons[buttons[0]].className.includes("shrink")) {
+        cc_buttons[buttons[0]].className = cc_buttons[buttons[0]].className.replace("shrink", "");
+      }
 
-    if(!cc_buttons[buttons[1]].className.includes("shrink")){
-      cc_buttons[buttons[1]].className += " shrink";
-    }
+      if(cc_buttons[buttons[1]].className.includes("expand")){
+        cc_buttons[buttons[1]].className = cc_buttons[buttons[1]].className.replace("expand", "");
+      }
+  
+      if (!cc_buttons[buttons[0]].className.includes("expand")) {
+        cc_buttons[buttons[0]].className += " expand";
+      }
+  
+      if(!cc_buttons[buttons[1]].className.includes("shrink")){
+        cc_buttons[buttons[1]].className += " shrink";
+      }
 
-    if(cc_buttons[buttons[1]].className.includes("expand")){
-      cc_buttons[buttons[1]].className = cc_buttons[buttons[1]].className.replace(" expand", " ");
+      // End button switch
+
+      if(!this.back_el.current.className.includes(" show")){
+        this.back_el.current.className += " show";
+      }
+
+
+    } else {
+
+      console.log("here");
+
+      if (cc_buttons[buttons[0]].className.includes("shrink")) {
+        cc_buttons[buttons[0]].className = cc_buttons[buttons[0]].className.replace("shrink", "");
+      }
+
+      if(cc_buttons[buttons[0]].className.includes("expand")){
+        cc_buttons[buttons[0]].className = cc_buttons[buttons[0]].className.replace("expand", "");
+      }
+
+      if (cc_buttons[buttons[1]].className.includes("shrink")) {
+        cc_buttons[buttons[1]].className = cc_buttons[buttons[1]].className.replace("shrink", "");
+      }
+
+      if(cc_buttons[buttons[1]].className.includes("expand")){
+        cc_buttons[buttons[1]].className = cc_buttons[buttons[1]].className.replace("expand", "");
+      }
+
+      console.log(this.back_el.current.className.includes("show"));
+      
+      if(this.back_el.current.className.includes("show")){
+        this.back_el.current.className = this.back_el.current.className.replace("show", "");
+      }
+
     }
+    
   }
 
   render(){
     return(
       <div className="AuthScreen">
 
-          <i className="far fa-chevron-left" id="back-icon" onClick={()=>{this.switch_authscreen(0)}}/>
+          
+          <button id="back-icon" className="" ref={this.back_el} onClick={()=>{this.switch_authscreen(0)}}><i className="material-icons">chevron_left</i><p>back</p></button>
 
           <div className="header">
             {/* <img src="./images/logo.svg" className="logo logo-light"/> */}

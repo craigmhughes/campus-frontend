@@ -32,7 +32,25 @@
   position: fixed;
   width: 100%; }
   .AuthScreen > #back-icon {
-    position: fixed; }
+    position: fixed;
+    background: #0407F2;
+    border: none;
+    border-radius: 1em;
+    color: #edeff7;
+    cursor: pointer;
+    display: flex;
+    font-family: "Bai Jamjuree", sans-serif;
+    font-weight: 600;
+    left: -50%;
+    outline: none;
+    padding: 0.25em 1.5em 0.25em 0.75em;
+    transition: all 1s ease-out; }
+    .AuthScreen > #back-icon > p {
+      margin: 0;
+      align-self: center; }
+    .AuthScreen > #back-icon.show {
+      left: 1em;
+      transition: all 0.6s ease-out; }
   .AuthScreen > .footer {
     display: flex;
     align-items: flex-end;
@@ -49,6 +67,8 @@
         font-size: 0;
         padding: 1rem 0;
         left: 60%; }
+        .AuthScreen > .footer > .btn.shrink.btn-left {
+          left: -60%; }
       .AuthScreen > .footer > .btn.expand {
         flex-basis: 100%; }
 

@@ -5,6 +5,7 @@
     display: grid;
     grid-template-rows: 3fr 5fr 2fr;
     min-height: 100vh;
+    overflow: scroll;
     padding: 1em;
     position: fixed;
     width: 100%;
@@ -59,18 +60,25 @@
 
 
     & > .body {
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
 
         & > .signup-form, & > .login-form {
 
             display: flex;
+            width: 100%;
             flex-direction: column;
-            padding-top: 1em;
             transition: all 0.3s ease-in;
-            height: auto;
+            
+            height: unset;
+            max-height: 100%;
 
             &.hidden {
                 height: 0;
                 opacity: 0;
+                transition: unset;
             }
 
             & > input {
@@ -79,6 +87,7 @@
                 border: none;
                 border-bottom: 2px solid $lightbg_color;
                 color: $lightbg_color;
+                
                    
                 margin: 0.25em auto;
                 outline: 0;

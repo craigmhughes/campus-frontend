@@ -28,6 +28,7 @@
   display: grid;
   grid-template-rows: 3fr 5fr 2fr;
   min-height: 100vh;
+  overflow: scroll;
   padding: 1em;
   position: fixed;
   width: 100%; }
@@ -62,32 +63,39 @@
       .AuthScreen > .header > .logo-container > p {
         font-size: 1.15em;
         margin: 0.4em; }
-  .AuthScreen > .body > .signup-form, .AuthScreen > .body > .login-form {
+  .AuthScreen > .body {
+    align-self: center;
     display: flex;
     flex-direction: column;
-    padding-top: 1em;
-    transition: all 0.3s ease-in;
-    height: auto; }
-    .AuthScreen > .body > .signup-form.hidden, .AuthScreen > .body > .login-form.hidden {
-      height: 0;
-      opacity: 0; }
-    .AuthScreen > .body > .signup-form > input, .AuthScreen > .body > .login-form > input {
-      background: none;
-      border: none;
-      border-bottom: 2px solid #edeff7;
-      color: #edeff7;
-      margin: 0.25em auto;
-      outline: 0;
-      opacity: 0.4;
-      padding: 1em;
-      transition: all 0.3s ease-in-out;
-      width: calc(100% - 2em); }
-      .AuthScreen > .body > .signup-form > input::placeholder, .AuthScreen > .body > .login-form > input::placeholder {
+    width: 100%; }
+    .AuthScreen > .body > .signup-form, .AuthScreen > .body > .login-form {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      transition: all 0.3s ease-in;
+      height: unset;
+      max-height: 100%; }
+      .AuthScreen > .body > .signup-form.hidden, .AuthScreen > .body > .login-form.hidden {
+        height: 0;
+        opacity: 0;
+        transition: unset; }
+      .AuthScreen > .body > .signup-form > input, .AuthScreen > .body > .login-form > input {
+        background: none;
+        border: none;
+        border-bottom: 2px solid #edeff7;
         color: #edeff7;
-        font-family: "Bai Jamjuree", sans-serif;
-        text-transform: lowercase; }
-      .AuthScreen > .body > .signup-form > input:focus, .AuthScreen > .body > .login-form > input:focus {
-        opacity: 1; }
+        margin: 0.25em auto;
+        outline: 0;
+        opacity: 0.4;
+        padding: 1em;
+        transition: all 0.3s ease-in-out;
+        width: calc(100% - 2em); }
+        .AuthScreen > .body > .signup-form > input::placeholder, .AuthScreen > .body > .login-form > input::placeholder {
+          color: #edeff7;
+          font-family: "Bai Jamjuree", sans-serif;
+          text-transform: lowercase; }
+        .AuthScreen > .body > .signup-form > input:focus, .AuthScreen > .body > .login-form > input:focus {
+          opacity: 1; }
   .AuthScreen > .footer {
     display: flex;
     align-items: flex-end;

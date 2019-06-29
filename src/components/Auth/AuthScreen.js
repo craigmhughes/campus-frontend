@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import logo from '../../images/logo.svg';
 import '../../App.css';
 
@@ -55,6 +54,8 @@ class AuthScreen extends React.Component {
       if(direction == 1){
         if(this.signup_form.current.className.includes("hidden")){
           this.signup_form.current.className = this.signup_form.current.className.replace(" hidden", "");
+        } else {
+          
         }
 
         if(!this.login_form.current.className.includes("hidden")){
@@ -64,6 +65,8 @@ class AuthScreen extends React.Component {
       } else {
         if(this.login_form.current.className.includes("hidden")){
           this.login_form.current.className = this.login_form.current.className.replace(" hidden", "");
+        } else {
+          this.signin();
         }
         
         if(!this.signup_form.current.className.includes("hidden")){
@@ -106,6 +109,41 @@ class AuthScreen extends React.Component {
     }
     
   }
+
+
+  signin(){
+    let mail = document.getElementsByName("login-mail")[0].value;
+    let password = document.getElementsByName("login-pass")[0].value;
+
+    if(mail.length < 4 || password < 1){
+      return false;
+    }
+
+    fetch("http://127.0.0.1:8000/api/auth/login", {
+      method: 'POST',
+      body: JSON.stringify({
+        email: mail,
+        password: password
+      }),
+      headers:{
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Credentials': true,
+      }
+    }).then(res => res.json())
+    .then((response) => {
+      
+      console.log('Success:', JSON.stringify(response));
+
+      this.assign_token(response.access_token);
+
+    }).catch(error => console.error('Error:', error));
+
+  }
+
+  assign_token(token){
+    localStorage.setItem("AUTH", token);
+  }
+
 
   render(){
     return(

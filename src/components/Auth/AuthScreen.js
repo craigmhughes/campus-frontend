@@ -13,43 +13,16 @@ class AuthScreen extends React.Component {
 
     this.footer_el = React.createRef();
     this.back_el = React.createRef();
+    this.login_form = React.createRef();
+    this.signup_form = React.createRef();
   }
 
-  switch_authscreen(screen){
-
-    console.log(screen);
-
-    this.setState({
-      auth_screen: screen
-    }, ()=>{
-
-      switch(this.state.auth_screen){
-        case 0:
-          this.render_menu();
-          break;
-        case 1:
-          this.render_signup();
-          break;
-        case 2:
-          this.render_signin();
-          break;
-      }
-    });
-
-  }
-
-  render_menu(){
-    this.switchMenuButtons(0);
-  }
-
-  render_signup(){
-    this.switchMenuButtons(1);
-  }
-
-  render_signin(){
-    this.switchMenuButtons(2);
-  }
-
+  
+  /**
+   * Menu change function. passing value 0 = reset. 1 or 2 = direction.
+   * 
+   * @param {*} direction = Decides on which order to affect buttons.
+   */
   switchMenuButtons(direction){
     let cc_buttons = this.footer_el.current.childNodes;
 
@@ -73,11 +46,29 @@ class AuthScreen extends React.Component {
       if(!cc_buttons[buttons[1]].className.includes("shrink")){
         cc_buttons[buttons[1]].className += " shrink";
       }
-
       // End button switch
 
       if(!this.back_el.current.className.includes(" show")){
         this.back_el.current.className += " show";
+      }
+
+      if(direction == 1){
+        if(this.signup_form.current.className.includes("hidden")){
+          this.signup_form.current.className = this.signup_form.current.className.replace(" hidden", "");
+        }
+
+        if(!this.login_form.current.className.includes("hidden")){
+          this.login_form.current.className += " hidden";
+        }
+
+      } else {
+        if(this.login_form.current.className.includes("hidden")){
+          this.login_form.current.className = this.login_form.current.className.replace(" hidden", "");
+        }
+        
+        if(!this.signup_form.current.className.includes("hidden")){
+          this.signup_form.current.className += " hidden";
+        }
       }
 
 
@@ -99,10 +90,17 @@ class AuthScreen extends React.Component {
         cc_buttons[buttons[1]].className = cc_buttons[buttons[1]].className.replace("expand", "");
       }
 
-      console.log(this.back_el.current.className.includes("show"));
       
       if(this.back_el.current.className.includes("show")){
-        this.back_el.current.className = this.back_el.current.className.replace("show", "");
+        this.back_el.current.className = this.back_el.current.className.replace(" show", "");
+      }
+
+      if(!this.signup_form.current.className.includes("hidden")){
+        this.signup_form.current.className += " hidden";
+      }
+
+      if(!this.login_form.current.className.includes("hidden")){
+        this.login_form.current.className += " hidden";
       }
 
     }
@@ -114,7 +112,7 @@ class AuthScreen extends React.Component {
       <div className="AuthScreen">
 
           
-          <button id="back-icon" className="btn btn-secondary btn-light" ref={this.back_el} onClick={()=>{this.switch_authscreen(0)}}>
+          <button id="back-icon" className="btn btn-secondary btn-light" ref={this.back_el} onClick={()=>{this.switchMenuButtons(0)}}>
             <i className="material-icons">chevron_left</i><p>back</p>
           </button>
 
@@ -125,22 +123,24 @@ class AuthScreen extends React.Component {
             </div>
           </div>
           <div className="body">
-            {/* <div className="login-form">
-              <h1>Login</h1>
+            
+            <div className="signup-form hidden" ref={this.signup_form}>
+              <input name="register-name" placeholder="Name" type="text"></input>
+              <input name="register-mail" placeholder="E-Mail Address" type="email"></input>
+              <input name="register-pass" placeholder="Password" type="password"></input>
+              <input name="register-pass-confirm" placeholder="Confirm Password" type="password"></input>
+            </div>
+
+            <div className="login-form hidden" ref={this.login_form}>
               <input name="login-mail" placeholder="E-Mail Address" type="email"></input>
               <input name="login-pass" placeholder="Password" type="password"></input>
             </div>
-
-            <div className="signup-form">
-              <h1>Signup</h1>
-              <input name="register-mail" placeholder="E-Mail Address" type="email"></input>
-              <input name="register-pass" placeholder="Password" type="password"></input>
-            </div> */}
+          
           </div>
           <div className="footer" ref={this.footer_el}>
             
-              <button className="btn btn-secondary btn-light btn-left" onClick={()=>{this.switch_authscreen(1)}}>Sign Up</button>
-              <button className="btn btn-primary btn-light" onClick={()=>{this.switch_authscreen(2)}}>Log In</button>
+              <button className="btn btn-secondary btn-light btn-left" onClick={()=>{this.switchMenuButtons(1)}}>Sign Up</button>
+              <button className="btn btn-primary btn-light" onClick={()=>{this.switchMenuButtons(2)}}>Log In</button>
             
           </div>
       </div>

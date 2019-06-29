@@ -58,6 +58,49 @@
     }
 
 
+    & > .body {
+
+        & > .signup-form, & > .login-form {
+
+            display: flex;
+            flex-direction: column;
+            padding-top: 1em;
+            transition: all 0.3s ease-in;
+            height: auto;
+
+            &.hidden {
+                height: 0;
+                opacity: 0;
+            }
+
+            & > input {
+
+                background:none;
+                border: none;
+                border-bottom: 2px solid $lightbg_color;
+                color: $lightbg_color;
+                   
+                margin: 0.25em auto;
+                outline: 0;
+                opacity: 0.4;
+                padding: 1em;
+                transition: all 0.3s ease-in-out;
+                width: calc(100% - 2em);
+
+                &::placeholder {
+                    color: $lightbg_color;
+                    font-family: $primary_font;
+                    text-transform: lowercase;
+                }
+
+                &:focus {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+
     & > .footer {
         display: flex;
         align-items: flex-end;
@@ -66,7 +109,7 @@
 
         & > .btn {
             flex-basis: calc(50% - 1em);
-            transition: all 1s ease-in-out;
+            transition: all 0.5s ease-in-out;
             position: relative;
             left: 0;
             opacity: 1;

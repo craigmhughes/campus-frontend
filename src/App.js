@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -13,11 +13,37 @@ class App extends React.Component {
     super(props);
     this.state = {
       signed_in: false,
+      online: true,
     }
+
+    this.set_online_status = this.set_online_status.bind(this);
+    this.get_online_status = this.get_online_status.bind(this);
   }
 
   componentDidMount(){
     this.check_signin();
+  }
+
+
+  /**
+   * 
+   * @param {Boolean} status = if app is online or not
+   */
+  set_online_status(status){
+    this.setState({
+      online: status
+    });
+
+    this.check_signin();
+
+    console.log("Set online status to: " + this.state.online);
+  }
+
+  /**
+   * @return {Boolean} this.state.online
+   */
+  get_online_status(){
+    return this.state.online;
   }
 
   check_signin(){
@@ -25,12 +51,12 @@ class App extends React.Component {
     // Get subdomain url
     let subdomain = window.location.href.split(window.location.host)[1];
 
-    if(localStorage.getItem("AUTH") !== null){
+    if(localStorage.getItem("AUTH") !== null && this.state.online){
       this.setState({
         signed_in: true
       });
     } else {
-      if(this.state.signed_in == false && subdomain !== "/signin"){
+      if(this.state.signed_in === false && subdomain !== "/signin"){
         window.location.href = "/signin";
       }
     }
@@ -46,7 +72,9 @@ class App extends React.Component {
       <div className="App">
         
         <Router>
-          <Route path="/" exact component={HomeScreen} />
+          <Route path="/" exact render={() => (
+            <HomeScreen set_online_status={this.set_online_status} get_online_status={this.get_online_status} />
+          )} />
           <Route path="/signin" exact component={AuthScreen} />
         </Router>
       </div>

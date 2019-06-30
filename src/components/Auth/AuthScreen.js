@@ -25,19 +25,14 @@ class AuthScreen extends React.Component {
   switchMenuButtons(direction){
     let cc_buttons = this.footer_el.current.childNodes;
 
-    let buttons = direction == 1 ? [0,1] : [1,0];
+    let buttons = direction === 1 ? [0,1] : [1,0];
 
     
     if (direction > 0){
-      // Start button switch
-      if (cc_buttons[buttons[0]].className.includes("shrink")) {
-        cc_buttons[buttons[0]].className = cc_buttons[buttons[0]].className.replace("shrink", "");
-      }
+      // Start button switch      
+      cc_buttons[buttons[0]].className = cc_buttons[buttons[0]].className.replace("shrink", "");
+      cc_buttons[buttons[1]].className = cc_buttons[buttons[1]].className.replace("expand", "");
 
-      if(cc_buttons[buttons[1]].className.includes("expand")){
-        cc_buttons[buttons[1]].className = cc_buttons[buttons[1]].className.replace("expand", "");
-      }
-  
       if (!cc_buttons[buttons[0]].className.includes("expand")) {
         cc_buttons[buttons[0]].className += " expand";
       }
@@ -51,7 +46,7 @@ class AuthScreen extends React.Component {
         this.back_el.current.className += " show";
       }
 
-      if(direction == 1){
+      if(direction === 1){
         if(this.signup_form.current.className.includes("hidden")){
           this.signup_form.current.className = this.signup_form.current.className.replace(" hidden", "");
         } else {
@@ -77,27 +72,15 @@ class AuthScreen extends React.Component {
 
     } else {
 
-      if (cc_buttons[buttons[0]].className.includes("shrink")) {
-        cc_buttons[buttons[0]].className = cc_buttons[buttons[0]].className.replace("shrink", "");
-      }
-
-      if(cc_buttons[buttons[0]].className.includes("expand")){
-        cc_buttons[buttons[0]].className = cc_buttons[buttons[0]].className.replace("expand", "");
-      }
-
-      if (cc_buttons[buttons[1]].className.includes("shrink")) {
-        cc_buttons[buttons[1]].className = cc_buttons[buttons[1]].className.replace("shrink", "");
-      }
-
-      if(cc_buttons[buttons[1]].className.includes("expand")){
-        cc_buttons[buttons[1]].className = cc_buttons[buttons[1]].className.replace("expand", "");
-      }
-
       
-      if(this.back_el.current.className.includes("show")){
-        this.back_el.current.className = this.back_el.current.className.replace(" show", "");
-      }
+      cc_buttons[buttons[0]].className = cc_buttons[buttons[0]].className.replace("shrink", "");
+      cc_buttons[buttons[0]].className = cc_buttons[buttons[0]].className.replace("expand", "");
 
+      cc_buttons[buttons[1]].className = cc_buttons[buttons[1]].className.replace("shrink", "");
+      cc_buttons[buttons[1]].className = cc_buttons[buttons[1]].className.replace("expand", "");
+
+      this.back_el.current.className = this.back_el.current.className.replace(" show", "");
+      
       if(!this.signup_form.current.className.includes("hidden")){
         this.signup_form.current.className += " hidden";
       }
@@ -135,6 +118,8 @@ class AuthScreen extends React.Component {
       console.log('Success:', JSON.stringify(response));
 
       this.assign_token(response.access_token);
+
+      window.location.href = "/";
 
     }).catch(error => console.error('Error:', error));
 

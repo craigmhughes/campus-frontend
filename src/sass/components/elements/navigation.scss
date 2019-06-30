@@ -1,0 +1,39 @@
+
+#navigation {
+    background: $darkbg_color;
+    color: $lightbg_color;
+    font-size: 0.9em;
+    height: 2.5em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    & > .container {
+        align-items: center;
+        height: 100%;
+        padding: 0.5em 0.2em;
+        display: flex;
+        justify-content: space-between;
+        width: calc(100% - 0.5em);
+
+        & > .nav-icon {
+            height: 0.75em;
+            width: auto;
+            flex: 1;
+
+            &:nth-child(3){
+                flex: 1.75;
+            }
+        }
+    }
+
+    #new-post {
+        background: $brand_color;
+        border: 0.2em solid $lightbg_color;
+        border-radius: 2em;
+        padding: 0.35em 0;
+        height: 2em;
+        position: relative;
+        top: -1.25em;
+    }
+}

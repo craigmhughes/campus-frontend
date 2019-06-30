@@ -22,6 +22,36 @@
 .btn-left {
   border-radius: 1.25em 1.25em 1.25em 0; }
 
+#navigation {
+  background: #01011a;
+  color: #edeff7;
+  font-size: 0.9em;
+  height: 2.5em;
+  position: fixed;
+  bottom: 0;
+  width: 100%; }
+  #navigation > .container {
+    align-items: center;
+    height: 100%;
+    padding: 0.5em 0.2em;
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 0.5em); }
+    #navigation > .container > .nav-icon {
+      height: 0.75em;
+      width: auto;
+      flex: 1; }
+      #navigation > .container > .nav-icon:nth-child(3) {
+        flex: 1.75; }
+  #navigation #new-post {
+    background: #ed2658;
+    border: 0.2em solid #edeff7;
+    border-radius: 2em;
+    padding: 0.35em 0;
+    height: 2em;
+    position: relative;
+    top: -1.25em; }
+
 .AuthScreen {
   background: #01011a;
   color: #edeff7;
@@ -117,6 +147,15 @@
       .AuthScreen > .footer > .btn.expand {
         flex-basis: 100%; }
 
+.HomeScreen {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: #edeff7;
+  text-align: center;
+  font-size: 2em;
+  font-weight: 600; }
+
 .signup-form {
   display: none; }
 
@@ -135,6 +174,11 @@ body {
   margin: 0;
   padding: 0;
   background: red; }
+
+.container {
+  width: 90%;
+  max-width: 2000px;
+  margin: 0 auto; }
 
 .logo {
   background: #ed2658;

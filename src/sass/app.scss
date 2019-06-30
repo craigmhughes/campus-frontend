@@ -24,6 +24,12 @@ body {
     background:red;
 }
 
+.container {
+    width: 90%;
+    max-width: 2000px;
+    margin: 0 auto;
+}
+
 .logo {
     background: $brand_color;
     border-radius: 1.5em;

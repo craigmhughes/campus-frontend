@@ -117,7 +117,7 @@ class AuthScreen extends React.Component {
       
       console.log('Success:', JSON.stringify(response));
 
-      if(this.response.access_token.length > 0){
+      if(response.access_token.length > 0){
         this.assign_token(response.access_token);
 
       } else {
@@ -136,7 +136,7 @@ class AuthScreen extends React.Component {
   login_error(err){
     document.getElementById("login-error").innerText = err;
     document.getElementById("login-error").style.opacity = 1;
-    document.getElementById("login-error").style.bottom = "10em";
+    document.getElementById("login-error").style.bottom = "5em";
   }
 
   assign_token(token){

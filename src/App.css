@@ -1,10 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Bai+Jamjuree&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
 .btn {
   background: none;
   border: 0.25em solid #01011a;
   border-radius: 1.25em 1.25em 0 1.25em;
   cursor: pointer;
-  font-family: "Bai Jamjuree", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 0.75em;
   font-weight: 600;
   padding: 1em 2em;
@@ -25,7 +26,7 @@
 #navigation {
   background: #01011a;
   color: #edeff7;
-  font-size: 0.9em;
+  font-size: 1.8em;
   height: 2.5em;
   position: fixed;
   bottom: 0;
@@ -36,7 +37,8 @@
     padding: 0.5em 0.2em;
     display: flex;
     justify-content: space-between;
-    width: calc(100% - 0.5em); }
+    width: calc(100% - 0.5em);
+    max-width: 500px; }
     #navigation > .container > .nav-icon {
       height: 0.75em;
       width: auto;
@@ -56,6 +58,7 @@
   background: #01011a;
   color: #edeff7;
   display: grid;
+  font-family: "Bai Jamjuree", sans-serif;
   grid-template-rows: 3fr 5fr 2fr;
   min-height: 100vh;
   overflow: scroll;
@@ -75,6 +78,8 @@
     outline: none;
     padding: 0.25em 1.5em 0.25em 0.75em;
     transition: all 1s ease-out; }
+    .AuthScreen > #back-icon > i {
+      padding: 0.75em 1em; }
     .AuthScreen > #back-icon > p {
       margin: 0;
       align-self: center; }
@@ -152,9 +157,31 @@
   height: 100%;
   width: 100%;
   background: #edeff7;
-  text-align: center;
-  font-size: 2em;
-  font-weight: 600; }
+  text-align: center; }
+  .HomeScreen > .body {
+    height: 100%;
+    display: flex;
+    align-items: center; }
+    .HomeScreen > .body > .offline-content {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 90%;
+      max-width: 300px;
+      margin: 0 auto;
+      margin-top: -4em;
+      color: grey; }
+      .HomeScreen > .body > .offline-content > .icon {
+        height: 6em;
+        margin: 0 auto; }
+      .HomeScreen > .body > .offline-content > h1 {
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        max-width: 250px;
+        margin: 1em 0 0 0;
+        color: #01011a; }
+      .HomeScreen > .body > .offline-content > p {
+        font-size: 0.9em; }
 
 .signup-form {
   display: none; }
@@ -190,6 +217,6 @@ body {
 .App, #root {
   min-height: 100vh;
   margin: 0 auto;
-  font-family: "Bai Jamjuree", sans-serif; }
+  font-family: "Roboto", sans-serif; }
 
 /*# sourceMappingURL=App.css.map */

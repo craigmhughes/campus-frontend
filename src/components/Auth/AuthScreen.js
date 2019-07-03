@@ -136,7 +136,7 @@ class AuthScreen extends React.Component {
 
           
           <button id="back-icon" className="btn btn-secondary btn-light" ref={this.back_el} onClick={()=>{this.switchMenuButtons(0)}}>
-            <i className="material-icons">chevron_left</i><p>back</p>
+            <i className="fas fa-chevron-left"></i><p>back</p>
           </button>
 
           <div className="header">

@@ -2,18 +2,19 @@ import React from 'react';
 // import logo from '../images/logo.svg';
 import '../App.css';
 
-// icons
+// Custom Icons
 import HomeIcon from '../images/icons/light/home.svg';
 import MessageIcon from '../images/icons/light/message-square.svg';
 import SearchIcon from '../images/icons/light/search.svg';
 import PlusIcon from '../images/icons/light/plus.svg';
 import UserIcon from '../images/icons/light/user.svg';
+import OfflineIcon from '../images/icons/wifi-off.svg';
 
 class HomeScreen extends React.Component {
     constructor(props){
         super(props);
 
-        this.p = React.createRef();
+        this.body = React.createRef();
     }
 
     /**
@@ -39,11 +40,17 @@ class HomeScreen extends React.Component {
         
         console.log('Success:', JSON.stringify(response));
 
-        this.p.current.innerText = "Welcome, " + response.name;
-
         }).catch((error) => {
             this.props.set_online_status(false);
             console.log("Offline Mode");
+
+            this.body.current.innerHTML = `
+                <div class="offline-content">
+                    <img src="${OfflineIcon}" class="icon"/>
+                    <h1>Oops!</h1>
+                    <p>Looks like you're offline.</p>
+                </div>
+            `;
         });
 
     }
@@ -51,9 +58,11 @@ class HomeScreen extends React.Component {
         
     render(){
         return(
-            <div className="HomeScreen">
-                
-                <div id="navigation">
+            <main className="HomeScreen">
+                <section className="body" ref={this.body}>
+
+                </section>
+                <nav id="navigation">
                     <div className="container">
                         <img src={HomeIcon} className="nav-icon"/>
                         <img src={SearchIcon} className="nav-icon"/>
@@ -61,8 +70,8 @@ class HomeScreen extends React.Component {
                         <img src={MessageIcon} className="nav-icon"/>
                         <img src={UserIcon} className="nav-icon"/>
                     </div>
-                </div>
-            </div>
+                </nav>
+            </main>
         )
     }
 }

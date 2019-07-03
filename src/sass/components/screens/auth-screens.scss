@@ -3,6 +3,7 @@
     background: $darkbg_color;
     color: $lightbg_color;
     display: grid;
+    font-family: $brand_font;
     grid-template-rows: 3fr 5fr 2fr;
     min-height: 100vh;
     overflow: scroll;
@@ -15,7 +16,7 @@
         border-radius: 1em;
         cursor: pointer;
         display: flex;
-        font-family: $primary_font;
+        font-family: $brand_font;
         font-weight: 600;
         font-size: 0.6em;
         
@@ -26,6 +27,9 @@
 
         transition: all 1s ease-out;
         
+        & > i {
+            padding: 0.75em 1em;
+        }
 
         & > p {
             margin: 0;
@@ -98,7 +102,7 @@
 
                 &::placeholder {
                     color: $lightbg_color;
-                    font-family: $primary_font;
+                    font-family: $brand_font;
                     text-transform: lowercase;
                 }
 

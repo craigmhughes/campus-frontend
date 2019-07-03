@@ -131,6 +131,19 @@
           text-transform: lowercase; }
         .AuthScreen > .body > .signup-form > input:focus, .AuthScreen > .body > .login-form > input:focus {
           opacity: 1; }
+      .AuthScreen > .body > .signup-form > #login-error, .AuthScreen > .body > .login-form > #login-error {
+        background: #ed2658;
+        border-radius: 1em;
+        display: block;
+        font-size: 0.8em;
+        left: calc(50% - 4em);
+        bottom: 6em;
+        margin: 1em auto;
+        opacity: 0;
+        padding: 0.75em 1.25em;
+        position: fixed;
+        transition: all 0.4s ease-in-out;
+        width: max-content; }
   .AuthScreen > .footer {
     display: flex;
     align-items: flex-end;

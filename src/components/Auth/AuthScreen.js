@@ -117,12 +117,26 @@ class AuthScreen extends React.Component {
       
       console.log('Success:', JSON.stringify(response));
 
-      this.assign_token(response.access_token);
+      if(this.response.access_token.length > 0){
+        this.assign_token(response.access_token);
 
+      } else {
+        this.login_error("Invalid Login");
+        return;
+      }
+      
       window.location.href = "/";
 
-    }).catch(error => console.error('Error:', error));
+    }).catch((error) => {
+      this.login_error("Invalid Login");
+    });
 
+  }
+
+  login_error(err){
+    document.getElementById("login-error").innerText = err;
+    document.getElementById("login-error").style.opacity = 1;
+    document.getElementById("login-error").style.bottom = "10em";
   }
 
   assign_token(token){
@@ -157,6 +171,7 @@ class AuthScreen extends React.Component {
             <div className="login-form hidden" ref={this.login_form}>
               <input name="login-mail" placeholder="E-Mail Address" type="email"></input>
               <input name="login-pass" placeholder="Password" type="password"></input>
+              <p id="login-error"></p>
             </div>
           
           </div>

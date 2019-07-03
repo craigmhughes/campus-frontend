@@ -110,6 +110,21 @@
                     opacity: 1;
                 }
             }
+
+            & > #login-error {
+                background: $brand_color;
+                border-radius: 1em;
+                display: block;
+                font-size: 0.8em;
+                left: calc(50% - 4em);
+                bottom: 6em;
+                margin: 1em auto;
+                opacity: 0;
+                padding: 0.75em 1.25em;
+                position: fixed;
+                transition: all 0.4s ease-in-out;
+                width: max-content;
+            }
         }
     }
 

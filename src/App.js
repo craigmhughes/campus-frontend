@@ -1,9 +1,10 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 // Components
+import Navigation from './components/elements/Navigation';
 import AuthScreen from './components/Auth/AuthScreen';
 import HomeScreen from './components/Home';
 
@@ -72,9 +73,20 @@ class App extends React.Component {
       <div className="App">
         
         <Router>
-          <Route path="/" exact render={() => (
-            <HomeScreen set_online_status={this.set_online_status} get_online_status={this.get_online_status} />
-          )} />
+          <Route path="/">
+            <div>
+              <Switch>
+                
+                <Route path="/" render={()=>(
+                  <HomeScreen set_online_status={this.set_online_status} get_online_status={this.get_online_status} />
+                )} />
+
+              </Switch>
+
+              <Navigation/>
+            </div>
+          </Route>
+
           <Route path="/signin" exact component={AuthScreen} />
         </Router>
       </div>

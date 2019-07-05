@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Bai+Jamjuree&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900&display=swap");
 .btn {
   background: none;
   border: 0.25em solid #01011a;
   border-radius: 1.25em 1.25em 0 1.25em;
   cursor: pointer;
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 0.75em;
   font-weight: 600;
   padding: 1em 2em;
@@ -53,6 +53,61 @@
     height: 2em;
     position: relative;
     top: -1.25em; }
+
+#nav-overlay {
+  background: rgba(0, 0, 0, 0.2);
+  height: 100%;
+  opacity: 1;
+  position: fixed;
+  transition: background 0.4s ease-in-out;
+  width: 100%;
+  z-index: 100;
+  font-family: "Bai Jamjuree", sans-serif; }
+  #nav-overlay.hidden {
+    height: 0;
+    width: 0;
+    background: transparent; }
+  #nav-overlay > .nav-menu {
+    background: #edeff7;
+    box-shadow: -1em -1em 5em #000;
+    color: #01011a;
+    height: 100%;
+    padding: 1em;
+    position: fixed;
+    right: 0;
+    transition: all 0.5s ease-out;
+    width: 90%;
+    z-index: 101; }
+    #nav-overlay > .nav-menu.hidden {
+      right: -100%;
+      box-shadow: 1em 1em 0 transparent; }
+    #nav-overlay > .nav-menu > .container {
+      display: grid;
+      grid-template-rows: 2fr 8fr; }
+      #nav-overlay > .nav-menu > .container > .head {
+        border-bottom: 1px solid lightgrey;
+        display: grid;
+        grid-template-columns: 8fr 2fr;
+        align-items: center;
+        padding: 0.6em 1em; }
+        #nav-overlay > .nav-menu > .container > .head > h1 {
+          font-size: 1em; }
+        #nav-overlay > .nav-menu > .container > .head > #nav-profile-img {
+          border-radius: 50%;
+          height: 1.8em;
+          margin: 0 auto; }
+      #nav-overlay > .nav-menu > .container > .body {
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.8em;
+        padding: 1em 0; }
+        #nav-overlay > .nav-menu > .container > .body > .logout {
+          color: grey;
+          cursor: pointer;
+          font-weight: 600;
+          letter-spacing: -0.02em;
+          padding: 0 1em; }
+          #nav-overlay > .nav-menu > .container > .body > .logout > i {
+            padding-right: 1em; }
 
 .AuthScreen {
   background: #01011a;
@@ -230,6 +285,6 @@ body {
 .App, #root {
   min-height: 100vh;
   margin: 0 auto;
-  font-family: "Roboto", sans-serif; }
+  font-family: "Montserrat", sans-serif; }
 
 /*# sourceMappingURL=App.css.map */

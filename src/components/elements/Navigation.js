@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../App.css';
+import Link from "react-router-dom";
 
 // Custom Icons
 import HomeIcon from '../../images/icons/light/home.svg';
@@ -14,8 +15,32 @@ class Navigation extends React.Component {
     constructor(props){
         super(props);
 
+        this.state = {
+            hasInfo: this.props.hasinfo
+        };
+
         this.navMenu = React.createRef();
         this.navOverlay = React.createRef();
+        this.username = React.createRef();
+        this.userimage = React.createRef();
+    }
+
+    componentDidMount(){
+        this.checkInformation();
+    }
+
+    shouldComponentUpdate(){
+        this.checkInformation();
+    }
+
+    checkInformation(){
+        if(!localStorage.getItem("accountInfo")){
+            return false;
+        }
+
+        let accountInfo = JSON.parse(localStorage.getItem("accountInfo"));
+
+        this.username.current.innerText = accountInfo.name;
     }
 
     toggleMenu(e){
@@ -32,15 +57,15 @@ class Navigation extends React.Component {
     render(){
         return(
             <div>
-                <div id="nav-overlay" className="nav-overlay" ref={this.navOverlay} onClick={this.toggleMenu.bind(this)}>
-                    <nav className="nav-menu" ref={this.navMenu} onClick={()=>{}}>
+                <div id="nav-overlay" className="nav-overlay hidden" ref={this.navOverlay} onClick={this.toggleMenu.bind(this)}>
+                    <nav className="nav-menu hidden" ref={this.navMenu} onClick={()=>{}}>
                         <div className="container">
                             <section className="head">
-                                <h1 id="nav-username">Account Settings</h1>
-                                <img src={NullProfileImage} id="nav-profile-img"/>
+                                <h1 ref={this.username}>Account Settings</h1>
+                                <img src={NullProfileImage} id="nav-profile-img" ref={this.userimage}/>
                             </section>
                             <section className="body">
-                                <p className="logout"><i className="fas fa-sign-out-alt"></i>Sign out</p>
+                                <p className="logout" onClick={this.props.logout}><i className="fas fa-sign-out-alt"></i>Sign out</p>
                             </section>
                         </div>
                     </nav>

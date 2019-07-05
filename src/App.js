@@ -15,10 +15,12 @@ class App extends React.Component {
     this.state = {
       signed_in: false,
       online: true,
+      hasAccountInfo: false
     }
 
     this.set_online_status = this.set_online_status.bind(this);
     this.get_online_status = this.get_online_status.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   componentDidMount(){
@@ -52,16 +54,81 @@ class App extends React.Component {
     // Get subdomain url
     let subdomain = window.location.href.split(window.location.host)[1];
 
-    if(localStorage.getItem("AUTH") !== null && this.state.online){
+    if(localStorage.getItem("AUTH") !== null){
       this.setState({
         signed_in: true
       });
+
+      this.getAccountInfo();
+
     } else {
       if(this.state.signed_in === false && subdomain !== "/signin"){
         window.location.href = "/signin";
       }
     }
 
+    
+  }
+
+  getAccountInfo(){
+
+    if(localStorage.getItem("accountInfo") !== null){
+      this.setState({
+        hasAccountInfo: true
+      });
+      return false;
+    }
+
+    fetch("http://127.0.0.1:8000/api/auth/me", {
+        method: 'POST',
+        withCredentials: true,
+        credentials: 'include',
+        headers:{
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Credentials': true,
+            'Authorization': 'Bearer ' + localStorage.getItem("AUTH"),
+        }
+        }).then(res => res.json())
+        .then((response) => {
+
+            localStorage.setItem("accountInfo", JSON.stringify({
+                name:response.name,
+                email:response.email
+            }));
+
+            this.setState({
+              hasAccountInfo: true
+            });
+
+        }).catch((error) => {
+            this.set_online_status(false);
+        });
+  }
+
+  logout(){
+
+    fetch("http://127.0.0.1:8000/api/auth/logout", {
+        method: 'POST',
+        withCredentials: true,
+        credentials: 'include',
+        headers:{
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Credentials': true,
+            'Authorization': 'Bearer ' + localStorage.getItem("AUTH"),
+        }
+        }).catch((error) => {
+            console.log("Logout Error:" + error);
+        });
+
+      this.setState({
+        signed_in: false
+      },()=>{
+
+        localStorage.removeItem("AUTH");
+        localStorage.removeItem("accountInfo");
+
+        this.check_signin();
+      });
     
   }
 
@@ -83,7 +150,7 @@ class App extends React.Component {
 
               </Switch>
 
-              <Navigation/>
+              <Navigation logout={this.logout} hasinfo={this.state.hasAccountInfo}/>
             </div>
           </Route>
 

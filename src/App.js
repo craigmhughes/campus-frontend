@@ -129,7 +129,7 @@ class App extends React.Component {
         localStorage.removeItem("AUTH");
         localStorage.removeItem("accountInfo");
 
-        if(!checkRegister){
+        if(checkRegister){
           this.check_signin();
         }
       });

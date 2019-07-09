@@ -151,7 +151,7 @@ class AuthScreen extends React.Component {
     /*run logout before returning new account info.
       A user may delete localstorage items returning them to the 
       authscreen but shows other user's information.*/
-    this.props.logout();
+    this.props.logout(true);
 
     fetch("http://127.0.0.1:8000/api/auth/register", {
       method: 'POST',

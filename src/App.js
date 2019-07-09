@@ -107,7 +107,7 @@ class App extends React.Component {
         });
   }
 
-  logout(){
+  logout(checkRegister){
 
     fetch("http://127.0.0.1:8000/api/auth/logout", {
         method: 'POST',
@@ -129,7 +129,9 @@ class App extends React.Component {
         localStorage.removeItem("AUTH");
         localStorage.removeItem("accountInfo");
 
-        this.check_signin();
+        if(!checkRegister){
+          this.check_signin();
+        }
       });
     
   }
@@ -156,7 +158,11 @@ class App extends React.Component {
             </div>
           </Route>
 
-          <Route path="/signin" exact component={AuthScreen} />
+          <Route path="/signin" render={()=>(
+            <AuthScreen logout={this.logout} />
+          )} />
+
+          {/* <Route path="/signin" exact component={AuthScreen} /> */}
         </Router>
       </div>
     );

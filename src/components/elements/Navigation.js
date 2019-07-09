@@ -31,6 +31,7 @@ class Navigation extends React.Component {
 
     shouldComponentUpdate(){
         this.checkInformation();
+        return true;
     }
 
     checkInformation(){

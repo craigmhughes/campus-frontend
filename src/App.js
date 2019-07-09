@@ -91,6 +91,8 @@ class App extends React.Component {
         }).then(res => res.json())
         .then((response) => {
 
+          console.log(response);
+
             localStorage.setItem("accountInfo", JSON.stringify({
                 name:response.name,
                 email:response.email

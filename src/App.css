@@ -186,7 +186,7 @@
           text-transform: lowercase; }
         .AuthScreen > .body > .signup-form > input:focus, .AuthScreen > .body > .login-form > input:focus {
           opacity: 1; }
-      .AuthScreen > .body > .signup-form > #login-error, .AuthScreen > .body > .login-form > #login-error {
+      .AuthScreen > .body > .signup-form > #login-error, .AuthScreen > .body > .signup-form > #register-error, .AuthScreen > .body > .login-form > #login-error, .AuthScreen > .body > .login-form > #register-error {
         background: #ed2658;
         border-radius: 1em;
         display: block;

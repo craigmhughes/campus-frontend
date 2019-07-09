@@ -50,7 +50,7 @@ class AuthScreen extends React.Component {
         if(this.signup_form.current.className.includes("hidden")){
           this.signup_form.current.className = this.signup_form.current.className.replace(" hidden", "");
         } else {
-          
+          this.signup();
         }
 
         if(!this.login_form.current.className.includes("hidden")){
@@ -133,6 +133,60 @@ class AuthScreen extends React.Component {
 
   }
 
+  signup(){
+    let name = document.getElementsByName("register-name")[0].value;
+    let mail = document.getElementsByName("register-mail")[0].value;
+    let password = document.getElementsByName("register-pass")[0].value;
+    let passwordConfirm = document.getElementsByName("register-pass-confirm")[0].value;
+
+    if(password !== passwordConfirm){
+      this.signup_error("Passwords don't match");
+      return false;
+    }
+
+    if(mail.length < 4 || password < 6){
+      return false;
+    }
+
+    fetch("http://127.0.0.1:8000/api/auth/register", {
+      method: 'POST',
+      body: JSON.stringify({
+        name: name,
+        email: mail,
+        password: password,
+        password_confirmation: passwordConfirm
+      }),
+      headers:{
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Credentials': true,
+      }
+    }).then(res => res.json())
+    .then((response) => {
+      
+      console.log('Success:', JSON.stringify(response));
+
+      if(response.access_token.length > 0){
+        this.assign_token(response.access_token);
+
+      } else {
+        this.signup_error("Issue with registering");
+        return;
+      }
+      
+      window.location.href = "/";
+
+    }).catch((error) => {
+      this.signup_error("Issue with registering");
+    });
+
+  }
+
+  signup_error(err){
+    document.getElementById("register-error").innerText = err;
+    document.getElementById("register-error").style.opacity = 1;
+    document.getElementById("register-error").style.bottom = "5em";
+  }
+
   login_error(err){
     document.getElementById("login-error").innerText = err;
     document.getElementById("login-error").style.opacity = 1;
@@ -166,6 +220,7 @@ class AuthScreen extends React.Component {
               <input name="register-mail" placeholder="E-Mail Address" type="email"></input>
               <input name="register-pass" placeholder="Password" type="password"></input>
               <input name="register-pass-confirm" placeholder="Confirm Password" type="password"></input>
+              <p id="register-error"></p>
             </div>
 
             <div className="login-form hidden" ref={this.login_form}>

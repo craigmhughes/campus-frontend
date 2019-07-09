@@ -111,7 +111,7 @@
                 }
             }
 
-            & > #login-error {
+            & > #login-error, & > #register-error {
                 background: $brand_color;
                 border-radius: 1em;
                 display: block;

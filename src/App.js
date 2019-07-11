@@ -96,7 +96,8 @@ class App extends React.Component {
 
             localStorage.setItem("accountInfo", JSON.stringify({
                 name:response.name,
-                email:response.email
+                email:response.email,
+                profile_image:response.profile_image
             }));
 
             this.setState({

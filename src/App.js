@@ -111,17 +111,17 @@ class App extends React.Component {
   logout(checkRegister){
 
     fetch("http://127.0.0.1:8000/api/auth/logout", {
-        method: 'POST',
-        withCredentials: true,
-        credentials: 'include',
-        headers:{
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Credentials': true,
-            'Authorization': 'Bearer ' + localStorage.getItem("AUTH"),
-        }
-        }).catch((error) => {
-            console.log("Logout Error:" + error);
-        });
+      method: 'POST',
+      withCredentials: true,
+      credentials: 'include',
+      headers:{
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': true,
+          'Authorization': 'Bearer ' + localStorage.getItem("AUTH"),
+      }
+    }).catch((error) => {
+          console.log("Logout Error:" + error);
+    });
 
       this.setState({
         signed_in: false

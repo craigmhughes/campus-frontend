@@ -6,8 +6,32 @@ class AccountSettings extends React.Component {
     constructor(props){
         super(props);
 
+        this.profileUpload = React.createRef();
     }
 
+    post_changes(){
+        var data = new FormData();
+        data.append('profile_image', this.profileUpload.current.files[0]);
+
+        fetch("http://127.0.0.1:8000/api/auth/update", {
+        method: 'POST',
+        withCredentials: true,
+        credentials: 'include',
+        body: data,
+        headers:{
+            'Access-Control-Allow-Credentials': true,
+            'Authorization': 'Bearer ' + localStorage.getItem("AUTH"),
+        }
+        }).then(res => res.json())
+        .then((response) => {
+            
+            console.log(response);
+            console.log("done");
+
+        }).catch((error) => {
+            console.log("Update Error:" + error);
+        });   
+    }
         
     render(){
         return(
@@ -19,11 +43,11 @@ class AccountSettings extends React.Component {
                 <section className="body">
                     <div className="settings-item">
                         <p>Profile Picture:</p>
-                        <input type="file"></input>
+                        <input type="file" ref={this.profileUpload}></input>
                     </div>
                 </section>
                 <section className="footer">
-                    <button type="button" className="save">Save</button>
+                    <button type="button" className="save" onClick={()=>{this.post_changes()}}>Save</button>
                 </section>
             </section>
         )

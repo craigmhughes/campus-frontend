@@ -12,20 +12,20 @@
   outline: none; }
 
 .btn-light {
-  border-color: #edeff7; }
+  border-color: #e7e9f3; }
 
 .btn-primary.btn-light {
-  background: #edeff7; }
+  background: #e7e9f3; }
 
 .btn-secondary.btn-light {
-  color: #edeff7; }
+  color: #e7e9f3; }
 
 .btn-left {
   border-radius: 1.25em 1.25em 1.25em 0; }
 
 #navigation {
   background: #01011a;
-  color: #edeff7;
+  color: #e7e9f3;
   font-size: 1.8em;
   height: 2.5em;
   position: fixed;
@@ -47,7 +47,7 @@
         flex: 1.75; }
   #navigation #new-post {
     background: #ed2658;
-    border: 0.2em solid #edeff7;
+    border: 0.2em solid #e7e9f3;
     border-radius: 2em;
     padding: 0.35em 0;
     height: 2em;
@@ -68,7 +68,7 @@
     width: 0;
     background: transparent; }
   #nav-overlay > .nav-menu {
-    background: #edeff7;
+    background: #e7e9f3;
     box-shadow: -1em -1em 5em #000;
     color: #01011a;
     height: 100%;
@@ -98,20 +98,38 @@
           margin: 0 auto; }
       #nav-overlay > .nav-menu > .container > .body {
         font-family: "Montserrat", sans-serif;
-        font-size: 0.8em;
-        padding: 1em 0; }
+        font-size: 0.8em; }
+        #nav-overlay > .nav-menu > .container > .body > .option-list {
+          font-weight: 600;
+          list-style: none;
+          border-bottom: 1px solid lightgray;
+          padding: 0.5em 1em;
+          margin-top: 0; }
+          #nav-overlay > .nav-menu > .container > .body > .option-list > li {
+            cursor: pointer;
+            padding: 0.75em 0;
+            margin: 0.75em 0; }
+            #nav-overlay > .nav-menu > .container > .body > .option-list > li > i {
+              padding-right: 1em; }
         #nav-overlay > .nav-menu > .container > .body > .logout {
           color: grey;
           cursor: pointer;
           font-weight: 600;
           letter-spacing: -0.02em;
-          padding: 0 1em; }
+          padding: 0 1em;
+          margin-top: 2em; }
           #nav-overlay > .nav-menu > .container > .body > .logout > i {
             padding-right: 1em; }
 
+.screen {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: #e7e9f3; }
+
 .AuthScreen {
   background: #01011a;
-  color: #edeff7;
+  color: #e7e9f3;
   display: grid;
   font-family: "Bai Jamjuree", sans-serif;
   grid-template-rows: 3fr 5fr 2fr;
@@ -172,8 +190,8 @@
       .AuthScreen > .body > .signup-form > input, .AuthScreen > .body > .login-form > input {
         background: none;
         border: none;
-        border-bottom: 2px solid #edeff7;
-        color: #edeff7;
+        border-bottom: 2px solid #e7e9f3;
+        color: #e7e9f3;
         margin: 0.25em auto;
         outline: 0;
         opacity: 0.4;
@@ -181,7 +199,7 @@
         transition: all 0.3s ease-in-out;
         width: calc(100% - 2em); }
         .AuthScreen > .body > .signup-form > input::placeholder, .AuthScreen > .body > .login-form > input::placeholder {
-          color: #edeff7;
+          color: #e7e9f3;
           font-family: "Bai Jamjuree", sans-serif;
           text-transform: lowercase; }
         .AuthScreen > .body > .signup-form > input:focus, .AuthScreen > .body > .login-form > input:focus {
@@ -221,10 +239,6 @@
         flex-basis: 100%; }
 
 .HomeScreen {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  background: #edeff7;
   text-align: center; }
   .HomeScreen > .body {
     height: 100%;
@@ -250,6 +264,41 @@
         color: #01011a; }
       .HomeScreen > .body > .offline-content > p {
         font-size: 0.9em; }
+
+.AccountSettings {
+  z-index: 101;
+  padding: 1em;
+  display: grid;
+  grid-template-rows: 2fr 7fr 1fr; }
+  .AccountSettings > .head {
+    align-items: center; }
+    .AccountSettings > .head > h1 {
+      margin: 0.5em 0em;
+      font-size: 2em;
+      font-weight: 500;
+      font-family: "Bai Jamjuree", sans-serif;
+      letter-spacing: -0.02em; }
+  .AccountSettings > .body .settings-item {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid #d7d9e4;
+    padding: 0.15em 1em 1.25em 1em;
+    font-size: 0.8em; }
+    .AccountSettings > .body .settings-item > input[type=file] {
+      font-family: "Montserrat", sans-serif;
+      font-size: 0.9em; }
+  .AccountSettings > .footer {
+    display: flex;
+    align-items: flex-end; }
+    .AccountSettings > .footer > button.save {
+      width: 100%;
+      padding: 1em;
+      background: #ed2658;
+      border-radius: 0.5em;
+      color: #e7e9f3;
+      border: none;
+      font-size: 0.9em;
+      font-weight: 500;
+      font-family: "Montserrat", sans-serif; }
 
 .signup-form {
   display: none; }

@@ -28,7 +28,7 @@ class HomeScreen extends React.Component {
         
     render(){
         return(
-            <main className="HomeScreen">
+            <main className="HomeScreen screen">
                 <section className="body" ref={this.body}>
 
                 </section>

@@ -62,10 +62,13 @@ class Navigation extends React.Component {
                     <nav className="nav-menu hidden" ref={this.navMenu} onClick={()=>{}}>
                         <div className="container">
                             <section className="head">
-                                <h1 ref={this.username}>Account Settings</h1>
+                                <h1 ref={this.username}>Menu</h1>
                                 <img src={NullProfileImage} id="nav-profile-img" ref={this.userimage}/>
                             </section>
                             <section className="body">
+                                <ul className="option-list">
+                                    <li onClick={()=>{window.location.href="/account-settings"}}><i className="fas fa-cog"></i> Account Settings</li>
+                                </ul>
                                 <p className="logout" onClick={this.props.logout}><i className="fas fa-sign-out-alt"></i>Sign out</p>
                             </section>
                         </div>
@@ -74,7 +77,7 @@ class Navigation extends React.Component {
 
                 <nav id="navigation">
                     <div className="container">
-                        <img src={HomeIcon} className="nav-icon"/>
+                        <img src={HomeIcon} className="nav-icon" onClick={()=>{window.location.href="/"}}/>
                         <img src={SearchIcon} className="nav-icon"/>
                         <img src={PlusIcon} className="nav-icon" id="new-post"/>
                         <img src={MessageIcon} className="nav-icon"/>

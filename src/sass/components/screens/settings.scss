@@ -1,0 +1,52 @@
+.AccountSettings {
+    z-index: 101;
+    padding: 1em;
+    display: grid;
+    grid-template-rows: 2fr 7fr 1fr;
+
+    & > .head {
+        align-items: center;
+        // display: flex;
+
+        & > h1 {
+            margin: 0.5em 0em;
+            font-size: 2em;
+            font-weight: 500;
+            font-family: $brand_font;
+            letter-spacing: -0.02em;
+        }
+    }
+
+    & > .body {
+    
+        & .settings-item {
+            background: rgba(255,255,255,0.4);
+            border: 1px solid $lightishbg_color;
+            padding: 0.15em 1em 1.25em 1em;
+            font-size: 0.8em;
+            
+            & > input[type=file]{
+                font-family: $primary_font;
+                font-size: 0.9em;
+            }
+        }
+    }
+
+    & > .footer {
+        display: flex;
+        align-items: flex-end;
+
+        & > button.save {
+            width: 100%;
+            padding: 1em;
+            background: $brand_color;
+            border-radius: 0.5em;
+            color: $lightbg_color;
+            border: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            font-family: $primary_font;
+            // margin: 1em 0;
+        }
+    }
+}

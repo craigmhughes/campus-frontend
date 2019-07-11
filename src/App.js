@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Navigation from './components/elements/Navigation';
 import AuthScreen from './components/Auth/AuthScreen';
 import HomeScreen from './components/Home';
+import AccountSettings from './components/AccountSettings';
 
 class App extends React.Component {
 
@@ -147,12 +148,16 @@ class App extends React.Component {
           <Route path="/">
             <div>
               <Switch>
-                
+
                 <Route path="/" render={()=>(
                   <HomeScreen set_online_status={this.set_online_status} get_online_status={this.get_online_status} />
                 )} />
 
               </Switch>
+
+              <Route path="/account-settings" render={()=>(
+                  <AccountSettings />
+                )} />
 
               <Navigation logout={this.logout} hasinfo={this.state.hasAccountInfo}/>
             </div>

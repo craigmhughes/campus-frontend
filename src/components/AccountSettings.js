@@ -26,6 +26,13 @@ class AccountSettings extends React.Component {
         .then((response) => {
             
             console.log(response);
+            
+            localStorage.setItem("accountInfo", JSON.stringify({
+                name: response.name,
+                email: response.email,
+                profile_image: response.profile_image,
+            }));
+
             console.log("done");
 
         }).catch((error) => {

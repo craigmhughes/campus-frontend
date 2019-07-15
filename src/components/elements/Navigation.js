@@ -42,8 +42,8 @@ class Navigation extends React.Component {
         let accountInfo = JSON.parse(localStorage.getItem("accountInfo"));
 
         this.username.current.innerText = accountInfo.name;
-
-        this.userimage.current.src = "http://localhost:8000/" + accountInfo.profile_image;
+        
+        this.userimage.current.src = accountInfo.profile_image == null ? NullProfileImage : "http://localhost:8000/" + accountInfo.profile_image;
     }
 
     toggleMenu(e){

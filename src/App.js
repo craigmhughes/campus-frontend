@@ -38,7 +38,7 @@ class App extends React.Component {
       online: status
     });
 
-    this.check_signin();
+    // this.check_signin();
 
     console.log("Set online status to: " + this.state.online);
   }

@@ -40,7 +40,7 @@
 }
 
 #nav-overlay {
-    background: rgba(0,0,0,0.2);
+    // background: rgba(0,0,0,0.2);
     height: 100%;
     opacity: 1;
     position: fixed;
@@ -57,13 +57,14 @@
 
     & > .nav-menu {
         background: $lightbg_color;
-        box-shadow: -1em -1em 5em #000;
+        border-left: 1px solid lightgrey;
+        // box-shadow: -1em -1em 5em #000;
         color: $darkbg_color;
         height: 100%;
         padding: 1em;
         position: fixed;
         right: 0;
-        transition: all 0.5s ease-out;
+        transition: all 0.4s linear;
         width: 90%;
         z-index: 101;
 

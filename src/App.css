@@ -9,19 +9,24 @@
   font-size: 0.75em;
   font-weight: 600;
   padding: 1em 2em;
-  outline: none; }
+  outline: none;
+}
 
 .btn-light {
-  border-color: #e7e9f3; }
+  border-color: #e7e9f3;
+}
 
 .btn-primary.btn-light {
-  background: #e7e9f3; }
+  background: #e7e9f3;
+}
 
 .btn-secondary.btn-light {
-  color: #e7e9f3; }
+  color: #e7e9f3;
+}
 
 .btn-left {
-  border-radius: 1.25em 1.25em 1.25em 0; }
+  border-radius: 1.25em 1.25em 1.25em 0;
+}
 
 #navigation {
   background: #01011a;
@@ -30,102 +35,121 @@
   height: 2.5em;
   position: fixed;
   bottom: 0;
-  width: 100%; }
-  #navigation > .container {
-    align-items: center;
-    height: 100%;
-    padding: 0.5em 0.2em;
-    display: flex;
-    justify-content: space-between;
-    width: calc(100% - 0.5em);
-    max-width: 500px; }
-    #navigation > .container > .nav-icon {
-      height: 0.75em;
-      width: auto;
-      flex: 1; }
-      #navigation > .container > .nav-icon:nth-child(3) {
-        flex: 1.75; }
-  #navigation #new-post {
-    background: #ed2658;
-    border: 0.2em solid #e7e9f3;
-    border-radius: 2em;
-    padding: 0.35em 0;
-    height: 2em;
-    position: relative;
-    top: -1.25em; }
+  width: 100%;
+}
+#navigation > .container {
+  align-items: center;
+  height: 100%;
+  padding: 0.5em 0.2em;
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 0.5em);
+  max-width: 500px;
+}
+#navigation > .container > .nav-icon {
+  height: 0.75em;
+  width: auto;
+  flex: 1;
+}
+#navigation > .container > .nav-icon:nth-child(3) {
+  flex: 1.75;
+}
+#navigation #new-post {
+  background: #ed2658;
+  border: 0.2em solid #e7e9f3;
+  border-radius: 2em;
+  padding: 0.35em 0;
+  height: 2em;
+  position: relative;
+  top: -1.25em;
+}
 
 #nav-overlay {
-  background: rgba(0, 0, 0, 0.2);
   height: 100%;
   opacity: 1;
   position: fixed;
   transition: background 0.4s ease-in-out;
   width: 100%;
   z-index: 100;
-  font-family: "Bai Jamjuree", sans-serif; }
-  #nav-overlay.hidden {
-    height: 0;
-    width: 0;
-    background: transparent; }
-  #nav-overlay > .nav-menu {
-    background: #e7e9f3;
-    box-shadow: -1em -1em 5em #000;
-    color: #01011a;
-    height: 100%;
-    padding: 1em;
-    position: fixed;
-    right: 0;
-    transition: all 0.5s ease-out;
-    width: 90%;
-    z-index: 101; }
-    #nav-overlay > .nav-menu.hidden {
-      right: -100%;
-      box-shadow: 1em 1em 0 transparent; }
-    #nav-overlay > .nav-menu > .container {
-      display: grid;
-      grid-template-rows: 2fr 8fr; }
-      #nav-overlay > .nav-menu > .container > .head {
-        border-bottom: 1px solid lightgrey;
-        display: grid;
-        grid-template-columns: 8fr 2fr;
-        align-items: center;
-        padding: 0.6em 1em; }
-        #nav-overlay > .nav-menu > .container > .head > h1 {
-          font-size: 1em; }
-        #nav-overlay > .nav-menu > .container > .head > #nav-profile-img {
-          border-radius: 50%;
-          height: 1.8em;
-          margin: 0 auto; }
-      #nav-overlay > .nav-menu > .container > .body {
-        font-family: "Montserrat", sans-serif;
-        font-size: 0.8em; }
-        #nav-overlay > .nav-menu > .container > .body > .option-list {
-          font-weight: 600;
-          list-style: none;
-          border-bottom: 1px solid lightgray;
-          padding: 0.5em 1em;
-          margin-top: 0; }
-          #nav-overlay > .nav-menu > .container > .body > .option-list > li {
-            cursor: pointer;
-            padding: 0.75em 0;
-            margin: 0.75em 0; }
-            #nav-overlay > .nav-menu > .container > .body > .option-list > li > i {
-              padding-right: 1em; }
-        #nav-overlay > .nav-menu > .container > .body > .logout {
-          color: grey;
-          cursor: pointer;
-          font-weight: 600;
-          letter-spacing: -0.02em;
-          padding: 0 1em;
-          margin-top: 2em; }
-          #nav-overlay > .nav-menu > .container > .body > .logout > i {
-            padding-right: 1em; }
+  font-family: "Bai Jamjuree", sans-serif;
+}
+#nav-overlay.hidden {
+  height: 0;
+  width: 0;
+  background: rgba(0, 0, 0, 0);
+}
+#nav-overlay > .nav-menu {
+  background: #e7e9f3;
+  border-left: 1px solid lightgrey;
+  color: #01011a;
+  height: 100%;
+  padding: 1em;
+  position: fixed;
+  right: 0;
+  transition: all 0.4s linear;
+  width: 90%;
+  z-index: 101;
+}
+#nav-overlay > .nav-menu.hidden {
+  right: -100%;
+  box-shadow: 1em 1em 0 rgba(0, 0, 0, 0);
+}
+#nav-overlay > .nav-menu > .container {
+  display: grid;
+  grid-template-rows: 2fr 8fr;
+}
+#nav-overlay > .nav-menu > .container > .head {
+  border-bottom: 1px solid lightgrey;
+  display: grid;
+  grid-template-columns: 8fr 2fr;
+  align-items: center;
+  padding: 0.6em 1em;
+}
+#nav-overlay > .nav-menu > .container > .head > h1 {
+  font-size: 1em;
+}
+#nav-overlay > .nav-menu > .container > .head > #nav-profile-img {
+  border-radius: 50%;
+  height: 1.8em;
+  margin: 0 auto;
+}
+#nav-overlay > .nav-menu > .container > .body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8em;
+}
+#nav-overlay > .nav-menu > .container > .body > .option-list {
+  font-weight: 600;
+  list-style: none;
+  border-bottom: 1px solid lightgray;
+  padding: 0.5em 1em;
+  margin-top: 0;
+}
+#nav-overlay > .nav-menu > .container > .body > .option-list > li {
+  cursor: pointer;
+  padding: 0.75em 0;
+  margin: 0.75em 0;
+}
+#nav-overlay > .nav-menu > .container > .body > .option-list > li > i {
+  padding-right: 1em;
+}
+#nav-overlay > .nav-menu > .container > .body > .logout {
+  color: grey;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  padding: 0 1em;
+  margin-top: 2em;
+}
+#nav-overlay > .nav-menu > .container > .body > .logout > i {
+  padding-right: 1em;
+}
 
 .screen {
   position: fixed;
   height: 100%;
   width: 100%;
-  background: #e7e9f3; }
+  background: #e7e9f3;
+}
 
 .AuthScreen {
   background: #01011a;
@@ -137,203 +161,255 @@
   overflow: scroll;
   padding: 1em;
   position: fixed;
-  width: 100%; }
-  .AuthScreen > #back-icon {
-    position: fixed;
-    border-radius: 1em;
-    cursor: pointer;
-    display: flex;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 600;
-    font-size: 0.6em;
-    left: -50%;
-    top: 1em;
-    outline: none;
-    padding: 0.25em 1.5em 0.25em 0.75em;
-    transition: all 1s ease-out; }
-    .AuthScreen > #back-icon > i {
-      padding: 0.75em 1em; }
-    .AuthScreen > #back-icon > p {
-      margin: 0;
-      align-self: center; }
-    .AuthScreen > #back-icon.show {
-      left: 1em;
-      transition: all 0.6s ease-out; }
-  .AuthScreen > .header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-around; }
-    .AuthScreen > .header > .logo-container {
-      text-align: center; }
-      .AuthScreen > .header > .logo-container > .logo {
-        height: 3.5em;
-        width: 3.5em; }
-      .AuthScreen > .header > .logo-container > p {
-        font-size: 1.15em;
-        margin: 0.4em; }
-  .AuthScreen > .body {
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-    width: 100%; }
-    .AuthScreen > .body > .signup-form, .AuthScreen > .body > .login-form {
-      display: flex;
-      width: 100%;
-      flex-direction: column;
-      transition: all 0.3s ease-in;
-      height: unset;
-      max-height: 100%; }
-      .AuthScreen > .body > .signup-form.hidden, .AuthScreen > .body > .login-form.hidden {
-        height: 0;
-        opacity: 0;
-        transition: unset; }
-      .AuthScreen > .body > .signup-form > input, .AuthScreen > .body > .login-form > input {
-        background: none;
-        border: none;
-        border-bottom: 2px solid #e7e9f3;
-        color: #e7e9f3;
-        margin: 0.25em auto;
-        outline: 0;
-        opacity: 0.4;
-        padding: 1em;
-        transition: all 0.3s ease-in-out;
-        width: calc(100% - 2em); }
-        .AuthScreen > .body > .signup-form > input::placeholder, .AuthScreen > .body > .login-form > input::placeholder {
-          color: #e7e9f3;
-          font-family: "Bai Jamjuree", sans-serif;
-          text-transform: lowercase; }
-        .AuthScreen > .body > .signup-form > input:focus, .AuthScreen > .body > .login-form > input:focus {
-          opacity: 1; }
-      .AuthScreen > .body > .signup-form > #login-error, .AuthScreen > .body > .signup-form > #register-error, .AuthScreen > .body > .login-form > #login-error, .AuthScreen > .body > .login-form > #register-error {
-        background: #ed2658;
-        border-radius: 1em;
-        display: block;
-        font-size: 0.8em;
-        left: calc(50% - 4em);
-        bottom: 6em;
-        margin: 1em auto;
-        opacity: 0;
-        padding: 0.75em 1.25em;
-        position: fixed;
-        transition: all 0.4s ease-in-out;
-        width: max-content; }
-  .AuthScreen > .footer {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-around; }
-    .AuthScreen > .footer > .btn {
-      flex-basis: calc(50% - 1em);
-      transition: all 0.5s ease-in-out;
-      position: relative;
-      left: 0;
-      opacity: 1; }
-      .AuthScreen > .footer > .btn.shrink {
-        flex-basis: 0%;
-        opacity: 0;
-        font-size: 0;
-        padding: 1rem 0;
-        left: 60%; }
-        .AuthScreen > .footer > .btn.shrink.btn-left {
-          left: -60%; }
-      .AuthScreen > .footer > .btn.expand {
-        flex-basis: 100%; }
+  width: 100%;
+}
+.AuthScreen > #back-icon {
+  position: fixed;
+  border-radius: 1em;
+  cursor: pointer;
+  display: flex;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-weight: 600;
+  font-size: 0.6em;
+  left: -50%;
+  top: 1em;
+  outline: none;
+  padding: 0.25em 1.5em 0.25em 0.75em;
+  transition: all 1s ease-out;
+}
+.AuthScreen > #back-icon > i {
+  padding: 0.75em 1em;
+}
+.AuthScreen > #back-icon > p {
+  margin: 0;
+  align-self: center;
+}
+.AuthScreen > #back-icon.show {
+  left: 1em;
+  transition: all 0.6s ease-out;
+}
+.AuthScreen > .header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+.AuthScreen > .header > .logo-container {
+  text-align: center;
+}
+.AuthScreen > .header > .logo-container > .logo {
+  height: 3.5em;
+  width: 3.5em;
+}
+.AuthScreen > .header > .logo-container > p {
+  font-size: 1.15em;
+  margin: 0.4em;
+}
+.AuthScreen > .body {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.AuthScreen > .body > .signup-form, .AuthScreen > .body > .login-form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  transition: all 0.3s ease-in;
+  height: unset;
+  max-height: 100%;
+}
+.AuthScreen > .body > .signup-form.hidden, .AuthScreen > .body > .login-form.hidden {
+  height: 0;
+  opacity: 0;
+  transition: unset;
+}
+.AuthScreen > .body > .signup-form > input, .AuthScreen > .body > .login-form > input {
+  background: none;
+  border: none;
+  border-bottom: 2px solid #e7e9f3;
+  color: #e7e9f3;
+  margin: 0.25em auto;
+  outline: 0;
+  opacity: 0.4;
+  padding: 1em;
+  transition: all 0.3s ease-in-out;
+  width: calc(100% - 2em);
+}
+.AuthScreen > .body > .signup-form > input::placeholder, .AuthScreen > .body > .login-form > input::placeholder {
+  color: #e7e9f3;
+  font-family: "Bai Jamjuree", sans-serif;
+  text-transform: lowercase;
+}
+.AuthScreen > .body > .signup-form > input:focus, .AuthScreen > .body > .login-form > input:focus {
+  opacity: 1;
+}
+.AuthScreen > .body > .signup-form > #login-error, .AuthScreen > .body > .signup-form > #register-error, .AuthScreen > .body > .login-form > #login-error, .AuthScreen > .body > .login-form > #register-error {
+  background: #ed2658;
+  border-radius: 1em;
+  display: block;
+  font-size: 0.8em;
+  left: calc(50% - 4em);
+  bottom: 6em;
+  margin: 1em auto;
+  opacity: 0;
+  padding: 0.75em 1.25em;
+  position: fixed;
+  transition: all 0.4s ease-in-out;
+  width: max-content;
+}
+.AuthScreen > .footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+.AuthScreen > .footer > .btn {
+  flex-basis: calc(50% - 1em);
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  left: 0;
+  opacity: 1;
+}
+.AuthScreen > .footer > .btn.shrink {
+  flex-basis: 0%;
+  opacity: 0;
+  font-size: 0;
+  padding: 1rem 0;
+  left: 60%;
+}
+.AuthScreen > .footer > .btn.shrink.btn-left {
+  left: -60%;
+}
+.AuthScreen > .footer > .btn.expand {
+  flex-basis: 100%;
+}
 
 .HomeScreen {
-  text-align: center; }
-  .HomeScreen > .body {
-    height: 100%;
-    display: flex;
-    align-items: center; }
-    .HomeScreen > .body > .offline-content {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      width: 90%;
-      max-width: 300px;
-      margin: 0 auto;
-      margin-top: -4em;
-      color: grey; }
-      .HomeScreen > .body > .offline-content > .icon {
-        height: 6em;
-        margin: 0 auto; }
-      .HomeScreen > .body > .offline-content > h1 {
-        font-weight: 500;
-        letter-spacing: -0.02em;
-        max-width: 250px;
-        margin: 1em 0 0 0;
-        color: #01011a; }
-      .HomeScreen > .body > .offline-content > p {
-        font-size: 0.9em; }
+  text-align: center;
+}
+.HomeScreen > .body {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.HomeScreen > .body > .offline-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  max-width: 300px;
+  margin: 0 auto;
+  margin-top: -4em;
+  color: grey;
+}
+.HomeScreen > .body > .offline-content > .icon {
+  height: 6em;
+  margin: 0 auto;
+}
+.HomeScreen > .body > .offline-content > h1 {
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  max-width: 250px;
+  margin: 1em 0 0 0;
+  color: #01011a;
+}
+.HomeScreen > .body > .offline-content > p {
+  font-size: 0.9em;
+}
 
 .AccountSettings {
   z-index: 101;
   padding: 1em;
   display: grid;
-  grid-template-rows: 2fr 7fr 1fr; }
-  .AccountSettings > .head {
-    align-items: center; }
-    .AccountSettings > .head > h1 {
-      margin: 0.5em 0em;
-      font-size: 2em;
-      font-weight: 500;
-      font-family: "Bai Jamjuree", sans-serif;
-      letter-spacing: -0.02em; }
-  .AccountSettings > .body .settings-item {
-    background: rgba(255, 255, 255, 0.4);
-    border: 1px solid #d7d9e4;
-    padding: 0.15em 1em 1.25em 1em;
-    font-size: 0.8em; }
-    .AccountSettings > .body .settings-item > input[type=file] {
-      font-family: "Montserrat", sans-serif;
-      font-size: 0.9em; }
-  .AccountSettings > .footer {
-    display: flex;
-    align-items: flex-end; }
-    .AccountSettings > .footer > button.save {
-      width: 100%;
-      padding: 1em;
-      background: #ed2658;
-      border-radius: 0.5em;
-      color: #e7e9f3;
-      border: none;
-      font-size: 0.9em;
-      font-weight: 500;
-      font-family: "Montserrat", sans-serif; }
+  grid-template-rows: 2fr 7fr 1fr;
+}
+.AccountSettings > .head {
+  align-items: center;
+}
+.AccountSettings > .head > h1 {
+  margin: 0.5em 0em;
+  font-size: 2em;
+  font-weight: 500;
+  font-family: "Bai Jamjuree", sans-serif;
+  letter-spacing: -0.02em;
+}
+.AccountSettings > .body .settings-item {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid #d7d9e4;
+  padding: 0.15em 1em 1.25em 1em;
+  font-size: 0.8em;
+}
+.AccountSettings > .body .settings-item > input[type=file] {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9em;
+}
+.AccountSettings > .footer {
+  display: flex;
+  align-items: flex-end;
+}
+.AccountSettings > .footer > button.save {
+  width: 100%;
+  padding: 1em;
+  background: #ed2658;
+  border-radius: 0.5em;
+  color: #e7e9f3;
+  border: none;
+  font-size: 0.9em;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+}
 
 .signup-form {
-  display: none; }
+  display: none;
+}
 
 html, body {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 *, *:before, *:after {
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
 html {
   height: 100%;
-  width: 100%; }
+  width: 100%;
+}
 
 body {
   min-height: 100%;
   margin: 0;
   padding: 0;
-  background: red; }
+  background: #e7e9f3;
+}
 
 .container {
   width: 90%;
   max-width: 2000px;
-  margin: 0 auto; }
+  margin: 0 auto;
+}
 
 .logo {
   background: #ed2658;
   border-radius: 1.5em;
   padding: 0.75em 0.1em;
   height: 4em;
-  width: 4em; }
+  width: 4em;
+}
 
 .App, #root {
   min-height: 100vh;
   margin: 0 auto;
-  font-family: "Montserrat", sans-serif; }
+  font-family: "Montserrat", sans-serif;
+}
+
+#root {
+  position: fixed;
+  right: 100%;
+  transition: all 0.35s linear;
+}
+#root.active {
+  right: 190%;
+  transition: all 0.4s linear;
+}
 
 /*# sourceMappingURL=App.css.map */

@@ -49,11 +49,18 @@ class Navigation extends React.Component {
     toggleMenu(e){
 
         if(e.target.className.includes("nav-icon") || e.target.className.includes("nav-overlay")){
-            this.navMenu.current.className = this.navMenu.current.className.includes("hidden") ? 
-            "nav-menu" : "nav-menu hidden";
+            if(this.navMenu.current.className.includes("hidden")){
+                this.navMenu.current.className = "nav-menu";
+                this.navOverlay.current.className = "nav-overlay";
 
-            this.navOverlay.current.className = this.navOverlay.current.className.includes("hidden") ? 
-            "nav-overlay" : "nav-overlay hidden";
+                document.getElementById("root").className = "active";
+            } else {
+                this.navMenu.current.className = "nav-menu hidden";
+                this.navOverlay.current.className = "nav-overlay hidden";
+
+                document.getElementById("root").className = "";
+            }
+
         } 
     }
         

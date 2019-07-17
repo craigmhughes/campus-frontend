@@ -21,7 +21,7 @@ body {
     min-height: 100%;
     margin: 0;
     padding: 0;
-    background:red;
+    background: $lightbg_color;
 }
 
 .container {
@@ -42,4 +42,15 @@ body {
     min-height: 100vh;
     margin: 0 auto;
     font-family: $primary_font;
+}
+
+#root {
+    position: fixed;
+    right: 100%;
+    transition: all 0.35s linear;
+
+    &.active {
+        right: 190%;
+        transition: all 0.4s linear;
+    }
 }

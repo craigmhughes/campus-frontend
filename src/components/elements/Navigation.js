@@ -88,7 +88,7 @@ class Navigation extends React.Component {
                     <div className="container">
                         <img src={HomeIcon} className="nav-icon" onClick={()=>{window.location.href="/"}}/>
                         <img src={SearchIcon} className="nav-icon"/>
-                        <img src={PlusIcon} className="nav-icon" id="new-post"/>
+                        {/* <img src={PlusIcon} className="nav-icon" id="new-post"/> */}
                         <img src={MessageIcon} className="nav-icon"/>
                         <img src={UserIcon} className="nav-icon" onClick={this.toggleMenu.bind(this)}/>
                     </div>

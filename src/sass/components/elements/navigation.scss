@@ -14,7 +14,7 @@
         padding: 0.5em 0.2em;
         display: flex;
         justify-content: space-between;
-        width: calc(100% - 0.5em);
+        width: calc(100% - 1em);
         max-width: 500px;
 
         & > .nav-icon {
@@ -23,7 +23,7 @@
             flex: 1;
 
             &:nth-child(3){
-                flex: 1.75;
+                // flex: 1.75;
             }
         }
     }
@@ -58,14 +58,14 @@
     & > .nav-menu {
         background: $lightbg_color;
         border-left: 1px solid lightgrey;
-        // box-shadow: -1em -1em 5em #000;
         color: $darkbg_color;
+        font-size: 0.9em;
         height: 100%;
-        padding: 1em;
+        // padding: 1em;
         position: fixed;
-        right: 0;
-        transition: all 0.4s linear;
-        width: 90%;
+        right: 0%;
+        transition: all 0.3s linear;
+        width: 75%;
         z-index: 101;
 
         &.hidden {
@@ -75,14 +75,16 @@
 
         & > .container {
             display: grid;
-            grid-template-rows: 2fr 8fr;
+            height: 100%;
+            width: 100%;
+            grid-template-rows: 60px 8fr;
 
             & > .head {
                 border-bottom: 1px solid lightgrey;
                 display: grid;
                 grid-template-columns: 8fr 2fr;
                 align-items: center;
-                padding: 0.6em 1em;
+                padding: 0em 1em;
                 
 
                 & > h1 {

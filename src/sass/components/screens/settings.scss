@@ -1,40 +1,94 @@
 .AccountSettings {
     z-index: 101;
-    padding: 1em;
     display: grid;
-    grid-template-rows: 2fr 7fr 1fr;
+    grid-template-rows: 1fr 8fr 1fr;
 
     & > .head {
         align-items: center;
-        // display: flex;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid lightgray;
+        font-weight: 500;
 
-        & > h1 {
-            margin: 0.5em 0em;
-            font-size: 2em;
-            font-weight: 500;
-            font-family: $brand_font;
-            letter-spacing: -0.02em;
+        & > i {
+            padding: 1em 1.5em;
+
+            &.submit {
+                color: rgb(10, 115, 253);
+            }
+        }
+
+        & > p {
+            text-align: left;
+            font-size: 0.8em;
+            width: 85%;
         }
     }
 
     & > .body {
-    
+        padding: 1em;
+        
         & .settings-item {
-            background: rgba(255,255,255,0.4);
-            border: 1px solid $lightishbg_color;
             padding: 0.15em 1em 1.25em 1em;
             font-size: 0.8em;
+            text-align: left;
             
-            & > input[type=file]{
-                font-family: $primary_font;
+            line-height: 1.6em;
+            width: 100%;
+
+            &:first-child{
+                line-height: 3em;
+                text-align: center;
+            }
+            
+            & > label[for="profileimage"]{
+                color: rgb(10, 115, 253);
+                font-weight: 500;
                 font-size: 0.9em;
             }
+
+            & > input[type=file]{
+                display: none;
+            }
+
+            & > input {
+                width: 100%;
+                background: none;
+                border: none;
+                border-bottom: 1px solid lightgrey;
+                padding: 0.6em 0;
+                outline: none;
+                transition: border 0.5s linear;
+
+                &:focus {
+                    border-bottom: 1px solid rgb(10, 115, 253);
+                }
+            }
+
+            & > label {
+                font-size: 0.8em;
+                color: grey;
+                width: 100%;
+                
+
+                &::after {
+                    content: "\A ";
+                    white-space: pre;
+                }
+            }
+        }
+
+        & .profile-image {
+            border-radius: 100%;
+            height: 7.5em;
+            width: auto;
         }
     }
 
     & > .footer {
         display: flex;
         align-items: flex-end;
+        padding: 1em;
 
         & > button.save {
             width: 100%;
@@ -46,7 +100,6 @@
             font-size: 0.9em;
             font-weight: 500;
             font-family: $primary_font;
-            // margin: 1em 0;
         }
     }
 }

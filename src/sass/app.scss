@@ -47,10 +47,10 @@ body {
 #root {
     position: fixed;
     right: 100%;
-    transition: all 0.35s linear;
+    transition: all 0.25s linear;
 
     &.active {
-        right: 190%;
-        transition: all 0.4s linear;
+        right: 175%;
+        transition: all 0.3s linear;
     }
 }

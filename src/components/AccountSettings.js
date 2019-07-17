@@ -7,6 +7,7 @@ class AccountSettings extends React.Component {
         super(props);
 
         this.profileUpload = React.createRef();
+        this.profileimage_edit = React.createRef();
     }
 
     post_changes(){
@@ -39,22 +40,44 @@ class AccountSettings extends React.Component {
             console.log("Update Error:" + error);
         });   
     }
+
+    get_account_info(){
+        return JSON.parse(localStorage.getItem("accountInfo"));
+    }
+
+    render_new_profile_image(){
+        let image = URL.createObjectURL(this.profileUpload.current.files[0]);
+        this.profileimage_edit.current.src = image;
+    }
         
     render(){
         return(
             <section className="AccountSettings screen">
                 <section className="head">
-                    <i className="fas fa-chevron-left" onClick={()=>{window.location.href="/"}}></i>
-                    <h1>Settings</h1>
+                    <i className="fas fa-times" onClick={()=>{window.location.href="/"}}></i>
+                    <p>Edit Profile</p>
+                    <i className="fas fa-check submit" onClick={()=>{this.post_changes()}}></i>
                 </section>
                 <section className="body">
                     <div className="settings-item">
-                        <p>Profile Picture:</p>
-                        <input type="file" ref={this.profileUpload}></input>
+                        <img src={"http://127.0.0.1:8000/" + this.get_account_info().profile_image} ref={this.profileimage_edit} className="profile-image"/>
+                        <br/>
+                        <label htmlFor="profileimage">Change Profile Image</label>
+                        <input type="file" id="profileimage" ref={this.profileUpload} onChange={()=>{this.render_new_profile_image()}}></input>
+                    </div>
+                    
+                    <div className="settings-item">
+                        <label htmlFor="username">Name</label>
+                        <input name="username" type="text" defaultValue={this.get_account_info().name}></input>
+                    </div>
+                    
+                    <div className="settings-item">
+                        <label htmlFor="mail">E-Mail Address</label>
+                        <input name="mail" type="email" defaultValue={this.get_account_info().email}></input>
                     </div>
                 </section>
                 <section className="footer">
-                    <button type="button" className="save" onClick={()=>{this.post_changes()}}>Save</button>
+                    {/* <button type="button" className="save" onClick={()=>{this.post_changes()}}>Save</button> */}
                 </section>
             </section>
         )

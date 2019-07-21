@@ -36,6 +36,7 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  z-index: 100;
 }
 #navigation > .container {
   align-items: center;
@@ -161,6 +162,7 @@
   padding: 1em;
   position: fixed;
   width: 100%;
+  z-index: 1000;
 }
 .AuthScreen > #back-icon {
   position: fixed;
@@ -316,7 +318,7 @@
 }
 
 .AccountSettings {
-  z-index: 101;
+  z-index: 99;
   display: grid;
   grid-template-rows: 1fr 8fr 1fr;
 }
@@ -332,6 +334,28 @@
 }
 .AccountSettings > .head > i.submit {
   color: #0a73fd;
+  transition: all 0.8s linear;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 4em;
+}
+.AccountSettings > .head > i.submit::after {
+  content: " Saved";
+  transition: all 0.8s linear;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 0.5em;
+  opacity: 0;
+  align-self: center;
+  padding-left: 1em;
+  overflow: hidden;
+}
+.AccountSettings > .head > i.submit.active {
+  max-width: 10em;
+}
+.AccountSettings > .head > i.submit.active::after {
+  opacity: 1;
 }
 .AccountSettings > .head > p {
   text-align: left;

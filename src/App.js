@@ -24,7 +24,7 @@ class App extends React.Component {
     this.logout = this.logout.bind(this);
   }
 
-  componentDidMount(){
+  componentWillMount(){
     this.check_signin();
   }
 
@@ -56,6 +56,7 @@ class App extends React.Component {
     let subdomain = window.location.href.split(window.location.host)[1];
 
     if(localStorage.getItem("AUTH") !== null){
+
       this.setState({
         signed_in: true
       });
@@ -77,7 +78,7 @@ class App extends React.Component {
       this.setState({
         hasAccountInfo: true
       });
-      return false;
+      // return false;
     }
 
     fetch("http://127.0.0.1:8000/api/auth/me", {
@@ -106,6 +107,8 @@ class App extends React.Component {
 
         }).catch((error) => {
             this.set_online_status(false);
+            this.logout();
+            console.log("logged out");
         });
   }
 
@@ -150,7 +153,7 @@ class App extends React.Component {
             <div>
               <Switch>
 
-                <Route path="/" render={()=>(
+                <Route path="/" exact render={()=>(
                   <HomeScreen set_online_status={this.set_online_status} get_online_status={this.get_online_status} />
                 )} />
 
@@ -159,7 +162,7 @@ class App extends React.Component {
               <Route path="/account-settings" render={()=>(
                   <AccountSettings />
                 )} />
-
+              
               <Navigation logout={this.logout} hasinfo={this.state.hasAccountInfo}/>
             </div>
           </Route>

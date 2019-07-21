@@ -1,5 +1,5 @@
 .AccountSettings {
-    z-index: 101;
+    z-index: 99;
     display: grid;
     grid-template-rows: 1fr 8fr 1fr;
 
@@ -15,6 +15,31 @@
 
             &.submit {
                 color: rgb(10, 115, 253);
+                transition: all 0.8s linear;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                max-width: 4em;
+
+                &::after {
+                    content: " Saved";
+                    transition: all 0.8s linear;
+                    font-family: $primary_font;
+                    font-weight: 700;
+                    font-size: 0.5em;
+                    opacity: 0;
+                    align-self: center;
+                    padding-left: 1em;
+                    overflow: hidden;
+                }
+
+                &.active {
+                    max-width: 10em;
+
+                    &::after {
+                        opacity: 1;
+                    }
+                }
             }
         }
 

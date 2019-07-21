@@ -12,6 +12,7 @@ class AccountSettings extends React.Component {
         this.profileimage_edit = React.createRef();
         this.newName = React.createRef();
         this.newMail = React.createRef();
+        this.submitButton = React.createRef();
     }
 
     /**
@@ -89,6 +90,16 @@ class AccountSettings extends React.Component {
             profile_image: i > 0 ? response.profile_image : info.profile_image,
         }));
 
+        this.toggle_success_button();
+
+    }
+
+    toggle_success_button(){
+        setTimeout(()=>{
+            this.submitButton.current.className = "fas fa-check submit active"
+        }, 500, setTimeout(()=>{
+            this.submitButton.current.className = "fas fa-check submit"
+        }, 1500));
     }
 
     /**
@@ -117,7 +128,7 @@ class AccountSettings extends React.Component {
                 <section className="head">
                     <i className="fas fa-times" onClick={()=>{window.location.href="/"}}></i>
                     <p>Edit Profile</p>
-                    <i className="fas fa-check submit" onClick={()=>{this.update_account()}}></i>
+                    <i className="fas fa-check submit" ref={this.submitButton} onClick={()=>{this.update_account()}}></i>
                 </section>
                 <section className="body">
                     <div className="settings-item">

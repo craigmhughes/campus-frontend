@@ -52,6 +52,8 @@
 
     & > .body {
         padding: 1em;
+        padding-bottom: 4em;
+        overflow: scroll;
         
         & .settings-item {
             padding: 0.15em 1em 1.25em 1em;
@@ -99,6 +101,26 @@
                 &::after {
                     content: "\A ";
                     white-space: pre;
+                }
+            }
+
+            #new-uni-guess {
+                background: #fff;
+                cursor: pointer;
+                font-size: 0.8em;
+                font-weight: 500;
+                padding: 0.8em 1.6em;
+                margin: -1px 0 0 0;
+                position: relative;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                &.hidden {
+                    font-size: 0;
+                    padding: 0;
+                    margin: 0;
+                    height: 0;
                 }
             }
         }

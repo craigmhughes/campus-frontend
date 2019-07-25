@@ -31,14 +31,13 @@ class App extends React.Component {
 
   /**
    * 
+   * 
    * @param {Boolean} status = if app is online or not
    */
   set_online_status(status){
     this.setState({
       online: status
     });
-
-    // this.check_signin();
 
     console.log("Set online status to: " + this.state.online);
   }
@@ -98,6 +97,7 @@ class App extends React.Component {
             localStorage.setItem("accountInfo", JSON.stringify({
                 name:response.name,
                 email:response.email,
+                uni_name:response.uni_name,
                 profile_image:response.profile_image
             }));
 
@@ -106,9 +106,10 @@ class App extends React.Component {
             });
 
         }).catch((error) => {
+            // Run functions to remove user data & refresh page
             this.set_online_status(false);
             this.logout();
-            console.log("logged out");
+            window.location.reload();
         });
   }
 

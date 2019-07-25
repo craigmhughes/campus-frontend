@@ -1,7 +1,5 @@
 import React from 'react';
 import '../App.css';
-import { resolve } from 'url';
-import { reject } from 'q';
 
 
 class AccountSettings extends React.Component {
@@ -9,9 +7,16 @@ class AccountSettings extends React.Component {
         super(props);
 
         this.profileUpload = React.createRef();
+
+        // Form fields
         this.profileimage_edit = React.createRef();
         this.newName = React.createRef();
         this.newMail = React.createRef();
+        this.newUni = React.createRef();
+        
+        //  Autocomplete Fields
+        this.newUniGuess = React.createRef();
+
         this.submitButton = React.createRef();
     }
 
@@ -53,7 +58,8 @@ class AccountSettings extends React.Component {
         }
         
         if( this.newName.current.value !== this.newName.current.defaultValue || 
-            this.newMail.current.value !== this.newMail.current.defaultValue ){
+            this.newMail.current.value !== this.newMail.current.defaultValue ||
+            this.newUni.current.value !== this.newUni.current.defaultValue ){
             this.prep_changes(1);
         }        
         
@@ -75,6 +81,7 @@ class AccountSettings extends React.Component {
         } else {
             data.append('name', this.newName.current.value);
             data.append('email', this.newMail.current.value);
+            data.append('uni_name', this.newUni.current.value);
         }
 
         // run post and get response
@@ -87,6 +94,7 @@ class AccountSettings extends React.Component {
         localStorage.setItem("accountInfo", JSON.stringify({
             name: i < 1 ? info.name : response.name,
             email: i < 1 ? info.mail : response.email,
+            uni_name: i < 1 ? info.uni_name : response.uni_name,
             profile_image: i > 0 ? response.profile_image : info.profile_image,
         }));
 
@@ -121,6 +129,48 @@ class AccountSettings extends React.Component {
         let image = URL.createObjectURL(this.profileUpload.current.files[0]);
         this.profileimage_edit.current.src = image;
     }
+
+    async get_uni_name(){
+        let queried_name = this.newUni.current.value;
+
+        if(queried_name.length < 1){
+            this.newUniGuess.current.className = "hidden";
+            return false;
+        }
+
+        let data = new FormData();
+        data.append('uni_name', this.newUni.current.value);
+
+        let resp = await fetch("http://127.0.0.1:8000/api/search/uni", {
+                method: 'POST',
+                withCredentials: true,
+                credentials: 'include',
+                body: data,
+                headers:{
+                    'Access-Control-Allow-Credentials': true,
+                    'Authorization': 'Bearer ' + localStorage.getItem("AUTH"),
+        }
+        })
+        .then(res => res.json())
+        .then((response) => { 
+            if(response.success == "false" || response.name == undefined || response.name == "undefined"){
+                this.newUniGuess.current.className = "hidden";
+                return false;
+            }
+
+            this.newUniGuess.current.className = "";
+            this.newUniGuess.current.innerText = response.name;
+        })
+        .catch((error) => {
+            console.log("Get Uni Name Error:" + error);
+        });
+    }
+
+    change_uni_name(){
+        this.newUni.current.value = this.newUniGuess.current.innerText;
+        this.newUniGuess.current.innerText = "";
+        this.newUniGuess.current.className = "hidden";
+    }
         
     render(){
         return(
@@ -146,6 +196,22 @@ class AccountSettings extends React.Component {
                     <div className="settings-item">
                         <label htmlFor="mail">E-Mail Address</label>
                         <input name="mail" type="email" defaultValue={this.get_account_info().email} ref={this.newMail}></input>
+                    </div>
+
+                    <div className="settings-item">
+                        <label htmlFor="uni">University</label>
+                        <input name="uni" type="text" ref={this.newUni} defaultValue={this.get_account_info().uni_name} onChange={()=>{this.get_uni_name()}}></input>
+                        <p id="new-uni-guess" ref={this.newUniGuess} onClick={()=>{this.change_uni_name()}} className="hidden">Univeristy Name</p>
+                    </div>
+
+                    <div className="settings-item">
+                        <label htmlFor="mentor">I want to mentor in...</label>
+                        <input name="mentor" type="text" ref={this.newMentor} defaultValue={this.get_account_info().mentor_subject}></input>
+                    </div>
+
+                    <div className="settings-item">
+                        <label htmlFor="mentee">I want to be mentored in...</label>
+                        <input name="mentee" type="text" ref={this.newMentee} defaultValue={this.get_account_info().mentee_subject}></input>
                     </div>
                 </section>
                 <section className="footer">

@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Navigation from './components/elements/Navigation';
 import AuthScreen from './components/Auth/AuthScreen';
 import HomeScreen from './components/Home';
+import SearchScreen from './components/SearchScreen';
 import AccountSettings from './components/AccountSettings';
 
 class App extends React.Component {
@@ -165,6 +166,10 @@ class App extends React.Component {
               <Route path="/account-settings" render={()=>(
                   <AccountSettings />
                 )} />
+
+              <Route path="/search" render={()=>(
+                  <SearchScreen set_online_status={this.set_online_status} get_online_status={this.get_online_status} />
+              )} />
               
               <Navigation logout={this.logout} hasinfo={this.state.hasAccountInfo}/>
             </div>

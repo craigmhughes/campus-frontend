@@ -63,7 +63,9 @@ class AccountSettings extends React.Component {
                             this.newMentor, this.newMentee];
 
         let prep_text_fields = false;
-
+        
+        //  TODO:   if any field passes, all fields will be submitted.
+        //          fine for now but this will have to change.
         form_fields.forEach(field => {
             if( field.current.value !== field.current.defaultValue){
                 prep_text_fields = true;

@@ -98,6 +98,8 @@ class App extends React.Component {
                 name:response.name,
                 email:response.email,
                 uni_name:response.uni_name,
+                mentor_subject:response.mentor_subject,
+                mentee_subject:response.mentee_subject,
                 profile_image:response.profile_image
             }));
 

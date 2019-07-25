@@ -13,6 +13,8 @@ class AccountSettings extends React.Component {
         this.newName = React.createRef();
         this.newMail = React.createRef();
         this.newUni = React.createRef();
+        this.newMentor = React.createRef();
+        this.newMentee = React.createRef();
         
         //  Autocomplete Fields
         this.newUniGuess = React.createRef();
@@ -56,10 +58,19 @@ class AccountSettings extends React.Component {
         if(this.profileUpload.current.files[0] !== undefined){
             this.prep_changes(0);
         }
+
+        let form_fields = [ this.newName, this.newMail, this.newUni,
+                            this.newMentor, this.newMentee];
+
+        let prep_text_fields = false;
+
+        form_fields.forEach(field => {
+            if( field.current.value !== field.current.defaultValue){
+                prep_text_fields = true;
+            }
+        });
         
-        if( this.newName.current.value !== this.newName.current.defaultValue || 
-            this.newMail.current.value !== this.newMail.current.defaultValue ||
-            this.newUni.current.value !== this.newUni.current.defaultValue ){
+        if(prep_text_fields){
             this.prep_changes(1);
         }        
         
@@ -82,6 +93,8 @@ class AccountSettings extends React.Component {
             data.append('name', this.newName.current.value);
             data.append('email', this.newMail.current.value);
             data.append('uni_name', this.newUni.current.value);
+            data.append('mentor_subject', this.newMentor.current.value);
+            data.append('mentee_subject', this.newMentee.current.value);
         }
 
         // run post and get response
@@ -95,6 +108,8 @@ class AccountSettings extends React.Component {
             name: i < 1 ? info.name : response.name,
             email: i < 1 ? info.mail : response.email,
             uni_name: i < 1 ? info.uni_name : response.uni_name,
+            mentor_subject: i < 1 ? info.mentor_subject : response.mentor_subject,
+            mentee_subject: i < 1 ? info.mentee_subject : response.mentee_subject,
             profile_image: i > 0 ? response.profile_image : info.profile_image,
         }));
 

@@ -1,6 +1,7 @@
 import React from 'react';
-// import logo from '../images/logo.svg';
 import '../App.css';
+
+import SearchResult from './elements/SearchResult.js';
 
 // Custom Icons
 import OfflineIcon from '../images/icons/wifi-off.svg';
@@ -8,6 +9,10 @@ import OfflineIcon from '../images/icons/wifi-off.svg';
 class SearchScreen extends React.Component {
     constructor(props){
         super(props);
+
+        this.state = {
+            search_results: [],
+        }
 
         this.body = React.createRef();
     }
@@ -22,6 +27,8 @@ class SearchScreen extends React.Component {
                     <p>Looks like you're offline.</p>
                 </div>
             `;
+        } else {
+            this.search();
         }
     }
 
@@ -42,15 +49,42 @@ class SearchScreen extends React.Component {
         });
 
         console.log(resp);
+        if(resp.success !== undefined){
+            this.setState({
+                search_results: resp.success,
+            });
+        }
+        
+    }
+
+    /**
+     *  Shorthand for JSON.parse()
+     *
+     * @returns JSON of stored account information.
+     * @memberof AccountSettings
+     */
+    get_account_info(){
+        return JSON.parse(localStorage.getItem("accountInfo"));
     }
 
         
     render(){
+
+        let search_results = [];
+
+        for(let i = 0; i < this.state.search_results.length; i++){
+            search_results.push(<SearchResult user={this.state.search_results[i]} mentor={this.state.search_results[i].mentor_subject == this.get_account_info().mentee_subject}
+            mentee={this.state.search_results[i].mentee_subject == this.get_account_info().mentor_subject}/>);
+        }
+
         return(
             <main className="SearchScreen screen">
-                <section className="body" ref={this.body}>
-                    <button onClick={()=>{this.search()}}>Search</button>
-                </section>
+                <div className="container">
+                    <section className="body" ref={this.body}>
+                        {/* <button onClick={()=>{this.search()}}>Search</button> */}
+                        {search_results}
+                    </section>
+                </div>
             </main>
         )
     }

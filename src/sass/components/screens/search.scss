@@ -63,10 +63,11 @@
         padding: 1em;
 
         & > .container {
-            // display: flex;
-            // align-content: space-around;
-            // align-items: center;
             text-align: center;
+
+            & > i {
+                cursor: pointer;
+            }
         }
     }
 

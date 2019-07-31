@@ -9,6 +9,7 @@ import AuthScreen from './components/Auth/AuthScreen';
 import HomeScreen from './components/Home';
 import SearchScreen from './components/SearchScreen';
 import AccountSettings from './components/AccountSettings';
+import ConnectionsList from './components/ConnectionsList';
 
 class App extends React.Component {
 
@@ -165,7 +166,11 @@ class App extends React.Component {
 
               <Route path="/account-settings" render={()=>(
                   <AccountSettings />
-                )} />
+              )} />
+
+              <Route path="/connections-list" render={()=>(
+                  <ConnectionsList get_online_status={this.get_online_status} />
+              )} />
 
               <Route path="/search" render={()=>(
                   <SearchScreen set_online_status={this.set_online_status} get_online_status={this.get_online_status} />

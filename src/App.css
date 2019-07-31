@@ -505,6 +505,30 @@
 .search-result > .user-options > .container {
   text-align: center;
 }
+.search-result > .user-options > .container > i {
+  cursor: pointer;
+}
+
+.ConnectionsList {
+  z-index: 99;
+}
+.ConnectionsList > .head {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+  font-weight: 500;
+}
+.ConnectionsList > .head > .container > p {
+  text-align: left;
+  font-size: 0.8em;
+  width: 85%;
+}
+.ConnectionsList > .body {
+  padding: 1em;
+  padding-bottom: 4em;
+  overflow: scroll;
+}
 
 .signup-form {
   display: none;

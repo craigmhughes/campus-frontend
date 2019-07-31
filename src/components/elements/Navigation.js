@@ -76,6 +76,7 @@ class Navigation extends React.Component {
                             </section>
                             <section className="body">
                                 <ul className="option-list">
+                                    <li onClick={()=>{window.location.href="/connections-list"}}><i className="fas fa-user"></i> My Study Group</li>
                                     <li onClick={()=>{window.location.href="/account-settings"}}><i className="fas fa-cog"></i> Account Settings</li>
                                 </ul>
                                 <p className="logout" onClick={this.props.logout}><i className="fas fa-sign-out-alt"></i>Sign out</p>

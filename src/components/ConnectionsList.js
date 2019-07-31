@@ -3,10 +3,8 @@ import '../App.css';
 
 import SearchResult from './elements/SearchResult.js';
 
-// Custom Icons
-import OfflineIcon from '../images/icons/wifi-off.svg';
 
-class SearchScreen extends React.Component {
+class ConnectionsList extends React.Component {
     constructor(props){
         super(props);
 
@@ -15,25 +13,25 @@ class SearchScreen extends React.Component {
         }
 
         this.body = React.createRef();
+
     }
 
-    
     componentDidMount(){
         if(!this.props.get_online_status){
             this.body.current.innerHTML = `
                 <div class="offline-content">
-                    <img src="${OfflineIcon}" class="icon"/>
+                    <img src="" class="icon"/>
                     <h1>Oops!</h1>
                     <p>Looks like you're offline.</p>
                 </div>
             `;
         } else {
-            this.search();
+            this.get_connections();
         }
     }
 
-    async search(){
-        let resp = await fetch("http://127.0.0.1:8000/api/search/users", {
+    async get_connections(){
+        let resp = await fetch("http://127.0.0.1:8000/api/connections", {
                 method: 'GET',
                 withCredentials: true,
                 credentials: 'include',
@@ -52,11 +50,9 @@ class SearchScreen extends React.Component {
 
         if(resp == undefined){
             return false;
-        }
-
-        if(resp.success !== undefined){
+        } else {
             this.setState({
-                search_results: resp.success,
+                search_results: resp,
             });
         }
         
@@ -78,20 +74,24 @@ class SearchScreen extends React.Component {
         let search_results = [];
 
         for(let i = 0; i < this.state.search_results.length; i++){
+            console.log(1);
             search_results.push(<SearchResult key={i} user={this.state.search_results[i]} mentor={this.state.search_results[i].mentor_subject == this.get_account_info().mentee_subject}
             mentee={this.state.search_results[i].mentee_subject == this.get_account_info().mentor_subject}/>);
         }
 
         return(
-            <main className="SearchScreen screen">
-                <div className="container">
-                    <section className="body" ref={this.body}>
-                        {search_results}
-                    </section>
-                </div>
-            </main>
+            <section className="ConnectionsList screen">
+                <section className="head">
+                    <div className="container">
+                        <p>My Study Group</p>
+                    </div>
+                </section>
+                <section className="body" ref={this.body}>
+                    {search_results}
+                </section>
+            </section>
         )
     }
 }
 
-export default SearchScreen;
+export default ConnectionsList;

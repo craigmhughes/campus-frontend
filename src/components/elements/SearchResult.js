@@ -34,7 +34,7 @@ class SearchResult extends React.Component {
         if(this.props.remove_connect !== undefined){
             connection_icon = <i className="fas fa-user-minus" onClick={()=>{this.props.remove_connect(this.props.user.id)}}></i>
         } else {
-            connection_icon = <i className="fas fa-user-plus"></i>
+            connection_icon = <i className="fas fa-user-plus" onClick={()=>{this.props.add_connect(this.props.user.id)}}></i>
         }
 
         return(

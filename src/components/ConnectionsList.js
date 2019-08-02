@@ -13,7 +13,7 @@ class ConnectionsList extends React.Component {
         }
 
         this.body = React.createRef();
-
+        this.delete_connection = this.delete_connection.bind(this);
     }
 
     componentDidMount(){
@@ -58,6 +58,37 @@ class ConnectionsList extends React.Component {
         
     }
 
+    async delete_connection(index){
+
+        let resp = await fetch("http://127.0.0.1:8000/api/connections", {
+                method: 'DELETE',
+                withCredentials: true,
+                body: JSON.stringify({
+                    "connected_user": index
+                }),
+                credentials: 'include',
+                headers:{
+                    'Content-Type':'application/json',
+                    'Access-Control-Allow-Credentials': true,
+                    'Authorization': 'Bearer ' + localStorage.getItem("AUTH"),
+        }
+        })
+        .then(res => res.json())
+        .then((response) => { return response})
+        .catch((error) => {
+            console.log("Delete Error:" + error);
+        });
+
+        console.log(resp);
+
+        if(resp == undefined){
+            return false;
+        } else {
+            this.get_connections();
+        }
+        
+    }
+
     /**
      *  Shorthand for JSON.parse()
      *
@@ -74,9 +105,9 @@ class ConnectionsList extends React.Component {
         let search_results = [];
 
         for(let i = 0; i < this.state.search_results.length; i++){
-            console.log(1);
-            search_results.push(<SearchResult key={i} user={this.state.search_results[i]} mentor={this.state.search_results[i].mentor_subject == this.get_account_info().mentee_subject}
-            mentee={this.state.search_results[i].mentee_subject == this.get_account_info().mentor_subject}/>);
+            search_results.push(<SearchResult key={i} id={i} user={this.state.search_results[i]} mentor={this.state.search_results[i].mentor_subject == this.get_account_info().mentee_subject}
+            mentee={this.state.search_results[i].mentee_subject == this.get_account_info().mentor_subject} 
+            add_connect={()=>{this.get_connections()}} remove_connect={this.delete_connection}/>);
         }
 
         return(

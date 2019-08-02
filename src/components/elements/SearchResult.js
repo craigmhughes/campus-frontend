@@ -29,6 +29,14 @@ class SearchResult extends React.Component {
             relationship = "Looking to be mentored in " + this.props.user.mentee_subject;
         }
 
+        let connection_icon = null;
+
+        if(this.props.remove_connect !== undefined){
+            connection_icon = <i className="fas fa-user-minus" onClick={()=>{this.props.remove_connect(this.props.user.id)}}></i>
+        } else {
+            connection_icon = <i className="fas fa-user-plus"></i>
+        }
+
         return(
             <article className="search-result">
                 <section className="user-info">
@@ -44,7 +52,7 @@ class SearchResult extends React.Component {
                 </section>
                 <div className="user-options">
                     <div className="container">
-                      <i className="fas fa-user-plus"></i>
+                      {connection_icon}
                     </div>
                 </div>
             </article>

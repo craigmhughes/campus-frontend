@@ -50,20 +50,41 @@ class Navigation extends React.Component {
 
     toggleMenu(e){
 
-        if(e.target.className.includes("nav-icon") || e.target.className.includes("nav-overlay")){
-            if(this.navMenu.current.className.includes("hidden")){
-                this.navMenu.current.className = "nav-menu";
-                this.navOverlay.current.className = "nav-overlay";
+        let toggle = false;
 
-                document.getElementById("root").className = "active";
-            } else {
-                this.navMenu.current.className = "nav-menu hidden";
-                this.navOverlay.current.className = "nav-overlay hidden";
+        // e is used to force menu toggle. when using the overlay, however, 
+        // the target class must be checked as another element could be the target.
+        if(e === true){
+            toggle = true;
 
-                document.getElementById("root").className = "";
+        } else if (e.target.className !== undefined){
+            if(e.target.className.includes("nav-icon") || e.target.className.includes("nav-overlay")){
+                toggle = true;
             }
+        }
 
-        } 
+        if(toggle){
+            // if e, then give a small delay for content load.
+            if(e === true){
+                setTimeout(()=>{this.runToggle()}, 250);
+            } else {
+                this.runToggle();
+            }
+        }
+    }
+
+    runToggle(){
+        if(this.navMenu.current.className.includes("hidden")){
+            this.navMenu.current.className = "nav-menu";
+            this.navOverlay.current.className = "nav-overlay";
+
+            document.getElementById("root").className = "active";
+        } else {
+            this.navMenu.current.className = "nav-menu hidden";
+            this.navOverlay.current.className = "nav-overlay hidden";
+
+            document.getElementById("root").className = "";
+        }
     }
         
     render(){
@@ -78,8 +99,8 @@ class Navigation extends React.Component {
                             </section>
                             <section className="body">
                                 <ul className="option-list">
-                                    <li><NavLink onClick={this.toggleMenu} to="/connections-list"><i className="fas fa-user"></i> My Study Group</NavLink></li>
-                                    <li><NavLink onClick={this.toggleMenu} to="/account-settings"><i className="fas fa-cog"></i> Account Settings</NavLink></li>
+                                    <li onClick={()=>{this.toggleMenu(true)}}><NavLink to="/connections-list"><i className="fas fa-user"></i> My Study Group</NavLink></li>
+                                    <li onClick={()=>{this.toggleMenu(true)}}><NavLink onClick={this.toggleMenu} to="/account-settings"><i className="fas fa-cog"></i> Account Settings</NavLink></li>
                                 </ul>
                                 <p className="logout" onClick={this.props.logout}><i className="fas fa-sign-out-alt"></i>Sign out</p>
                             </section>
@@ -93,7 +114,7 @@ class Navigation extends React.Component {
                         <NavLink to="/search"><img src={SearchIcon} className="nav-icon"/></NavLink>
                         {/* <img src={PlusIcon} className="nav-icon" id="new-post"/> */}
                         <NavLink to="/"><img src={MessageIcon} className="nav-icon"/></NavLink>
-                        <NavLink  onClick={this.toggleMenu}><img src={UserIcon} className="nav-icon"/></NavLink>
+                        <a onClick={this.toggleMenu}><img src={UserIcon} className="nav-icon"/></a>
                     </div>
                 </nav>
             </div>

@@ -99,8 +99,10 @@ class Navigation extends React.Component {
                             </section>
                             <section className="body">
                                 <ul className="option-list">
+                                    <li onClick={()=>{this.toggleMenu(true)}}><NavLink onClick={this.toggleMenu} to="/notifications"><i className="fas fa-bell"></i> Notifications</NavLink></li>
                                     <li onClick={()=>{this.toggleMenu(true)}}><NavLink to="/connections-list"><i className="fas fa-user"></i> My Study Group</NavLink></li>
                                     <li onClick={()=>{this.toggleMenu(true)}}><NavLink onClick={this.toggleMenu} to="/account-settings"><i className="fas fa-cog"></i> Account Settings</NavLink></li>
+                                    
                                 </ul>
                                 <p className="logout" onClick={this.props.logout}><i className="fas fa-sign-out-alt"></i>Sign out</p>
                             </section>

@@ -1,0 +1,28 @@
+.Notifications {
+    z-index: 99;
+
+    & > .head {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid lightgray;
+        font-weight: 500;
+
+        & > .container {
+
+            & > p {
+                text-align: left;
+                font-size: 0.8em;
+                width: 85%;
+            }
+        }
+
+        
+    }
+
+    & > .body {
+        padding: 1em;
+        padding-bottom: 4em;
+        overflow: scroll;
+    }
+}

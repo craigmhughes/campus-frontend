@@ -533,6 +533,27 @@
   overflow: scroll;
 }
 
+.Notifications {
+  z-index: 99;
+}
+.Notifications > .head {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+  font-weight: 500;
+}
+.Notifications > .head > .container > p {
+  text-align: left;
+  font-size: 0.8em;
+  width: 85%;
+}
+.Notifications > .body {
+  padding: 1em;
+  padding-bottom: 4em;
+  overflow: scroll;
+}
+
 .signup-form {
   display: none;
 }

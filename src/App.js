@@ -10,6 +10,7 @@ import HomeScreen from './components/Home';
 import SearchScreen from './components/SearchScreen';
 import AccountSettings from './components/AccountSettings';
 import ConnectionsList from './components/ConnectionsList';
+import Notifications from './components/Notifications';
 
 class App extends React.Component {
 
@@ -170,6 +171,10 @@ class App extends React.Component {
 
               <Route path="/connections-list" render={()=>(
                   <ConnectionsList get_online_status={this.get_online_status} />
+              )} />
+
+              <Route path="/notifications" render={()=>(
+                  <Notifications get_online_status={this.get_online_status} />
               )} />
 
               <Route path="/search" render={()=>(

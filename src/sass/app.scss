@@ -12,6 +12,11 @@ html,body {
 
 *, *:before, *:after { box-sizing: inherit; }
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
 html {
     height: 100%;
     width: 100%;

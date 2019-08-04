@@ -18,15 +18,21 @@
         width: calc(100% - 1em);
         max-width: 500px;
 
-        & > .nav-icon {
-            height: 0.75em;
-            width: auto;
+        & > a {
             flex: 1;
+            text-align: center;
 
-            &:nth-child(3){
-                // flex: 1.75;
+            & > .nav-icon {
+                height: 0.75em;
+                width: auto;
+                
+    
+                &:nth-child(3){
+                    // flex: 1.75;
+                }
             }
         }
+        
     }
 
     #new-post {
@@ -115,9 +121,14 @@
                         padding: 0.75em 0;
                         margin: 0.75em 0;
 
-                        & > i {
-                            padding-right: 1em;
+                        & > a {
+
+                            & > i {
+                                padding-right: 1em;
+                            }
                         }
+
+                        
                     }
                 }
 

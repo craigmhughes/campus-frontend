@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../App.css';
-import Link from "react-router-dom";
+import { Link, NavLink } from 'react-router-dom';
 
 // Custom Icons
 import HomeIcon from '../../images/icons/light/home.svg';
@@ -23,6 +23,8 @@ class Navigation extends React.Component {
         this.navOverlay = React.createRef();
         this.username = React.createRef();
         this.userimage = React.createRef();
+
+        this.toggleMenu = this.toggleMenu.bind(this);
     }
 
     componentDidMount(){
@@ -67,7 +69,7 @@ class Navigation extends React.Component {
     render(){
         return(
             <div>
-                <div id="nav-overlay" className="nav-overlay hidden" ref={this.navOverlay} onClick={this.toggleMenu.bind(this)}>
+                <div id="nav-overlay" className="nav-overlay hidden" ref={this.navOverlay} onClick={this.toggleMenu}>
                     <nav className="nav-menu hidden" ref={this.navMenu} onClick={()=>{}}>
                         <div className="container">
                             <section className="head">
@@ -76,8 +78,8 @@ class Navigation extends React.Component {
                             </section>
                             <section className="body">
                                 <ul className="option-list">
-                                    <li onClick={()=>{window.location.href="/connections-list"}}><i className="fas fa-user"></i> My Study Group</li>
-                                    <li onClick={()=>{window.location.href="/account-settings"}}><i className="fas fa-cog"></i> Account Settings</li>
+                                    <li><NavLink onClick={this.toggleMenu} to="/connections-list"><i className="fas fa-user"></i> My Study Group</NavLink></li>
+                                    <li><NavLink onClick={this.toggleMenu} to="/account-settings"><i className="fas fa-cog"></i> Account Settings</NavLink></li>
                                 </ul>
                                 <p className="logout" onClick={this.props.logout}><i className="fas fa-sign-out-alt"></i>Sign out</p>
                             </section>
@@ -87,11 +89,11 @@ class Navigation extends React.Component {
 
                 <nav id="navigation">
                     <div className="container">
-                        <img src={HomeIcon} className="nav-icon" onClick={()=>{window.location.href="/"}}/>
-                        <img src={SearchIcon} className="nav-icon" onClick={()=>{window.location.href="/search"}}/>
+                        <NavLink to="/"><img src={HomeIcon} className="nav-icon"/></NavLink>
+                        <NavLink to="/search"><img src={SearchIcon} className="nav-icon"/></NavLink>
                         {/* <img src={PlusIcon} className="nav-icon" id="new-post"/> */}
-                        <img src={MessageIcon} className="nav-icon"/>
-                        <img src={UserIcon} className="nav-icon" onClick={this.toggleMenu.bind(this)}/>
+                        <NavLink to="/"><img src={MessageIcon} className="nav-icon"/></NavLink>
+                        <NavLink  onClick={this.toggleMenu}><img src={UserIcon} className="nav-icon"/></NavLink>
                     </div>
                 </nav>
             </div>

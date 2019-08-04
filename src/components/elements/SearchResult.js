@@ -7,15 +7,22 @@ class SearchResult extends React.Component {
     constructor(props){
         super(props);
 
+        this.state = {
+            profile: this.props.user.profile_image == "null"
+        };
+
         this.user_image =  React.createRef();
+        this.on_imageerror = this.on_imageerror.bind(this);
     }
 
     componentDidMount(){
-        try{
-            this.user_image.current.src = "http://localhost:8000/" + this.props.user.profile_image;
-        } catch(e){
-            this.user_image.current.src = NullProfileImage;
+        if(this.props.user.profile_image == "null"){
+            this.on_imageerror();
         }
+    }
+
+    on_imageerror(){
+        this.user_image.current.src = NullProfileImage;
     }
 
         
@@ -42,7 +49,7 @@ class SearchResult extends React.Component {
                 <section className="user-info">
                     <div className="container">
                         <div>
-                            <img className="profileimg" ref={this.user_image}/>
+                            <img className="profileimg" src={"http://127.0.0.1:8000/" + this.props.user.profile_image} onError={this.on_imageerror} onLoad={this.on_imageload} ref={this.user_image}/>
                         </div>
                         <div>
                             <h1>{this.props.user.name} <span>{this.props.user.uni_name}</span></h1>

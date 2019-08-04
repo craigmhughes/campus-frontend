@@ -1,7 +1,7 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
 
 // Components
 import Navigation from './components/elements/Navigation';
@@ -18,7 +18,7 @@ class App extends React.Component {
     this.state = {
       signed_in: false,
       online: true,
-      hasAccountInfo: false
+      hasAccountInfo: false,
     }
 
     this.set_online_status = this.set_online_status.bind(this);
@@ -176,7 +176,7 @@ class App extends React.Component {
                   <SearchScreen set_online_status={this.set_online_status} get_online_status={this.get_online_status} />
               )} />
               
-              <Navigation logout={this.logout} hasinfo={this.state.hasAccountInfo}/>
+              <Navigation logout={this.logout} hasinfo={this.state.hasAccountInfo} history={this.props.history}/>
             </div>
           </Route>
 
@@ -184,7 +184,6 @@ class App extends React.Component {
             <AuthScreen logout={this.logout} />
           )} />
 
-          {/* <Route path="/signin" exact component={AuthScreen} /> */}
         </Router>
       </div>
     );

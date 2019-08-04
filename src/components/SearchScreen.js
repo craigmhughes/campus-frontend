@@ -59,6 +59,10 @@ class SearchScreen extends React.Component {
             this.setState({
                 search_results: resp.success,
             });
+        } else {
+            this.setState({
+                search_results: [],
+            });
         }
         
     }
@@ -99,6 +103,8 @@ class SearchScreen extends React.Component {
         if(resp == undefined){
             return false;
         }
+
+        this.search();
         
     }
 

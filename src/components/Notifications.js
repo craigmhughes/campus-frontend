@@ -13,7 +13,8 @@ class Notifications extends React.Component {
         }
 
         this.body = React.createRef();
-        this.delete_connection = this.delete_connection.bind(this);
+        this.delete_request = this.delete_request.bind(this);
+        this.add_connection = this.add_connection.bind(this);
     }
 
     componentDidMount(){
@@ -26,12 +27,12 @@ class Notifications extends React.Component {
                 </div>
             `;
         } else {
-            // this.get_connections();
+            this.get_requests();
         }
     }
 
-    async get_connections(){
-        let resp = await fetch("http://127.0.0.1:8000/api/connections", {
+    async get_requests(){
+        let resp = await fetch("http://127.0.0.1:8000/api/requests", {
                 method: 'GET',
                 withCredentials: true,
                 credentials: 'include',
@@ -58,10 +59,10 @@ class Notifications extends React.Component {
         
     }
 
-    async delete_connection(index){
+    async add_connection(index){
 
         let resp = await fetch("http://127.0.0.1:8000/api/connections", {
-                method: 'DELETE',
+                method: 'POST',
                 withCredentials: true,
                 body: JSON.stringify({
                     "connected_user": index
@@ -84,7 +85,38 @@ class Notifications extends React.Component {
         if(resp == undefined){
             return false;
         } else {
-            this.get_connections();
+            this.get_requests();
+        }
+        
+    }
+
+    async delete_request(index){
+
+        let resp = await fetch("http://127.0.0.1:8000/api/requests", {
+                method: 'DELETE',
+                withCredentials: true,
+                body: JSON.stringify({
+                    "requested_user": index
+                }),
+                credentials: 'include',
+                headers:{
+                    'Content-Type':'application/json',
+                    'Access-Control-Allow-Credentials': true,
+                    'Authorization': 'Bearer ' + localStorage.getItem("AUTH"),
+        }
+        })
+        .then(res => res.json())
+        .then((response) => { return response})
+        .catch((error) => {
+            console.log("Delete Error:" + error);
+        });
+
+        console.log(resp);
+
+        if(resp == undefined){
+            return false;
+        } else {
+            this.get_requests();
         }
         
     }
@@ -107,7 +139,7 @@ class Notifications extends React.Component {
         for(let i = 0; i < this.state.search_results.length; i++){
             search_results.push(<SearchResult key={i} user={this.state.search_results[i]} mentor={this.state.search_results[i].mentor_subject == this.get_account_info().mentee_subject}
             mentee={this.state.search_results[i].mentee_subject == this.get_account_info().mentor_subject} 
-            remove_connect={this.delete_connection}/>);
+            remove_request={this.delete_request} accept_request={this.add_connection}/>);
         }
 
         return(

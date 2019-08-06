@@ -15,7 +15,7 @@ class SearchScreen extends React.Component {
         }
 
         this.body = React.createRef();
-        this.add_connection = this.add_connection.bind(this);
+        this.add_request = this.add_request.bind(this);
     }
 
     
@@ -77,13 +77,13 @@ class SearchScreen extends React.Component {
         return JSON.parse(localStorage.getItem("accountInfo"));
     }
 
-    async add_connection(index){
+    async add_request(index){
 
-        let resp = await fetch("http://127.0.0.1:8000/api/connections", {
+        let resp = await fetch("http://127.0.0.1:8000/api/requests", {
                 method: 'POST',
                 withCredentials: true,
                 body: JSON.stringify({
-                    "connected_user": index
+                    "requested_user": index
                 }),
                 credentials: 'include',
                 headers:{
@@ -95,7 +95,7 @@ class SearchScreen extends React.Component {
         .then(res => res.json())
         .then((response) => { return response})
         .catch((error) => {
-            console.log("Delete Error:" + error);
+            console.log("Add Request Error:" + error);
         });
 
         console.log(resp);
@@ -116,7 +116,7 @@ class SearchScreen extends React.Component {
         for(let i = 0; i < this.state.search_results.length; i++){
             search_results.push(<SearchResult key={i} user={this.state.search_results[i]} mentor={this.state.search_results[i].mentor_subject == this.get_account_info().mentee_subject}
             mentee={this.state.search_results[i].mentee_subject == this.get_account_info().mentor_subject} 
-            add_connect={this.add_connection}/>);
+            add_request={this.add_request}/>);
         }
 
         return(

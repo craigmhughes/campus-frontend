@@ -36,12 +36,24 @@ class SearchResult extends React.Component {
             relationship = "Looking to be mentored in " + this.props.user.mentee_subject;
         }
 
-        let connection_icon = null;
+        let user_options = null;
 
         if(this.props.remove_connect !== undefined){
-            connection_icon = <i className="fas fa-user-minus" onClick={()=>{this.props.remove_connect(this.props.user.id)}}></i>
+            user_options = 
+            <div className="container">
+                <i className="fas fa-user-minus" onClick={()=>{this.props.remove_connect(this.props.user.id)}}></i>
+            </div>
+        } else if (this.props.accept_request !== undefined && this.props.remove_request !== undefined) {
+            user_options = 
+            <div className="container">
+                <p onClick={()=>{this.props.accept_request(this.props.user.id)}}>Accept Request</p>
+                <p onClick={()=>{this.props.remove_request(this.props.user.id)}}>Delete Request</p>
+            </div>
         } else {
-            connection_icon = <i className="fas fa-user-plus" onClick={()=>{this.props.add_connect(this.props.user.id)}}></i>
+            user_options = 
+            <div className="container">
+                <i className="fas fa-user-plus" onClick={()=>{this.props.add_request(this.props.user.id)}}></i>
+            </div>
         }
 
         return(
@@ -58,9 +70,7 @@ class SearchResult extends React.Component {
                     </div>
                 </section>
                 <div className="user-options">
-                    <div className="container">
-                      {connection_icon}
-                    </div>
+                    {user_options}
                 </div>
             </article>
         )

@@ -86,6 +86,28 @@ class Navigation extends React.Component {
             document.getElementById("root").className = "";
         }
     }
+
+    testPusher(){
+        fetch("http://127.0.0.1:8000/api/sender", {
+            method: 'POST',
+            withCredentials: true,
+            credentials: 'include',
+            body: JSON.stringify({
+                "message": "hi from frontend"
+            }),
+            headers:{
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Credentials': true,
+                'Authorization': 'Bearer ' + localStorage.getItem("AUTH"),
+            }
+        }).then(res => res.json())
+        .then((response) => {
+
+          console.log(response);
+
+        }).catch((error) => {
+        });
+    }
         
     render(){
         return(
@@ -114,7 +136,7 @@ class Navigation extends React.Component {
                     <div className="container">
                         <NavLink to="/"><img src={HomeIcon} className="nav-icon"/></NavLink>
                         <NavLink to="/search"><img src={SearchIcon} className="nav-icon"/></NavLink>
-                        {/* <img src={PlusIcon} className="nav-icon" id="new-post"/> */}
+                        <img src={PlusIcon} onClick={()=>{this.testPusher()}} className="nav-icon" id="new-post"/>
                         <NavLink to="/"><img src={MessageIcon} className="nav-icon"/></NavLink>
                         <a onClick={this.toggleMenu}><img src={UserIcon} className="nav-icon"/></a>
                     </div>

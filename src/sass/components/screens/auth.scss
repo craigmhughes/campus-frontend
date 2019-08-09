@@ -1,64 +1,42 @@
 
-.AuthScreen {
+.AuthScreen, .signup-screen {
     background: $darkbg_color;
     color: $lightbg_color;
     display: grid;
     font-family: $brand_font;
-    grid-template-rows: 3fr 5fr 2fr;
+    grid-template-rows: 2fr 6fr 2fr;
     min-height: 100vh;
-    overflow: scroll;
-    padding: 1em;
+    overflow: hidden;
+    padding: 1em 2em;
     position: fixed;
     width: 100%;
     z-index: 1000;
+    
 
-    & > #back-icon {
-        position: fixed;
-        border-radius: 1em;
-        cursor: pointer;
-        display: flex;
-        font-family: $brand_font;
-        font-weight: 600;
-        font-size: 0.6em;
-        
-        left: -50%;
-        top: 1em;
-        outline: none;
-        padding: 0.25em 1.5em 0.25em 0.75em;
-
-        transition: all 1s ease-out;
-        
-        & > i {
-            padding: 0.75em 1em;
-        }
-
-        & > p {
-            margin: 0;
-            align-self: center;
-        }
-
-        &.show {
-            left: 1em;
-            transition: all 0.6s ease-out;
-        }
+    & > #gradient-bg {
+        position: absolute;
+        width: calc(100%+1em);
+        left: -0.5em;
+        top: -2em;
+        z-index: -1;
     }
 
     & > .header {
         display: flex;
-        align-items: flex-end;
-        justify-content: space-around;
 
         & > .logo-container {
-            text-align: center;
-            
+            display: flex;
+            font-size: 0.7em;
+            margin-top: 1.5em;
+
             & > .logo {
-                height: 3.5em;
-                width: 3.5em;
+                height: 1.5em;
+                width: 1.5em;
             }
     
             & > p {
-                font-size: 1.15em;
-                margin: 0.4em;
+                margin: 0.1em 0.5em;
+                letter-spacing: -0.05em;
             }
         }
     }
@@ -69,6 +47,29 @@
         display: flex;
         flex-direction: column;
         width: 100%;
+        height: 100%;
+        padding-bottom: 1.5em;
+
+        position: relative;
+
+        & > .intro {
+            margin: 2em 0;
+            line-height: 2em;
+
+            & > h1 {
+                margin: 0;
+                font-size: 2.5em;
+                font-weight: 600;
+                letter-spacing: -0.03em;
+            }
+
+            & > p {
+                margin: 0;
+                font-size: 0.85em;
+                font-weight: 300;
+                letter-spacing: -0.03em;
+            }
+        }
 
         & > .signup-form, & > .login-form {
 
@@ -80,37 +81,51 @@
             height: unset;
             max-height: 100%;
 
+            position: absolute;
+            bottom: 1em;
+
             &.hidden {
                 height: 0;
                 opacity: 0;
                 transition: unset;
             }
 
-            & > input {
+            & > .input-item {
+                display: grid;
+                margin-bottom: 1em;
 
-                background:none;
-                border: none;
-                border-bottom: 2px solid $lightbg_color;
-                color: $lightbg_color;
-                
-                   
-                margin: 0.25em auto;
-                outline: 0;
-                opacity: 0.4;
-                padding: 1em;
-                transition: all 0.3s ease-in-out;
-                width: calc(100% - 2em);
-
-                &::placeholder {
-                    color: $lightbg_color;
-                    font-family: $brand_font;
-                    text-transform: lowercase;
+                & > label {
+                    font-size: 0.6em;
+                    font-weight: 500;
                 }
-
-                &:focus {
-                    opacity: 1;
+    
+                & > input {
+    
+                    background:none;
+                    border: none;
+                    border-bottom: 2px solid $lightbg_color;
+                    color: $lightbg_color;
+                    
+                       
+                    margin: 0;
+                    outline: 0;
+                    opacity: 0.4;
+                    padding: 1em;
+                    transition: all 0.3s ease-in-out;
+    
+                    &::placeholder {
+                        color: $lightbg_color;
+                        font-family: $brand_font;
+                        text-transform: lowercase;
+                    }
+    
+                    &:focus {
+                        opacity: 1;
+                    }
                 }
             }
+
+            
 
             & > #login-error, & > #register-error {
                 background: $brand_color;
@@ -131,32 +146,88 @@
 
 
     & > .footer {
-        display: flex;
-        align-items: flex-end;
-
-        justify-content: space-around;
 
         & > .btn {
-            flex-basis: calc(50% - 1em);
             transition: all 0.5s ease-in-out;
             position: relative;
             left: 0;
             opacity: 1;
+            width: 100%;
 
-            &.shrink {
-                flex-basis: 0%;
-                opacity: 0;
-                font-size: 0;
-                padding: 1rem 0;
-                left: 60%;
-
-                &.btn-left {
-                    left: -60%;
-                }
+            &:focus {
+                outline: none;
             }
+        }
 
-            &.expand {
-                flex-basis: 100%;
+        & > .btn-secondary {
+            border: none;
+            font-weight: 500;
+            margin-top: 0.5em;
+        }
+
+        & > .btn-primary {
+            background: $darkbg_color;
+            color: $lightbg_color;
+            box-shadow: 0.25em 0.25em 1em $darkbg_shadow;
+        }
+    }
+}
+
+
+.signup-screen {
+    background: $lightbg_color;
+    color: $darkbg_color;
+    display: grid;
+    font-family: $brand_font;
+    grid-template-rows: 1.25fr 6.75fr 1fr;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 1em 2em;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+
+    left: 0;
+    top: 0;
+
+    transition: all 0.6s ease-out;
+
+    &.hidden {
+        top: 100%;
+        transition: all 0.6s ease-in;
+    }
+
+    & > .head {
+        opacity: 0.4;
+        text-align: center;
+
+        & > img {
+            height: 2em;
+        }
+
+        & > p {
+            font-size: 0.5em;
+            margin: 0;
+        }
+    }
+
+    & > .body {
+        padding-bottom: 0;
+        font-size: 0.9em;
+
+        & > .intro {
+            margin: 0.5em 0;
+        }
+
+        & > .signup-form {
+            bottom: 0.5em;
+
+            & > .input-item {
+
+                & > input {
+                    border-bottom: 2px solid $darkbg_color;
+                }
             }
         }
     }

@@ -1,27 +1,38 @@
 @import url("https://fonts.googleapis.com/css?family=Bai+Jamjuree&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700,900&display=swap");
 .btn {
   background: none;
-  border: 0.25em solid #01011a;
+  border: 0.25em solid #1B2339;
   border-radius: 1.25em 1.25em 0 1.25em;
   cursor: pointer;
   font-family: "Montserrat", sans-serif;
   font-size: 0.75em;
   font-weight: 600;
   padding: 1em 2em;
+}
+.btn, .btn:focus {
   outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn-light {
-  border-color: #e7e9f3;
+  border-color: #F7F9FF;
 }
 
 .btn-primary.btn-light {
-  background: #e7e9f3;
+  background: #F7F9FF;
+}
+.btn-primary.btn-light, .btn-primary.btn-light:focus {
+  outline: none;
+  -webkit-tap-highlight-color: #f7f9ff18;
+}
+.btn-primary, .btn-primary:focus {
+  outline: none;
+  -webkit-tap-highlight-color: #1b23392c;
 }
 
 .btn-secondary.btn-light {
-  color: #e7e9f3;
+  color: #F7F9FF;
 }
 
 .btn-left {
@@ -29,8 +40,8 @@
 }
 
 #navigation {
-  background: #01011a;
-  color: #e7e9f3;
+  background: #1B2339;
+  color: #F7F9FF;
   font-size: 1.8em;
   height: 2.5em;
   position: fixed;
@@ -56,8 +67,8 @@
   width: auto;
 }
 #navigation #new-post {
-  background: #ed2658;
-  border: 0.2em solid #e7e9f3;
+  background: #1A0ADF;
+  border: 0.2em solid #F7F9FF;
   border-radius: 2em;
   padding: 0.35em 0;
   height: 2em;
@@ -72,7 +83,7 @@
   transition: background 0.4s ease-in-out;
   width: 100%;
   z-index: 100;
-  font-family: "Bai Jamjuree", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 #nav-overlay.hidden {
   height: 0;
@@ -80,9 +91,9 @@
   background: rgba(0, 0, 0, 0);
 }
 #nav-overlay > .nav-menu {
-  background: #e7e9f3;
+  background: #F7F9FF;
   border-left: 1px solid lightgrey;
-  color: #01011a;
+  color: #1B2339;
   font-size: 0.9em;
   height: 100%;
   position: fixed;
@@ -151,104 +162,114 @@
   position: fixed;
   height: 100%;
   width: 100%;
-  background: #e7e9f3;
+  background: #F7F9FF;
 }
 
-.AuthScreen {
-  background: #01011a;
-  color: #e7e9f3;
+.AuthScreen, .signup-screen {
+  background: #1B2339;
+  color: #F7F9FF;
   display: grid;
-  font-family: "Bai Jamjuree", sans-serif;
-  grid-template-rows: 3fr 5fr 2fr;
+  font-family: "Montserrat", sans-serif;
+  grid-template-rows: 2fr 6fr 2fr;
   min-height: 100vh;
-  overflow: scroll;
-  padding: 1em;
+  overflow: hidden;
+  padding: 1em 2em;
   position: fixed;
   width: 100%;
   z-index: 1000;
 }
-.AuthScreen > #back-icon {
-  position: fixed;
-  border-radius: 1em;
-  cursor: pointer;
+.AuthScreen > #gradient-bg, .signup-screen > #gradient-bg {
+  position: absolute;
+  width: calc(100%+1em);
+  left: -0.5em;
+  top: -2em;
+  z-index: -1;
+}
+.AuthScreen > .header, .signup-screen > .header {
   display: flex;
-  font-family: "Bai Jamjuree", sans-serif;
-  font-weight: 600;
-  font-size: 0.6em;
-  left: -50%;
-  top: 1em;
-  outline: none;
-  padding: 0.25em 1.5em 0.25em 0.75em;
-  transition: all 1s ease-out;
 }
-.AuthScreen > #back-icon > i {
-  padding: 0.75em 1em;
-}
-.AuthScreen > #back-icon > p {
-  margin: 0;
-  align-self: center;
-}
-.AuthScreen > #back-icon.show {
-  left: 1em;
-  transition: all 0.6s ease-out;
-}
-.AuthScreen > .header {
+.AuthScreen > .header > .logo-container, .signup-screen > .header > .logo-container {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
+  font-size: 0.7em;
+  margin-top: 1.5em;
 }
-.AuthScreen > .header > .logo-container {
-  text-align: center;
+.AuthScreen > .header > .logo-container > .logo, .signup-screen > .header > .logo-container > .logo {
+  height: 1.5em;
+  width: 1.5em;
 }
-.AuthScreen > .header > .logo-container > .logo {
-  height: 3.5em;
-  width: 3.5em;
+.AuthScreen > .header > .logo-container > p, .signup-screen > .header > .logo-container > p {
+  margin: 0.1em 0.5em;
+  letter-spacing: -0.05em;
 }
-.AuthScreen > .header > .logo-container > p {
-  font-size: 1.15em;
-  margin: 0.4em;
-}
-.AuthScreen > .body {
+.AuthScreen > .body, .signup-screen > .body {
   align-self: center;
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
+  padding-bottom: 1.5em;
+  position: relative;
 }
-.AuthScreen > .body > .signup-form, .AuthScreen > .body > .login-form {
+.AuthScreen > .body > .intro, .signup-screen > .body > .intro {
+  margin: 2em 0;
+  line-height: 2em;
+}
+.AuthScreen > .body > .intro > h1, .signup-screen > .body > .intro > h1 {
+  margin: 0;
+  font-size: 2.5em;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+.AuthScreen > .body > .intro > p, .signup-screen > .body > .intro > p {
+  margin: 0;
+  font-size: 0.85em;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+}
+.AuthScreen > .body > .signup-form, .AuthScreen > .body > .login-form, .signup-screen > .body > .signup-form, .signup-screen > .body > .login-form {
   display: flex;
   width: 100%;
   flex-direction: column;
   transition: all 0.3s ease-in;
   height: unset;
   max-height: 100%;
+  position: absolute;
+  bottom: 1em;
 }
-.AuthScreen > .body > .signup-form.hidden, .AuthScreen > .body > .login-form.hidden {
+.AuthScreen > .body > .signup-form.hidden, .AuthScreen > .body > .login-form.hidden, .signup-screen > .body > .signup-form.hidden, .signup-screen > .body > .login-form.hidden {
   height: 0;
   opacity: 0;
   transition: unset;
 }
-.AuthScreen > .body > .signup-form > input, .AuthScreen > .body > .login-form > input {
+.AuthScreen > .body > .signup-form > .input-item, .AuthScreen > .body > .login-form > .input-item, .signup-screen > .body > .signup-form > .input-item, .signup-screen > .body > .login-form > .input-item {
+  display: grid;
+  margin-bottom: 1em;
+}
+.AuthScreen > .body > .signup-form > .input-item > label, .AuthScreen > .body > .login-form > .input-item > label, .signup-screen > .body > .signup-form > .input-item > label, .signup-screen > .body > .login-form > .input-item > label {
+  font-size: 0.6em;
+  font-weight: 500;
+}
+.AuthScreen > .body > .signup-form > .input-item > input, .AuthScreen > .body > .login-form > .input-item > input, .signup-screen > .body > .signup-form > .input-item > input, .signup-screen > .body > .login-form > .input-item > input {
   background: none;
   border: none;
-  border-bottom: 2px solid #e7e9f3;
-  color: #e7e9f3;
-  margin: 0.25em auto;
+  border-bottom: 2px solid #F7F9FF;
+  color: #F7F9FF;
+  margin: 0;
   outline: 0;
   opacity: 0.4;
   padding: 1em;
   transition: all 0.3s ease-in-out;
-  width: calc(100% - 2em);
 }
-.AuthScreen > .body > .signup-form > input::placeholder, .AuthScreen > .body > .login-form > input::placeholder {
-  color: #e7e9f3;
-  font-family: "Bai Jamjuree", sans-serif;
+.AuthScreen > .body > .signup-form > .input-item > input::placeholder, .AuthScreen > .body > .login-form > .input-item > input::placeholder, .signup-screen > .body > .signup-form > .input-item > input::placeholder, .signup-screen > .body > .login-form > .input-item > input::placeholder {
+  color: #F7F9FF;
+  font-family: "Montserrat", sans-serif;
   text-transform: lowercase;
 }
-.AuthScreen > .body > .signup-form > input:focus, .AuthScreen > .body > .login-form > input:focus {
+.AuthScreen > .body > .signup-form > .input-item > input:focus, .AuthScreen > .body > .login-form > .input-item > input:focus, .signup-screen > .body > .signup-form > .input-item > input:focus, .signup-screen > .body > .login-form > .input-item > input:focus {
   opacity: 1;
 }
-.AuthScreen > .body > .signup-form > #login-error, .AuthScreen > .body > .signup-form > #register-error, .AuthScreen > .body > .login-form > #login-error, .AuthScreen > .body > .login-form > #register-error {
-  background: #ed2658;
+.AuthScreen > .body > .signup-form > #login-error, .AuthScreen > .body > .signup-form > #register-error, .AuthScreen > .body > .login-form > #login-error, .AuthScreen > .body > .login-form > #register-error, .signup-screen > .body > .signup-form > #login-error, .signup-screen > .body > .signup-form > #register-error, .signup-screen > .body > .login-form > #login-error, .signup-screen > .body > .login-form > #register-error {
+  background: #1A0ADF;
   border-radius: 1em;
   display: block;
   font-size: 0.8em;
@@ -261,30 +282,71 @@
   transition: all 0.4s ease-in-out;
   width: max-content;
 }
-.AuthScreen > .footer {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-}
-.AuthScreen > .footer > .btn {
-  flex-basis: calc(50% - 1em);
+.AuthScreen > .footer > .btn, .signup-screen > .footer > .btn {
   transition: all 0.5s ease-in-out;
   position: relative;
   left: 0;
   opacity: 1;
+  width: 100%;
 }
-.AuthScreen > .footer > .btn.shrink {
-  flex-basis: 0%;
-  opacity: 0;
-  font-size: 0;
-  padding: 1rem 0;
-  left: 60%;
+.AuthScreen > .footer > .btn:focus, .signup-screen > .footer > .btn:focus {
+  outline: none;
 }
-.AuthScreen > .footer > .btn.shrink.btn-left {
-  left: -60%;
+.AuthScreen > .footer > .btn-secondary, .signup-screen > .footer > .btn-secondary {
+  border: none;
+  font-weight: 500;
+  margin-top: 0.5em;
 }
-.AuthScreen > .footer > .btn.expand {
-  flex-basis: 100%;
+.AuthScreen > .footer > .btn-primary, .signup-screen > .footer > .btn-primary {
+  background: #1B2339;
+  color: #F7F9FF;
+  box-shadow: 0.25em 0.25em 1em #1b23392c;
+}
+
+.signup-screen {
+  background: #F7F9FF;
+  color: #1B2339;
+  display: grid;
+  font-family: "Montserrat", sans-serif;
+  grid-template-rows: 1.25fr 6.75fr 1fr;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 1em 2em;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  transition: all 0.6s ease-out;
+}
+.signup-screen.hidden {
+  top: 100%;
+  transition: all 0.6s ease-in;
+}
+.signup-screen > .head {
+  opacity: 0.4;
+  text-align: center;
+}
+.signup-screen > .head > img {
+  height: 2em;
+}
+.signup-screen > .head > p {
+  font-size: 0.5em;
+  margin: 0;
+}
+.signup-screen > .body {
+  padding-bottom: 0;
+  font-size: 0.9em;
+}
+.signup-screen > .body > .intro {
+  margin: 0.5em 0;
+}
+.signup-screen > .body > .signup-form {
+  bottom: 0.5em;
+}
+.signup-screen > .body > .signup-form > .input-item > input {
+  border-bottom: 2px solid #1B2339;
 }
 
 .HomeScreen {
@@ -314,7 +376,7 @@
   letter-spacing: -0.02em;
   max-width: 250px;
   margin: 1em 0 0 0;
-  color: #01011a;
+  color: #1B2339;
 }
 .HomeScreen > .body > .offline-content > p {
   font-size: 0.9em;
@@ -441,9 +503,9 @@
 .AccountSettings > .footer > button.save {
   width: 100%;
   padding: 1em;
-  background: #ed2658;
+  background: #1A0ADF;
   border-radius: 0.5em;
-  color: #e7e9f3;
+  color: #F7F9FF;
   border: none;
   font-size: 0.9em;
   font-weight: 500;
@@ -580,21 +642,13 @@ body {
   min-height: 100%;
   margin: 0;
   padding: 0;
-  background: #e7e9f3;
+  background: #F7F9FF;
 }
 
 .container {
   width: 90%;
   max-width: 2000px;
   margin: 0 auto;
-}
-
-.logo {
-  background: #ed2658;
-  border-radius: 1.5em;
-  padding: 0.75em 0.1em;
-  height: 4em;
-  width: 4em;
 }
 
 .App, #root {

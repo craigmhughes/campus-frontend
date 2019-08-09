@@ -2,6 +2,9 @@ import React from 'react';
 import logo from '../../images/logo.svg';
 import '../../App.css';
 
+import GradientBG from '../../images/gradient-bg2.svg';
+import xcircle from '../../images/icons/x-circle.svg';
+
 class AuthScreen extends React.Component {
 
   constructor(props){
@@ -14,83 +17,16 @@ class AuthScreen extends React.Component {
     this.back_el = React.createRef();
     this.login_form = React.createRef();
     this.signup_form = React.createRef();
+    this.signup_screen = React.createRef();
   }
 
-  
-  /**
-   * Menu change function. passing value 0 = reset. 1 or 2 = direction.
-   * 
-   * @param {*} direction = Decides on which order to affect buttons.
-   */
-  switchMenuButtons(direction){
-    let cc_buttons = this.footer_el.current.childNodes;
+  toggle_signup(){
 
-    let buttons = direction === 1 ? [0,1] : [1,0];
-
-    
-    if (direction > 0){
-      // Start button switch      
-      cc_buttons[buttons[0]].className = cc_buttons[buttons[0]].className.replace("shrink", "");
-      cc_buttons[buttons[1]].className = cc_buttons[buttons[1]].className.replace("expand", "");
-
-      if (!cc_buttons[buttons[0]].className.includes("expand")) {
-        cc_buttons[buttons[0]].className += " expand";
-      }
-  
-      if(!cc_buttons[buttons[1]].className.includes("shrink")){
-        cc_buttons[buttons[1]].className += " shrink";
-      }
-      // End button switch
-
-      if(!this.back_el.current.className.includes(" show")){
-        this.back_el.current.className += " show";
-      }
-
-      if(direction === 1){
-        if(this.signup_form.current.className.includes("hidden")){
-          this.signup_form.current.className = this.signup_form.current.className.replace(" hidden", "");
-        } else {
-          this.signup();
-        }
-
-        if(!this.login_form.current.className.includes("hidden")){
-          this.login_form.current.className += " hidden";
-        }
-
-      } else {
-        if(this.login_form.current.className.includes("hidden")){
-          this.login_form.current.className = this.login_form.current.className.replace(" hidden", "");
-        } else {
-          this.signin();
-        }
-        
-        if(!this.signup_form.current.className.includes("hidden")){
-          this.signup_form.current.className += " hidden";
-        }
-      }
-
-
+    if(this.signup_screen.current.className.includes("hidden")){
+      this.signup_screen.current.className = this.signup_screen.current.className.replace("hidden", "");
     } else {
-
-      
-      cc_buttons[buttons[0]].className = cc_buttons[buttons[0]].className.replace("shrink", "");
-      cc_buttons[buttons[0]].className = cc_buttons[buttons[0]].className.replace("expand", "");
-
-      cc_buttons[buttons[1]].className = cc_buttons[buttons[1]].className.replace("shrink", "");
-      cc_buttons[buttons[1]].className = cc_buttons[buttons[1]].className.replace("expand", "");
-
-      this.back_el.current.className = this.back_el.current.className.replace(" show", "");
-      
-      if(!this.signup_form.current.className.includes("hidden")){
-        this.signup_form.current.className += " hidden";
-      }
-
-      if(!this.login_form.current.className.includes("hidden")){
-        this.login_form.current.className += " hidden";
-      }
-
+      this.signup_screen.current.className += " hidden";
     }
-    
   }
 
 
@@ -205,43 +141,82 @@ class AuthScreen extends React.Component {
 
   render(){
     return(
-      <div className="AuthScreen">
+      <section className="AuthScreen">
 
-          
-          <button id="back-icon" className="btn btn-secondary btn-light" ref={this.back_el} onClick={()=>{this.switchMenuButtons(0)}}>
-            <i className="fas fa-chevron-left"></i><p>back</p>
-          </button>
-
-          <div className="header">
-            <div className="logo-container">
-              <img src={logo} className="logo logo-light"/>
-              <p className="logo-text">campus<b>chat</b></p>
-            </div>
+        <div className="signup-screen hidden" ref={this.signup_screen}>
+          <div className="head" onClick={()=>{this.toggle_signup()}}>
+            <img src={xcircle}></img>
+            <p>Back to Sign in</p>
           </div>
+
           <div className="body">
-            
-            <div className="signup-form hidden" ref={this.signup_form}>
-              <input name="register-name" placeholder="Name" type="text"></input>
-              <input name="register-mail" placeholder="E-Mail Address" type="email"></input>
-              <input name="register-pass" placeholder="Password" type="password"></input>
-              <input name="register-pass-confirm" placeholder="Confirm Password" type="password"></input>
+            <div className="intro">
+              <h1>New here?</h1>
+              <p>Let's get you set up</p>
+            </div>
+
+            <div className="signup-form" ref={this.signup_form}>
+              <div class="input-item">
+                <label to="register-name">Full name</label>
+                <input name="register-name" type="text"></input>
+              </div>
+              <div class="input-item">
+                <label to="register-mail">E-Mail Address</label>
+                <input name="register-mail" type="text"></input>
+              </div>
+              <div class="input-item">
+                <label to="register-pass">Password</label>
+                <input name="register-pass" type="password"></input>
+              </div>
+              <div class="input-item">
+                <label to="register-pass-confirm">Password Confirm</label>
+                <input name="register-pass-confirm" type="password"></input>
+              </div>
+
               <p id="register-error"></p>
             </div>
+          </div>
+          <div className="footer">
+            <button className="btn btn-primary" onClick={()=>{this.signup()}}>Sign Up</button>
+          </div>
+        </div>
+        
 
-            <div className="login-form hidden" ref={this.login_form}>
-              <input name="login-mail" placeholder="E-Mail Address" type="email"></input>
-              <input name="login-pass" placeholder="Password" type="password"></input>
-              <p id="login-error"></p>
+        <img src={GradientBG} id="gradient-bg"></img>
+
+        <div className="header">
+          <div className="logo-container">
+            <img src={logo} className="logo logo-light"/>
+            <p className="logo-text">campuschat</p>
+          </div>
+        </div>
+        <div className="body">
+
+          <div className="intro">
+            <h1>Hello!</h1>
+            <p>Sign in to get started</p>
+          </div>
+
+          <div className="login-form" ref={this.login_form}>
+            <div class="input-item">
+              <label to="login-mail">E-Mail Address</label>
+              <input name="login-mail" type="email"></input>
             </div>
+            <div class="input-item">
+              <label to="login-pass">Password</label>
+              <input name="login-pass" type="password"></input>
+            </div>
+            
+            <p id="login-error"></p>
+          </div>
+        </div>
+        <div className="footer" ref={this.footer_el}>
           
-          </div>
-          <div className="footer" ref={this.footer_el}>
-            
-              <button className="btn btn-secondary btn-light btn-left" onClick={()=>{this.switchMenuButtons(1)}}>Sign Up</button>
-              <button className="btn btn-primary btn-light" onClick={()=>{this.switchMenuButtons(2)}}>Log In</button>
-            
-          </div>
-      </div>
+          <button className="btn btn-primary btn-light" onClick={()=>{this.signin()}}>Sign In</button>
+          <button className="btn btn-secondary btn-light" onClick={()=>{this.toggle_signup()}}>Don't have an account? Sign Up</button>
+          
+        </div>
+      </section>
     );
   }
 }

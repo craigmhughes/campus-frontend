@@ -11,7 +11,11 @@
     font-weight: 600;
     
     padding: 1em 2em;
-    outline: none;
+    
+    &, &:focus {
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+    }
 }
 
 // All light btns
@@ -25,6 +29,16 @@
 
     &.btn-light {
         background: $lightbg_color;
+
+        &, &:focus {
+            outline: none;
+            -webkit-tap-highlight-color: $lightbg_shadow;
+        }
+    }
+
+    &, &:focus {
+        outline: none;
+        -webkit-tap-highlight-color: $darkbg_shadow;
     }
 }
 

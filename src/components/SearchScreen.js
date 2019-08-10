@@ -49,15 +49,14 @@ class SearchScreen extends React.Component {
             console.log("Update Error:" + error);
         });
 
-        console.log(resp);
-
         if(resp == undefined){
             return false;
         }
 
+
         if(resp.success !== undefined){
             this.setState({
-                search_results: resp.success,
+                search_results: Object.keys(resp.success).length < 2 ? [resp.success[1]] : resp.success,
             });
         } else {
             this.setState({
@@ -114,10 +113,13 @@ class SearchScreen extends React.Component {
         let search_results = [];
 
         for(let i = 0; i < this.state.search_results.length; i++){
+            console.log(i);
             search_results.push(<SearchResult key={i} user={this.state.search_results[i]} mentor={this.state.search_results[i].mentor_subject == this.get_account_info().mentee_subject}
             mentee={this.state.search_results[i].mentee_subject == this.get_account_info().mentor_subject} 
             add_request={this.add_request} requested={false}/>);
         }
+        
+        console.log(this.state.search_results);
 
         return(
             <main className="SearchScreen screen">

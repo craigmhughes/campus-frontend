@@ -43,7 +43,7 @@ class SearchResult extends React.Component {
         if(this.props.remove_connect !== undefined){
             user_options = 
             <div className="container">
-                <i className="fas fa-user-minus" onClick={()=>{this.props.remove_connect(this.props.user.id)}}></i>
+                <a onClick={()=>{this.props.remove_connect(this.props.user.id)}}>Remove</a>
             </div>
         } else if (this.props.accept_request !== undefined && this.props.remove_request !== undefined) {
             user_options = 

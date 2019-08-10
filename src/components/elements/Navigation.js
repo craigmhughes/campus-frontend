@@ -8,6 +8,8 @@ import MessageIcon from '../../images/icons/light/message-square.svg';
 import SearchIcon from '../../images/icons/light/search.svg';
 import PlusIcon from '../../images/icons/light/plus.svg';
 import UserIcon from '../../images/icons/light/user.svg';
+import BellIcon from '../../images/icons/light/bell.svg';
+
 
 import NullProfileImage from '../../images/nullprofile.png';
 
@@ -23,17 +25,49 @@ class Navigation extends React.Component {
         this.navOverlay = React.createRef();
         this.username = React.createRef();
         this.userimage = React.createRef();
+        this.navbar = React.createRef();
 
         this.toggleMenu = this.toggleMenu.bind(this);
     }
 
     componentDidMount(){
         this.checkInformation();
+        // this.updateNavigation();
     }
 
     shouldComponentUpdate(){
         this.checkInformation();
+        // this.updateNavigation();
         return true;
+    }
+
+    updateNavigation(){
+        
+        let navicons = this.navbar.current.getElementsByClassName("nav-icon");
+        let subdomain = window.location.href.split(window.location.host)[1];
+        // Have in order of appearance in navbar. User icon is left out as that brings out overlay.
+        let navUrls = ["/search", "/", "/notifications"];
+        let hasActiveItem = false;
+
+        navUrls.forEach(url => {
+            
+            if(url == subdomain){
+                hasActiveItem = navUrls.indexOf(url);
+            } else {
+                navicons[navUrls.indexOf(url)].className = "nav-icon";
+            }
+        });
+
+        // Exit if none matched
+        if(hasActiveItem == false){
+            return false;
+        }
+
+        navicons[hasActiveItem].className += " active";
+        this.navbar.current.className = "has-active";
+
+        
+
     }
 
     checkInformation(){
@@ -121,10 +155,8 @@ class Navigation extends React.Component {
                             </section>
                             <section className="body">
                                 <ul className="option-list">
-                                    <li onClick={()=>{this.toggleMenu(true)}}><NavLink onClick={this.toggleMenu} to="/notifications"><i className="fas fa-bell"></i> Notifications</NavLink></li>
                                     <li onClick={()=>{this.toggleMenu(true)}}><NavLink to="/connections-list"><i className="fas fa-user"></i> My Study Group</NavLink></li>
                                     <li onClick={()=>{this.toggleMenu(true)}}><NavLink onClick={this.toggleMenu} to="/account-settings"><i className="fas fa-cog"></i> Account Settings</NavLink></li>
-                                    
                                 </ul>
                                 <p className="logout" onClick={this.props.logout}><i className="fas fa-sign-out-alt"></i>Sign out</p>
                             </section>
@@ -132,12 +164,12 @@ class Navigation extends React.Component {
                     </nav>
                 </div>
 
-                <nav id="navigation">
+                <nav id="navigation" ref={this.navbar}>
                     <div className="container">
-                        <NavLink to="/"><img src={HomeIcon} className="nav-icon"/></NavLink>
-                        <NavLink to="/search"><img src={SearchIcon} className="nav-icon"/></NavLink>
-                        <img src={PlusIcon} onClick={()=>{this.testPusher()}} className="nav-icon" id="new-post"/>
-                        <NavLink to="/"><img src={MessageIcon} className="nav-icon"/></NavLink>
+                        <NavLink to="/search"><img src={SearchIcon} className="nav-icon"/><p>Search</p></NavLink>
+                        {/* <img src={PlusIcon} onClick={()=>{this.testPusher()}} className="nav-icon" id="new-post"/> */}
+                        <NavLink to="/messages"><img src={MessageIcon} className="nav-icon"/><p>Messages</p></NavLink>
+                        <NavLink to="/notifications"><img src={BellIcon} className="nav-icon"/><p>Notifications</p></NavLink>
                         <a onClick={this.toggleMenu}><img src={UserIcon} className="nav-icon"/></a>
                     </div>
                 </nav>

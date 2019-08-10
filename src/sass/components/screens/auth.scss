@@ -227,6 +227,10 @@
 
                 & > input {
                     border-bottom: 2px solid $darkbg_color;
+                    
+                    &, &::placeholder {
+                        color: $darkbg_color;
+                    }
                 }
             }
         }

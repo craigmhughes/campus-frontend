@@ -49,6 +49,12 @@
   width: 100%;
   z-index: 100;
 }
+#navigation.has-active > .container > a {
+  flex: 0.5;
+}
+#navigation.has-active > .container > a > .nav-icon {
+  display: none;
+}
 #navigation > .container {
   align-items: center;
   height: 100%;
@@ -61,6 +67,29 @@
 #navigation > .container > a {
   flex: 1;
   text-align: center;
+}
+#navigation > .container > a.active {
+  display: grid;
+  grid-template-columns: 3.75fr 6.25fr;
+  align-items: center;
+  background: #f7f9ff18;
+  border-radius: 2em;
+  flex: 3;
+  height: 100%;
+}
+#navigation > .container > a.active > p {
+  display: block;
+}
+#navigation > .container > a.active > .nav-icon {
+  text-align: center;
+  margin: 0 auto;
+}
+#navigation > .container > a > p {
+  font-size: 0.35em;
+  text-align: center;
+  margin-left: -2.5em;
+  font-weight: 600;
+  display: none;
 }
 #navigation > .container > a > .nav-icon {
   height: 0.75em;
@@ -91,9 +120,9 @@
   background: rgba(0, 0, 0, 0);
 }
 #nav-overlay > .nav-menu {
-  background: #F7F9FF;
-  border-left: 1px solid lightgrey;
-  color: #1B2339;
+  background: #1B2339;
+  border-left: 1px solid #323b53;
+  color: #F7F9FF;
   font-size: 0.9em;
   height: 100%;
   position: fixed;
@@ -113,7 +142,7 @@
   grid-template-rows: 60px 8fr;
 }
 #nav-overlay > .nav-menu > .container > .head {
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 1px solid #323b53;
   display: grid;
   grid-template-columns: 8fr 2fr;
   align-items: center;
@@ -121,6 +150,8 @@
 }
 #nav-overlay > .nav-menu > .container > .head > h1 {
   font-size: 1em;
+  font-weight: 600;
+  letter-spacing: -0.03em;
 }
 #nav-overlay > .nav-menu > .container > .head > #nav-profile-img {
   border-radius: 50%;
@@ -134,7 +165,7 @@
 #nav-overlay > .nav-menu > .container > .body > .option-list {
   font-weight: 600;
   list-style: none;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid #323b53;
   padding: 0.5em 1em;
   margin-top: 0;
 }
@@ -147,7 +178,7 @@
   padding-right: 1em;
 }
 #nav-overlay > .nav-menu > .container > .body > .logout {
-  color: grey;
+  color: #8b94af;
   cursor: pointer;
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -347,6 +378,9 @@
 }
 .signup-screen > .body > .signup-form > .input-item > input {
   border-bottom: 2px solid #1B2339;
+}
+.signup-screen > .body > .signup-form > .input-item > input, .signup-screen > .body > .signup-form > .input-item > input::placeholder {
+  color: #1B2339;
 }
 
 .HomeScreen {

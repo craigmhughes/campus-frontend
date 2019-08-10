@@ -116,7 +116,7 @@ class SearchScreen extends React.Component {
         for(let i = 0; i < this.state.search_results.length; i++){
             search_results.push(<SearchResult key={i} user={this.state.search_results[i]} mentor={this.state.search_results[i].mentor_subject == this.get_account_info().mentee_subject}
             mentee={this.state.search_results[i].mentee_subject == this.get_account_info().mentor_subject} 
-            add_request={this.add_request}/>);
+            add_request={this.add_request} requested={false}/>);
         }
 
         return(

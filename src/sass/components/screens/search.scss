@@ -18,16 +18,43 @@
     padding: 0;
     width: 100%;
     display: grid;
-    grid-template-rows: 8fr 2fr;
-    height: 8em;
+    grid-template-columns: 6.5fr 3.5fr;
     margin: 1em 0;
+    font-size: 0.9em;
+
+    &.search-state-1 {
+        grid-template-columns: unset;
+
+        & > .user-info > .container {
+            padding: 1.25em 1em 0 1em;
+        }
+
+        & > .user-options {
+            & > .container {
+                display: flex;
+                justify-content: space-around;
+
+                & > a {
+                    font-size: 0.65em;
+
+                    &.secondary {
+                        background: none;
+                        color: $darkbg_color;
+                        border: 2px solid $brand_color;
+                    }
+                }
+            }
+        }
+    }
     
 
     & > .user-info > .container {
-        padding: 1em 0.75em 0.5em 1em;
+        padding: 1.5em 1em;
+        padding-right: 0;
         display: grid;
-        grid-template-columns: 2fr 8fr;
+        grid-template-columns: 2.5fr 7.5fr;
         grid-column-gap: 1em;
+        align-items: center;
 
         & .profileimg {
             border-radius: 100%;
@@ -36,11 +63,10 @@
     
         & h1 {
             font-size: 0.8em;
-            font-weight: 600;
+            font-weight: 700;
+            letter-spacing: -0.03em;
             text-transform: capitalize;
             margin: 0;
-            margin-top: 0.5em;
-            display: flex;
             align-self: center;
             align-items: center;
     
@@ -48,27 +74,47 @@
                 font-size: 0.8em;
                 font-weight: 500;
                 color: grey;
-                margin-left: 1em;
+                
             }
         }
     
         & > div > p {
             font-size: 0.7em;
             margin: 0.2em 0;
+            text-transform: capitalize;
+            max-width: 150px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            height: auto;
         }
     }
 
     & > .user-options {
-        border-top: 1px solid #e8e8e8;
-        padding: 1em;
+        padding: 1em 0;
+        display: flex;
+        align-items: center;
 
         & > .container {
             text-align: center;
+
+            & > a {
+                font-size: 0.8em;
+                border-radius: 3em;
+                padding: 1em 2em;
+                background: $brand_color;
+                color: $lightbg_color;
+                margin-left: -1em;
+                font-weight: 600;
+                
+                cursor: pointer;
+            }
 
             & > i {
                 cursor: pointer;
             }
         }
+
+        
     }
 
     

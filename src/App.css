@@ -563,15 +563,35 @@
   padding: 0;
   width: 100%;
   display: grid;
-  grid-template-rows: 8fr 2fr;
-  height: 8em;
+  grid-template-columns: 6.5fr 3.5fr;
   margin: 1em 0;
+  font-size: 0.9em;
+}
+.search-result.search-state-1 {
+  grid-template-columns: unset;
+}
+.search-result.search-state-1 > .user-info > .container {
+  padding: 1.25em 1em 0 1em;
+}
+.search-result.search-state-1 > .user-options > .container {
+  display: flex;
+  justify-content: space-around;
+}
+.search-result.search-state-1 > .user-options > .container > a {
+  font-size: 0.65em;
+}
+.search-result.search-state-1 > .user-options > .container > a.secondary {
+  background: none;
+  color: #1B2339;
+  border: 2px solid #1A0ADF;
 }
 .search-result > .user-info > .container {
-  padding: 1em 0.75em 0.5em 1em;
+  padding: 1.5em 1em;
+  padding-right: 0;
   display: grid;
-  grid-template-columns: 2fr 8fr;
+  grid-template-columns: 2.5fr 7.5fr;
   grid-column-gap: 1em;
+  align-items: center;
 }
 .search-result > .user-info > .container .profileimg {
   border-radius: 100%;
@@ -579,11 +599,10 @@
 }
 .search-result > .user-info > .container h1 {
   font-size: 0.8em;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   text-transform: capitalize;
   margin: 0;
-  margin-top: 0.5em;
-  display: flex;
   align-self: center;
   align-items: center;
 }
@@ -591,18 +610,33 @@
   font-size: 0.8em;
   font-weight: 500;
   color: grey;
-  margin-left: 1em;
 }
 .search-result > .user-info > .container > div > p {
   font-size: 0.7em;
   margin: 0.2em 0;
+  text-transform: capitalize;
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: auto;
 }
 .search-result > .user-options {
-  border-top: 1px solid #e8e8e8;
-  padding: 1em;
+  padding: 1em 0;
+  display: flex;
+  align-items: center;
 }
 .search-result > .user-options > .container {
   text-align: center;
+}
+.search-result > .user-options > .container > a {
+  font-size: 0.8em;
+  border-radius: 3em;
+  padding: 1em 2em;
+  background: #1A0ADF;
+  color: #F7F9FF;
+  margin-left: -1em;
+  font-weight: 600;
+  cursor: pointer;
 }
 .search-result > .user-options > .container > i {
   cursor: pointer;

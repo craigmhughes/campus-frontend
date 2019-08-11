@@ -107,6 +107,12 @@
                 font-weight: 600;
                 
                 cursor: pointer;
+
+                &.pending {
+                    background: none;
+                    color: $darkbg_color;
+                    
+                }
             }
 
             & > i {

@@ -56,7 +56,7 @@ class SearchResult extends React.Component {
         } else {
             user_options = 
             <div className="container">
-                <a onClick={()=>{this.props.add_request(this.props.user.id)}}>Add</a>
+                {this.props.requested ? <a className="pending">Pending</a> : <a onClick={()=>{this.props.add_request(this.props.user.id)}}>Add</a>}
             </div>
         }
 

@@ -156,19 +156,19 @@ class AuthScreen extends React.Component {
             </div>
 
             <div className="signup-form" ref={this.signup_form}>
-              <div class="input-item">
+              <div className="input-item">
                 <label to="register-name">Full name</label>
                 <input name="register-name" type="text"></input>
               </div>
-              <div class="input-item">
+              <div className="input-item">
                 <label to="register-mail">E-Mail Address</label>
                 <input name="register-mail" type="text"></input>
               </div>
-              <div class="input-item">
+              <div className="input-item">
                 <label to="register-pass">Password</label>
                 <input name="register-pass" type="password"></input>
               </div>
-              <div class="input-item">
+              <div className="input-item">
                 <label to="register-pass-confirm">Password Confirm</label>
                 <input name="register-pass-confirm" type="password"></input>
               </div>
@@ -198,11 +198,11 @@ class AuthScreen extends React.Component {
           </div>
 
           <div className="login-form" ref={this.login_form}>
-            <div class="input-item">
+            <div className="input-item">
               <label to="login-mail">E-Mail Address</label>
               <input name="login-mail" type="email"></input>
             </div>
-            <div class="input-item">
+            <div className="input-item">
               <label to="login-pass">Password</label>
               <input name="login-pass" type="password"></input>
             </div>

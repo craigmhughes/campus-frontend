@@ -67,6 +67,20 @@
 #navigation > .container > a {
   flex: 1;
   text-align: center;
+  position: relative;
+}
+#navigation > .container > a > span.alert {
+  display: block;
+  font-size: 0.3em;
+  background: #1A0ADF;
+  padding: 0.25em 0.5em;
+  border-radius: 100%;
+  position: absolute;
+  right: 1em;
+  top: 0;
+}
+#navigation > .container > a > span.alert.hidden {
+  display: none;
 }
 #navigation > .container > a.active {
   display: grid;
@@ -76,6 +90,11 @@
   border-radius: 2em;
   flex: 3;
   height: 100%;
+}
+#navigation > .container > a.active > span.alert {
+  left: 3.5em;
+  top: 0.5em;
+  right: unset;
 }
 #navigation > .container > a.active > p {
   display: block;
@@ -637,6 +656,10 @@
   margin-left: -1em;
   font-weight: 600;
   cursor: pointer;
+}
+.search-result > .user-options > .container > a.pending {
+  background: none;
+  color: #1B2339;
 }
 .search-result > .user-options > .container > i {
   cursor: pointer;

@@ -36,7 +36,22 @@
         & > a {
             flex: 1;
             text-align: center;
-            
+            position: relative;
+
+            & > span.alert {
+                display: block;
+                font-size: 0.3em;
+                background: $brand_color;
+                padding: 0.25em 0.5em;
+                border-radius: 100%;
+                position: absolute;
+                right: 1em;
+                top: 0;
+
+                &.hidden {
+                    display: none;
+                }
+            }
 
             &.active {
                 display: grid;
@@ -46,6 +61,12 @@
                 border-radius: 2em;
                 flex: 3;
                 height: 100%;
+
+                & > span.alert {
+                    left: 3.5em;
+                    top: 0.5em;
+                    right: unset;
+                }
 
                 & > p {
                     display: block;

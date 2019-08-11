@@ -53,10 +53,14 @@ class SearchScreen extends React.Component {
             return false;
         }
 
+        for(let key in resp.success){
+            console.log(key);
+        }
+
 
         if(resp.success !== undefined){
             this.setState({
-                search_results: Object.keys(resp.success).length < 2 ? [resp.success[1]] : resp.success,
+                search_results: Object.keys(resp.success).length == 1 ? [resp.success[Object.keys(resp.success)[0]]] : resp.success,
             });
         } else {
             this.setState({
@@ -112,20 +116,22 @@ class SearchScreen extends React.Component {
 
         let search_results = [];
 
-        for(let i = 0; i < this.state.search_results.length; i++){
-            console.log(i);
-            search_results.push(<SearchResult key={i} user={this.state.search_results[i]} mentor={this.state.search_results[i].mentor_subject == this.get_account_info().mentee_subject}
-            mentee={this.state.search_results[i].mentee_subject == this.get_account_info().mentor_subject} 
-            add_request={this.add_request} requested={false}/>);
+        if(this.state.search_results.length > 0){
+            for(let i = 0; i < this.state.search_results.length; i++){
+                console.log(i);
+                search_results.push(<SearchResult key={i} user={this.state.search_results[i]} mentor={this.state.search_results[i].mentor_subject == this.get_account_info().mentee_subject}
+                mentee={this.state.search_results[i].mentee_subject == this.get_account_info().mentor_subject} 
+                add_request={this.add_request} requested={this.state.search_results[i].requested}/>);
+            }
         }
         
-        console.log(this.state.search_results);
+        
 
         return(
             <main className="SearchScreen screen">
                 <div className="container">
                     <section className="body" ref={this.body}>
-                        {search_results}
+                        {this.state.search_results.length > 0 ? search_results : null}
                     </section>
                 </div>
             </main>

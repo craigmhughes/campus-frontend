@@ -33,11 +33,13 @@ class Navigation extends React.Component {
     componentDidMount(){
         this.checkInformation();
         // this.updateNavigation();
+        this.checkNotifs();
     }
 
     shouldComponentUpdate(){
         this.checkInformation();
         // this.updateNavigation();
+        this.checkNotifs();
         return true;
     }
 
@@ -68,6 +70,40 @@ class Navigation extends React.Component {
 
         
 
+        
+
+    }
+
+    checkNotifs(){
+
+        fetch("http://127.0.0.1:8000/api/requests/count", {
+        method: 'GET',
+        withCredentials: true,
+        credentials: 'include',
+        headers:{
+            'Access-Control-Allow-Credentials': true,
+            'Authorization': 'Bearer ' + localStorage.getItem("AUTH"),
+        }
+        }).then(res => res.json())
+        .then((response) => {
+        
+        let navIcon = this.navbar.current.getElementsByClassName("alert")[1];
+        
+        if(response > 0){
+            console.log(navIcon);
+            navIcon.className = "alert";
+            navIcon.innerText = response > 99 ? "99+" : response;
+        } else {
+            navIcon.className = "alert hidden";
+            navIcon.innerText = 0;
+        }
+
+        console.log(response);
+
+
+        }).catch((error) => {
+            console.log(error)
+        });
     }
 
     checkInformation(){
@@ -168,8 +204,8 @@ class Navigation extends React.Component {
                     <div className="container">
                         <NavLink to="/search"><img src={SearchIcon} className="nav-icon"/><p>Search</p></NavLink>
                         {/* <img src={PlusIcon} onClick={()=>{this.testPusher()}} className="nav-icon" id="new-post"/> */}
-                        <NavLink to="/messages"><img src={MessageIcon} className="nav-icon"/><p>Messages</p></NavLink>
-                        <NavLink to="/notifications"><img src={BellIcon} className="nav-icon"/><p>Notifications</p></NavLink>
+                        <NavLink to="/messages"><img src={MessageIcon} className="nav-icon"/><span className="alert hidden">0</span><p>Messages</p></NavLink>
+                        <NavLink to="/notifications"><img src={BellIcon} className="nav-icon"/><span className="alert hidden">0</span><p>Notifications</p></NavLink>
                         <a onClick={this.toggleMenu}><img src={UserIcon} className="nav-icon"/></a>
                     </div>
                 </nav>

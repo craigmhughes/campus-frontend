@@ -3,10 +3,8 @@ import '../../App.css';
 import { Link, NavLink } from 'react-router-dom';
 
 // Custom Icons
-import HomeIcon from '../../images/icons/light/home.svg';
 import MessageIcon from '../../images/icons/light/message-square.svg';
 import SearchIcon from '../../images/icons/light/search.svg';
-import PlusIcon from '../../images/icons/light/plus.svg';
 import UserIcon from '../../images/icons/light/user.svg';
 import BellIcon from '../../images/icons/light/bell.svg';
 
@@ -90,7 +88,6 @@ class Navigation extends React.Component {
         let navIcon = this.navbar.current.getElementsByClassName("alert")[1];
         
         if(response > 0){
-            console.log(navIcon);
             navIcon.className = "alert";
             navIcon.innerText = response > 99 ? "99+" : response;
         } else {

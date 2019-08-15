@@ -49,12 +49,6 @@
   width: 100%;
   z-index: 100;
 }
-#navigation.has-active > .container > a {
-  flex: 0.5;
-}
-#navigation.has-active > .container > a > .nav-icon {
-  display: none;
-}
 #navigation > .container {
   align-items: center;
   height: 100%;
@@ -76,7 +70,7 @@
   padding: 0.25em 0.5em;
   border-radius: 100%;
   position: absolute;
-  right: 1em;
+  right: 22.5%;
   top: 0;
 }
 #navigation > .container > a > span.alert.hidden {

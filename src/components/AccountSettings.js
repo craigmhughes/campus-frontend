@@ -120,11 +120,13 @@ class AccountSettings extends React.Component {
     }
 
     toggle_success_button(){
-        setTimeout(()=>{
-            this.submitButton.current.className = "fas fa-check submit active"
-        }, 500, setTimeout(()=>{
-            this.submitButton.current.className = "fas fa-check submit"
-        }, 1500));
+        if(this.submitButton.current !== null){
+            setTimeout(()=>{
+                this.submitButton.current.className = "fas fa-check submit active"
+            }, 500, setTimeout(()=>{
+                this.submitButton.current.className = "fas fa-check submit"
+            }, 1500));
+        }
     }
 
     /**

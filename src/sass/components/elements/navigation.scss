@@ -9,21 +9,6 @@
     width: 100%;
     z-index: 100;
 
-    &.has-active {
-        & > .container {
-            & > a {
-                flex: 0.5;
-
-                
-
-                & > .nav-icon {
-                    display: none;
-                    
-                }
-            }
-        }
-    }
-
     & > .container {
         align-items: center;
         height: 100%;
@@ -45,7 +30,7 @@
                 padding: 0.25em 0.5em;
                 border-radius: 100%;
                 position: absolute;
-                right: 1em;
+                right: 22.5%;
                 top: 0;
 
                 &.hidden {

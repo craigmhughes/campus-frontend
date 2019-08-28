@@ -11,6 +11,8 @@ import SearchScreen from './components/SearchScreen';
 import AccountSettings from './components/AccountSettings';
 import ConnectionsList from './components/ConnectionsList';
 import Notifications from './components/Notifications';
+import Messages from './components/Messages';
+import ConversationScreen from './components/ConversationScreen';
 
 class App extends React.Component {
 
@@ -20,6 +22,8 @@ class App extends React.Component {
       signed_in: false,
       online: true,
       hasAccountInfo: false,
+
+      active_conversation: null,
     }
 
     this.set_online_status = this.set_online_status.bind(this);
@@ -29,6 +33,17 @@ class App extends React.Component {
 
   componentWillMount(){
     this.check_signin();
+  }
+
+  /**
+   * Set active conversation
+   * 
+   * @param {Integer} id = conversation id
+   */
+  set_active_conversation(id){
+    this.setState({
+      active_conversation: id
+    });
   }
 
 
@@ -175,6 +190,14 @@ class App extends React.Component {
 
               <Route path="/notifications" render={()=>(
                   <Notifications get_online_status={this.get_online_status} />
+              )} />
+
+              <Route path="/messages" render={()=>(
+                  <Messages get_online_status={this.get_online_status} />
+              )} />
+
+              <Route path="/conversation" render={()=>(
+                  <ConversationScreen active_conversation={this.state.active_conversation} />
               )} />
 
               <Route path="/search" render={()=>(

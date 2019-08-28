@@ -53,6 +53,11 @@ class SearchResult extends React.Component {
             </div>
 
             searchState = 1;
+        } else if (this.props.message !== undefined){
+            user_options = 
+            <div className="container">
+                <p>{this.props.message.created_at.split(" ")[1]}</p>
+            </div>
         } else {
             user_options = 
             <div className="container">
@@ -69,7 +74,7 @@ class SearchResult extends React.Component {
                         </div>
                         <div>
                             <h1>{this.props.user.name}<br/><span>{this.props.user.uni_name}</span></h1>
-                            <p>{relationship}</p>
+                            <p>{this.props.message !== undefined ? this.props.message.message : relationship}</p>
                         </div>
                     </div>
                 </section>

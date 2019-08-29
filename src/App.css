@@ -701,6 +701,68 @@
   overflow: scroll;
 }
 
+.Conversation {
+  z-index: 1001;
+}
+.Conversation > .head {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+  font-weight: 500;
+}
+.Conversation > .head > .container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.Conversation > .head > .container > img {
+  height: 2em;
+  border-radius: 100%;
+  margin: 1em;
+}
+.Conversation > .head > .container > p {
+  text-align: left;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+.Conversation > .body {
+  padding: 1em 0;
+  padding-bottom: 4em;
+  overflow: scroll;
+  font-size: 0.75em;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 8fr 2fr;
+}
+.Conversation > .body > #message-container {
+  padding: 0 1.5em;
+}
+.Conversation > .body > #message-container > .message {
+  display: flex;
+  width: 100%;
+  margin: 0.5em 0;
+}
+.Conversation > .body > #message-container > .message.sent {
+  justify-content: flex-end;
+}
+.Conversation > .body > #message-container > .message.sent > p {
+  background: blue;
+  color: #fff;
+}
+.Conversation > .body > #message-container > .message > p {
+  background: #e3e3e3;
+  color: grey;
+  padding: 0.5em 1em;
+  border-radius: 1em;
+  max-width: 80%;
+  margin: 0;
+}
+.Conversation > .body > #input-container {
+  background: #f3f3f3;
+}
+
 .signup-form {
   display: none;
 }

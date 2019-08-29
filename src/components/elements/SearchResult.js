@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../App.css';
 
+
 import NullProfileImage from '../../images/nullprofile.png';
 
 class SearchResult extends React.Component {
@@ -66,7 +67,7 @@ class SearchResult extends React.Component {
         }
 
         return(
-            <article className={"search-result " + "search-state-" + searchState}>
+            <article className={"search-result " + "search-state-" + searchState} onClick={()=>{this.props.set_active_conversation(this.props.conversation_id)}}>
                 <section className="user-info">
                     <div className="container">
                         <div>

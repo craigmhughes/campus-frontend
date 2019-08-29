@@ -28,6 +28,7 @@ class App extends React.Component {
 
     this.set_online_status = this.set_online_status.bind(this);
     this.get_online_status = this.get_online_status.bind(this);
+    this.set_active_conversation = this.set_active_conversation.bind(this);
     this.logout = this.logout.bind(this);
   }
 
@@ -113,6 +114,7 @@ class App extends React.Component {
           console.log(response);
 
             localStorage.setItem("accountInfo", JSON.stringify({
+                id:response.id,
                 name:response.name,
                 email:response.email,
                 uni_name:response.uni_name,
@@ -193,11 +195,13 @@ class App extends React.Component {
               )} />
 
               <Route path="/messages" render={()=>(
-                  <Messages get_online_status={this.get_online_status} />
+                  <Messages set_active_conversation={this.set_active_conversation} get_online_status={this.get_online_status} />
               )} />
 
               <Route path="/conversation" render={()=>(
-                  <ConversationScreen active_conversation={this.state.active_conversation} />
+                  this.state.active_conversation !== null ?
+                  <ConversationScreen active_conversation={this.state.active_conversation} /> :
+                  <Redirect to="/messages"/>
               )} />
 
               <Route path="/search" render={()=>(

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../App.css';
+import { Link, NavLink } from 'react-router-dom';
 
 import SearchResult from './elements/SearchResult.js';
 
@@ -9,6 +10,7 @@ class Notifications extends React.Component {
         super(props);
 
         this.state = {
+            conversations: [],
             users: [],
             messages: []
         }
@@ -55,6 +57,7 @@ class Notifications extends React.Component {
             return false;
         } else {
             this.setState({
+                conversations: resp.conversations,
                 users: resp.users,
                 messages: resp.messages
             });
@@ -140,7 +143,10 @@ class Notifications extends React.Component {
         let conversations = [];
 
         for(let i = 0; i < this.state.users.length; i++){
-            conversations.push(<SearchResult key={i} user={this.state.users[i]} message={this.state.messages[i]}/>);
+            conversations.push(
+            <NavLink to="/conversation" key={i}>
+                <SearchResult set_active_conversation={this.props.set_active_conversation} conversation_id={this.state.conversations[i].id} user={this.state.users[i]} message={this.state.messages[i]}/>
+            </NavLink>);
         }
 
         return(

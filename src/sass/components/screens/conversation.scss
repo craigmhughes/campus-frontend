@@ -42,6 +42,8 @@
 
         & > #message-container {
             padding: 0 1.5em;
+            height: 100%;
+            overflow: scroll;
 
             & > .message {
                 display: flex;

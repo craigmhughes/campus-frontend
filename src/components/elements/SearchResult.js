@@ -67,7 +67,7 @@ class SearchResult extends React.Component {
         }
 
         return(
-            <article className={"search-result " + "search-state-" + searchState} onClick={()=>{this.props.set_active_conversation(this.props.conversation_id)}}>
+            <article className={"search-result " + "search-state-" + searchState} onClick={()=>{if(this.props.conversation_id){this.props.set_active_conversation(this.props.conversation_id)}}}>
                 <section className="user-info">
                     <div className="container">
                         <div>

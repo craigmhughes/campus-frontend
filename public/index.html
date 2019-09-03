@@ -24,21 +24,21 @@
     <script src="https://kit.fontawesome.com/8d897b0763.js"></script>
     <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
 
-    <script>
+    <!-- <script>
 
       // Enable pusher logging - don't include this in production
-      Pusher.logToConsole = false;
+      Pusher.logToConsole = true;
   
       var pusher = new Pusher('39dcb671b908fbf113bd', {
         cluster: 'eu',
         forceTLS: true
       });
   
-      var channel = pusher.subscribe('my-channel');
+      var channel = pusher.subscribe('campus-chat');
       channel.bind('request-update', function(data) {
         alert(JSON.stringify(data));
       });
-    </script>
+    </script> -->
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

@@ -738,6 +738,8 @@
 }
 .Conversation > .body > #message-container {
   padding: 0 1.5em;
+  height: 100%;
+  overflow: scroll;
 }
 .Conversation > .body > #message-container > .message {
   display: flex;

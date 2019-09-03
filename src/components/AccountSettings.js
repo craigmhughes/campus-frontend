@@ -1,6 +1,7 @@
 import React from 'react';
 import '../App.css';
 
+import NullProfileImage from '../images/nullprofile.png';
 
 class AccountSettings extends React.Component {
     constructor(props){
@@ -18,8 +19,13 @@ class AccountSettings extends React.Component {
         
         //  Autocomplete Fields
         this.newUniGuess = React.createRef();
-
         this.submitButton = React.createRef();
+
+        this.on_imageerror = this.on_imageerror.bind(this);
+    }
+
+    on_imageerror(){
+        this.profileimage_edit.current.src = NullProfileImage;
     }
 
     /**
@@ -201,7 +207,7 @@ class AccountSettings extends React.Component {
                 </section>
                 <section className="body">
                     <div className="settings-item">
-                        <img src={"http://127.0.0.1:8000/" + this.get_account_info().profile_image} ref={this.profileimage_edit} className="profile-image"/>
+                        <img src={"http://127.0.0.1:8000/" + this.get_account_info().profile_image} onError={this.on_imageerror} onLoad={this.on_imageload} ref={this.profileimage_edit} className="profile-image"/>
                         <br/>
                         <label htmlFor="profileimage">Change Profile Image</label>
                         <input type="file" id="profileimage" ref={this.profileUpload} onChange={()=>{this.render_new_profile_image()}}></input>

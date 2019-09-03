@@ -14,6 +14,7 @@ class ConversationScreen extends React.Component {
 
         this.get_account_info = this.get_account_info.bind(this);
         this.on_imageerror = this.on_imageerror.bind(this);
+        this.send_message = this.send_message.bind(this);
 
         this.body = React.createRef();
         this.user_image = React.createRef();
@@ -27,6 +28,14 @@ class ConversationScreen extends React.Component {
 
     on_imageerror(){
         this.user_image.current.src = NullProfileImage;
+    }
+
+    handleNewMessage(event){
+        if (event.key === "Enter") {
+            event.preventDefault();
+        }
+
+        return event.key === "Enter";
     }
 
     async get_conversation(){
@@ -52,6 +61,8 @@ class ConversationScreen extends React.Component {
                 recipient: resp.recipient,
                 messages: resp.messages
             });
+
+            
         }
         
     }
@@ -103,7 +114,7 @@ class ConversationScreen extends React.Component {
         if(resp == undefined){
             return false;
         } else {
-
+            this.newMessage.current.value = null;
         }
         
     }
@@ -143,7 +154,12 @@ class ConversationScreen extends React.Component {
                     </div>
                     <div id="input-container">
                         <form>
-                            <input name="new-message" ref={this.newMessage} type="text"></input>
+                            <input name="new-message" ref={this.newMessage} onKeyPress={(event)=>{
+                                if (event.key === "Enter") {
+                                    event.preventDefault();
+                                    this.send_message();
+                                }
+                            }} type="text"></input>
                             <i className="fas fa-paper-plane" onClick={()=>{this.send_message()}}></i>
                         </form>
                     </div>
